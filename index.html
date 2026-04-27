@@ -9,49 +9,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
-
 <style>
   :root {
-    --bg: #0E0D0B;
-    --bg-soft: #14130F;
-    --bg-panel: #1A1813;
-    --border: #2A261E;
-    --border-soft: #201D17;
-    --text: #EEE8DB;
-    --text-dim: #A9A093;
-    --text-muted: #6E675A;
-    --gold: #C9A961;
-    --gold-bright: #E3C677;
-    --gold-dim: #8B7641;
-    --bronze: #B88B4A;
-    --copper: #A8794F;
-    --green: #8DA67A;
-    --red: #C28B82;
-    --neutral: #6E675A;
+    --bg: #0E0D0B; --bg-soft: #14130F; --bg-panel: #1A1813;
+    --border: #2A261E; --border-soft: #201D17;
+    --text: #EEE8DB; --text-dim: #A9A093; --text-muted: #6E675A;
+    --gold: #C9A961; --gold-bright: #E3C677; --gold-dim: #8B7641;
+    --bronze: #B88B4A; --copper: #A8794F;
+    --green: #8DA67A; --red: #C28B82;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     background: var(--bg); color: var(--text);
     font-family: 'Manrope', sans-serif; font-weight: 300;
-    letter-spacing: 0.01em; line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.01em; line-height: 1.6; -webkit-font-smoothing: antialiased;
   }
   body {
-    background:
-      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,169,97,0.06), transparent 70%),
-      radial-gradient(ellipse 50% 40% at 100% 30%, rgba(184,139,74,0.03), transparent 70%),
-      var(--bg);
+    background: radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,169,97,0.06), transparent 70%),
+                radial-gradient(ellipse 50% 40% at 100% 30%, rgba(184,139,74,0.03), transparent 70%),
+                var(--bg);
     min-height: 100vh;
   }
-  .container { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
 
-  /* === HEADER === */
   .hero { padding: 100px 0 70px; border-bottom: 1px solid var(--border); position: relative; }
-  .hero::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:1px; background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent); opacity: 0.4; }
+  .hero::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent); opacity: 0.4; }
   .eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; font-weight: 500; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--gold);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold);
     margin-bottom: 28px; display: flex; align-items: center; gap: 14px;
   }
   .eyebrow::before { content:''; height:1px; background: var(--gold-dim); flex: 0 0 40px; }
@@ -66,40 +52,26 @@
   .meta-label { font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
   .meta-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--text); font-weight: 400; letter-spacing: -0.01em; }
 
-  /* === LEGEND (how to read charts) === */
   .legend-box {
     margin: 32px 0; padding: 24px 32px;
     background: var(--bg-soft); border: 1px solid var(--border);
     display: flex; gap: 36px; align-items: center; flex-wrap: wrap;
   }
-  .legend-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.22em; color: var(--gold);
-    text-transform: uppercase;
-  }
+  .legend-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; }
   .legend-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-dim); }
   .lg-swatch { width: 28px; height: 16px; border-radius: 1px; flex: 0 0 28px; }
   .lg-swatch.actual { background: var(--gold); }
-  .lg-swatch.forecast { 
-    background: repeating-linear-gradient(45deg, var(--gold), var(--gold) 3px, transparent 3px, transparent 6px);
-    border: 1px solid var(--gold); opacity: 0.8;
-  }
-  .lg-swatch.range { background: transparent; border-left: 1px solid var(--gold); border-right: 1px solid var(--gold); position: relative; height: 16px; }
-  .lg-swatch.range::before, .lg-swatch.range::after { content:''; position: absolute; left: 0; right: 0; height: 1px; background: var(--gold); }
-  .lg-swatch.range::before { top: 0; }
-  .lg-swatch.range::after { bottom: 0; }
+  .lg-swatch.forecast { background: repeating-linear-gradient(45deg, var(--gold), var(--gold) 3px, transparent 3px, transparent 6px); border: 1px solid var(--gold); opacity: 0.8; }
 
-  /* === WEEK STRIP === */
   .week-strip { padding: 48px 0; border-bottom: 1px solid var(--border); }
-  .week-strip-inner { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
-  .week-cell { background: var(--bg-soft); padding: 22px 20px; }
+  .week-strip-inner { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
+  .week-cell { background: var(--bg-soft); padding: 22px 18px; }
   .week-cell.forecast { background: linear-gradient(135deg, var(--bg-soft), rgba(201,169,97,0.08)); }
   .week-cell .code { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--gold); margin-bottom: 8px; }
   .week-cell.forecast .code { color: var(--gold-bright); }
-  .week-cell .dates { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--text); font-weight: 400; line-height: 1.2; }
+  .week-cell .dates { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--text); font-weight: 400; line-height: 1.2; }
   .week-cell .subtitle { font-size: 10px; color: var(--text-muted); margin-top: 6px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; }
 
-  /* === SECTION === */
   section { padding: 80px 0; border-bottom: 1px solid var(--border); position: relative; }
   .section-label { display: flex; align-items: baseline; gap: 24px; margin-bottom: 24px; }
   .section-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; color: var(--text-muted); }
@@ -107,49 +79,42 @@
   .section-title em { font-style: italic; color: var(--accent, var(--gold)); }
   .section-desc { color: var(--text-dim); max-width: 720px; margin-bottom: 48px; font-size: 15px; }
 
-  /* === TABLE HEADER (sticky) === */
   .metric-header {
-    display: grid; grid-template-columns: 260px 1fr; gap: 48px;
+    display: grid; grid-template-columns: 240px 1fr; gap: 36px;
     padding: 12px 0 16px; border-bottom: 2px solid var(--accent, var(--gold));
     position: sticky; top: 0; background: var(--bg); z-index: 5; backdrop-filter: blur(8px);
   }
   .metric-header .m-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--text-muted); text-transform: uppercase; align-self: end; }
-  .metric-header .m-weeks { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; }
-  .m-week-cell { text-align: right; padding: 0 12px; border-left: 1px solid var(--border-soft); }
+  .metric-header .m-weeks { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+  .m-week-cell { text-align: right; padding: 0 8px; border-left: 1px solid var(--border-soft); }
   .m-week-cell:first-child { border-left: none; padding-left: 0; }
-  .m-week-cell.forecast { border-left: 1px solid var(--gold-dim); background: rgba(201,169,97,0.03); padding-right: 12px; }
-  .m-week-cell .wk-code { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 4px; }
+  .m-week-cell.forecast { border-left: 1px solid var(--gold-dim); background: rgba(201,169,97,0.03); padding-right: 8px; }
+  .m-week-cell .wk-code { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 4px; }
   .m-week-cell.forecast .wk-code { color: var(--gold-bright); }
-  .m-week-cell .wk-date { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--text-dim); line-height: 1.2; white-space: nowrap; }
+  .m-week-cell .wk-date { font-family: 'Cormorant Garamond', serif; font-size: 12px; font-style: italic; color: var(--text-dim); line-height: 1.2; white-space: nowrap; }
 
-  /* === METRIC TABLE ROWS === */
   .metric-row {
-    display: grid; grid-template-columns: 260px 1fr; gap: 48px;
-    padding: 28px 0; border-top: 1px solid var(--border-soft); align-items: center;
+    display: grid; grid-template-columns: 240px 1fr; gap: 36px;
+    padding: 24px 0; border-top: 1px solid var(--border-soft); align-items: center;
   }
   .metric-row:first-child { border-top: none; }
   .metric-row:last-child { border-bottom: 1px solid var(--border-soft); }
-  .metric-label { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--text); letter-spacing: -0.01em; }
-  .metric-values { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; }
-  .val-cell { text-align: right; padding: 4px 12px; border-left: 1px solid var(--border-soft); }
+  .metric-label { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--text); letter-spacing: -0.01em; }
+  .metric-values { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+  .val-cell { text-align: right; padding: 4px 8px; border-left: 1px solid var(--border-soft); }
   .val-cell:first-child { border-left: none; padding-left: 0; }
-  .val-cell.forecast { background: rgba(201,169,97,0.03); border-left: 1px solid var(--gold-dim); padding-right: 12px; }
-  .val-cell .cell-wk {
-    font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em;
-    color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;
-    font-weight: 500; text-align: right;
-  }
+  .val-cell.forecast { background: rgba(201,169,97,0.03); border-left: 1px solid var(--gold-dim); padding-right: 8px; }
+  .val-cell .cell-wk { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; font-weight: 500; text-align: right; }
   .val-cell.forecast .cell-wk { color: var(--gold); }
-  .val-num { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 18px; color: var(--text); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.2; }
-  .val-cell.forecast .val-num { color: var(--gold-bright); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 21px; }
-  .val-delta { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 500; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .val-num { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 16px; color: var(--text); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.2; }
+  .val-cell.forecast .val-num { color: var(--gold-bright); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 19px; }
+  .val-delta { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; margin-top: 4px; font-variant-numeric: tabular-nums; }
   .val-delta.up { color: var(--green); }
   .val-delta.down { color: var(--red); }
   .val-delta.neutral { color: var(--text-muted); }
   .val-delta.up::before { content: '▲ '; font-size: 8px; }
   .val-delta.down::before { content: '▼ '; font-size: 8px; }
 
-  /* === CHART GRID === */
   .charts-section-label {
     margin: 56px 0 24px;
     font-family: 'JetBrains Mono', monospace;
@@ -158,51 +123,19 @@
     padding-bottom: 12px; border-bottom: 1px solid var(--border);
   }
   .charts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1px; background: var(--border); border: 1px solid var(--border);
   }
-  .chart-card {
-    background: var(--bg-soft);
-    padding: 24px 26px 20px;
-    display: flex; flex-direction: column;
-    min-height: 340px;
-  }
-  .chart-card-header {
-    display: flex; justify-content: space-between; align-items: baseline;
-    margin-bottom: 4px;
-  }
-  .chart-card-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-weight: 500; color: var(--text);
-    letter-spacing: -0.01em;
-  }
-  .chart-card-fc {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    color: var(--gold); letter-spacing: 0.1em;
-  }
-  .chart-card-sub {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    letter-spacing: 0.1em; color: var(--text-muted);
-    text-transform: uppercase; margin-bottom: 20px;
-  }
+  .chart-card { background: var(--bg-soft); padding: 24px 26px 20px; display: flex; flex-direction: column; min-height: 340px; }
+  .chart-card-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .chart-card-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--text); letter-spacing: -0.01em; }
+  .chart-card-fc { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.1em; }
+  .chart-card-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 20px; }
   .chart-card-body { flex: 1; position: relative; min-height: 220px; }
-  .chart-card-footer {
-    margin-top: 14px; padding-top: 14px;
-    border-top: 1px solid var(--border-soft);
-    display: flex; justify-content: space-between; align-items: baseline;
-    font-size: 11px; color: var(--text-muted);
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.04em;
-  }
-  .chart-card-footer .fc-val { color: var(--gold-bright); font-weight: 500; font-size: 13px; }
-  .chart-card-footer .fc-delta { font-size: 11px; }
+  .chart-card-footer { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-soft); display: flex; justify-content: space-between; align-items: baseline; font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em; }
   .chart-card-footer .fc-delta.up { color: var(--green); }
   .chart-card-footer .fc-delta.down { color: var(--red); }
 
-  /* === INSIGHT CARD === */
   .insight-card {
     margin-top: 48px; padding: 28px 32px;
     border-left: 2px solid var(--accent, var(--gold));
@@ -212,7 +145,6 @@
   .insight-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; line-height: 1.5; color: var(--text); font-style: italic; }
   .insight-text strong { font-weight: 500; font-style: normal; color: var(--gold-bright); }
 
-  /* === PRODUCT GRID === */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
   .prod-heading { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; font-style: italic; margin-bottom: 20px; color: var(--text); display: flex; align-items: baseline; justify-content: space-between; }
   .prod-heading span { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); font-style: normal; }
@@ -223,7 +155,6 @@
   .prod-metric { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); font-weight: 500; }
   .prod-metric .dim { color: var(--text-muted); margin-left: 4px; font-weight: 400; }
 
-  /* === CHANNEL TABLE === */
   .channel-table { width: 100%; border-collapse: collapse; margin-top: 24px; font-size: 13px; }
   .channel-table th { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 10px; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; padding: 14px 10px; text-align: right; border-bottom: 1px solid var(--border); }
   .channel-table th:first-child { text-align: left; }
@@ -231,11 +162,7 @@
   .channel-table td:first-child { text-align: left; color: var(--text); font-weight: 400; }
   .channel-table tr:hover td { background: rgba(201,169,97,0.03); }
 
-  /* === FORECAST SECTION === */
-  .forecast-hero {
-    padding: 40px 48px; background: linear-gradient(135deg, rgba(201,169,97,0.08), rgba(184,139,74,0.02));
-    border: 1px solid var(--gold-dim); border-radius: 2px; margin-bottom: 40px;
-  }
+  .forecast-hero { padding: 40px 48px; background: linear-gradient(135deg, rgba(201,169,97,0.08), rgba(184,139,74,0.02)); border: 1px solid var(--gold-dim); border-radius: 2px; margin-bottom: 40px; }
   .fc-hero-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--gold-dim); }
   .fc-hero-card { background: var(--bg-soft); padding: 28px 24px; }
   .fc-hero-card .label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; }
@@ -245,226 +172,125 @@
   .fc-hero-card .vsprev.up { color: var(--green); }
   .fc-hero-card .vsprev.down { color: var(--red); }
 
-  .method-grid {
-    display: grid; grid-template-columns: 1fr; gap: 1px;
-    background: var(--border); border: 1px solid var(--border); margin-top: 48px;
-  }
-  .method-row {
-    background: var(--bg-soft); padding: 24px 32px;
-    display: grid; grid-template-columns: 200px 120px 1fr; gap: 32px; align-items: baseline;
-  }
+  .method-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 48px; }
+  .method-row { background: var(--bg-soft); padding: 24px 32px; display: grid; grid-template-columns: 200px 120px 1fr; gap: 32px; align-items: baseline; }
   .method-metric { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--text); font-style: italic; }
   .method-value { font-family: 'JetBrains Mono', monospace; font-size: 15px; color: var(--gold-bright); font-weight: 600; font-variant-numeric: tabular-nums; }
   .method-reason { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
 
-  /* === FUNNEL GRID === */
-  .funnel-grid {
-    display: grid; gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-  .funnel-header, .funnel-row {
-    display: grid;
-    grid-template-columns: 180px repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-  }
-  .funnel-header > div {
-    background: var(--bg);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.2em;
-    color: var(--text-muted); text-transform: uppercase;
-    padding: 14px 20px; text-align: center;
-  }
-  .funnel-header > div:first-child { text-align: left; }
-  .funnel-row > div { background: var(--bg-soft); padding: 18px 20px; }
-  .funnel-row.funnel-total > div { background: linear-gradient(135deg, rgba(201,169,97,0.08), var(--bg-soft)); }
-  .funnel-row .f-wk {
-    display: flex; flex-direction: column; justify-content: center;
-    font-family: 'JetBrains Mono', monospace; font-size: 13px;
-    color: var(--gold); font-weight: 600; letter-spacing: 0.1em;
-  }
-  .funnel-row .f-wk span {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 13px; color: var(--text-dim); letter-spacing: 0; margin-top: 2px; font-weight: 400;
-  }
-  .funnel-row.funnel-total .f-wk { color: var(--gold-bright); font-size: 14px; }
-  .funnel-row .f-step { text-align: center; position: relative; }
-  .funnel-row .f-step:not(:last-child):not(:first-child)::after {
-    content: '→'; position: absolute; right: -1px; top: 50%;
-    transform: translate(50%, -50%); color: var(--gold-dim);
-    font-size: 16px; background: var(--bg); padding: 2px 4px; z-index: 2;
-  }
-  .funnel-row .f-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; color: var(--text); font-weight: 400;
-    font-variant-numeric: tabular-nums; line-height: 1;
-  }
-  .funnel-row .f-lbl {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; color: var(--text-muted);
-    letter-spacing: 0.08em; margin-top: 6px;
-  }
-
-  /* === PATH CARDS === */
-  .path-card {
-    padding: 32px 36px;
-    background: var(--bg-soft);
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--gold-dim);
-    display: flex; flex-direction: column; gap: 20px;
-  }
-  .path-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; font-weight: 500;
-    color: var(--text); line-height: 1.1;
-  }
-  .path-desc {
-    font-size: 13px; color: var(--text-dim); line-height: 1.6;
-  }
-  .path-stats {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1px; background: var(--border);
-    border: 1px solid var(--border); margin-top: 12px;
-  }
-  .ps-stat { background: var(--bg); padding: 18px 16px; text-align: center; }
-  .ps-val {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; color: var(--gold-bright); font-weight: 400;
-    line-height: 1; font-variant-numeric: tabular-nums;
-  }
-  .ps-lbl {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px; color: var(--text-muted);
-    letter-spacing: 0.1em; margin-top: 8px; text-transform: uppercase;
-  }
-
-  /* === RETURNS WATCH === */
-  .returns-card {
-    padding: 36px 40px;
-    background: var(--bg-soft); border: 1px solid var(--border);
-    margin-bottom: 24px;
-  }
-  .returns-months {
-    display: grid; gap: 20px; margin-top: 24px;
-  }
-  .rmonth {
-    display: grid; grid-template-columns: 160px 1fr 220px; gap: 32px;
-    align-items: center; padding: 20px 0; border-top: 1px solid var(--border-soft);
-  }
-  .rmonth:first-child { border-top: none; }
-  .rmonth-name {
-    font-family: 'Cormorant Garamond', serif; font-size: 24px;
-    color: var(--text); font-weight: 500; font-style: italic;
-  }
-  .rmonth-name small {
-    display: block; font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.1em; color: var(--text-muted);
-    margin-top: 4px; font-style: normal;
-  }
-  .rbar-wrap {
-    position: relative; height: 32px;
-    background: var(--bg); border: 1px solid var(--border-soft);
-  }
-  .rbar {
-    position: absolute; left: 0; top: 0; bottom: 0;
-    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
-    transition: width 0.8s ease;
-    display: flex; align-items: center; justify-content: flex-end;
-    padding-right: 8px;
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    color: var(--bg); font-weight: 600;
-  }
-  .rbar.over { background: linear-gradient(90deg, #8B4D4A, var(--red)); }
-  .rtarget {
-    position: absolute; top: -4px; bottom: -4px; width: 1px;
-    background: var(--gold-bright);
-  }
-  .rtarget::after {
-    content: 'target 10%'; position: absolute; top: -18px;
-    left: 50%; transform: translateX(-50%);
-    font-family: 'JetBrains Mono', monospace; font-size: 9px;
-    color: var(--gold-bright); letter-spacing: 0.1em; white-space: nowrap;
-  }
-  .rmonth-stats {
-    font-family: 'JetBrains Mono', monospace; font-size: 12px;
-    color: var(--text-dim); text-align: right;
-  }
-  .rmonth-stats strong {
-    color: var(--text); font-size: 14px; display: block;
-  }
-  .rmonth-stats .delta-pp {
-    font-weight: 600; margin-top: 4px;
-  }
-
-  .switch-grid {
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px;
-    background: var(--border); border: 1px solid var(--border);
-    margin-top: 24px;
-  }
-  .switch-cell {
-    background: var(--bg-soft); padding: 28px 24px;
-  }
-  .switch-cell.pre { border-top: 2px solid var(--text-muted); }
-  .switch-cell.post { border-top: 2px solid var(--gold-bright); }
-  .switch-cell.delta { border-top: 2px solid var(--green); background: linear-gradient(135deg, rgba(141,166,122,0.05), var(--bg-soft)); }
-  .switch-cell .sc-lbl {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    letter-spacing: 0.2em; color: var(--text-muted);
-    text-transform: uppercase; margin-bottom: 6px;
-  }
-  .switch-cell .sc-dates {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 14px; color: var(--text-dim); margin-bottom: 18px;
-  }
-  .switch-cell .sc-row { display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid var(--border-soft); }
-  .switch-cell .sc-row:first-of-type { border-top: none; }
-  .switch-cell .sc-row .k { font-size: 12px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; }
-  .switch-cell .sc-row .v { font-family: 'Manrope', sans-serif; font-size: 15px; color: var(--text); font-weight: 500; font-variant-numeric: tabular-nums; }
-  .switch-cell.delta .sc-row .v { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; font-style: italic; }
-  .switch-cell.delta .sc-row .v.up { color: var(--green); }
-  .switch-cell.delta .sc-row .v.down { color: var(--red); }
-
-  /* === FOOTER === */
   footer { padding: 60px 0 80px; color: var(--text-muted); font-size: 12px; }
   footer p { margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; }
-  footer strong { color: var(--gold); font-weight: 500; }
-  @media (max-width: 960px) {
+
+  @media (max-width: 1100px) {
     .container { padding: 0 24px; }
-    .week-strip-inner { grid-template-columns: repeat(2, 1fr); }
+    .week-strip-inner { grid-template-columns: repeat(4, 1fr); }
     .metric-row { grid-template-columns: 1fr; gap: 12px; padding: 20px 0; }
-    .metric-values { grid-template-columns: repeat(3, 1fr); }
+    .metric-values { grid-template-columns: repeat(4, 1fr); }
     .metric-header { grid-template-columns: 1fr; gap: 12px; }
-    .metric-header .m-weeks { grid-template-columns: repeat(3, 1fr); }
+    .metric-header .m-weeks { grid-template-columns: repeat(4, 1fr); }
     .two-col { grid-template-columns: 1fr; }
     .fc-hero-row { grid-template-columns: repeat(2, 1fr); }
     .hero-meta { gap: 24px; }
     .method-row { grid-template-columns: 1fr; gap: 8px; }
     .charts-grid { grid-template-columns: 1fr; }
   }
-  @media print {
-    body { background: white; color: black; }
-    section { break-inside: avoid; }
-    .chart-card { break-inside: avoid; }
+  @media print { body { background: white; color: black; } section { break-inside: avoid; } .chart-card { break-inside: avoid; } }
+
+  /* === EXECUTIVE SUMMARY === */
+  .exec-summary { padding: 80px 0; border-bottom: 1px solid var(--border); }
+  .exec-summary-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
   }
+  .exec-summary-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 64px); font-weight: 300;
+    line-height: 1; letter-spacing: -0.02em;
+    color: var(--text); margin-bottom: 40px;
+  }
+  .exec-summary-title em { font-style: italic; color: var(--gold); }
+  .exec-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .exec-stat {
+    background: var(--bg-soft);
+    padding: 28px 24px;
+  }
+  .exec-stat .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em;
+    color: var(--text-muted); text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .exec-stat .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; font-weight: 400;
+    color: var(--text); letter-spacing: -0.02em;
+    line-height: 1; margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .exec-stat .sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+  .exec-narrative {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    padding: 40px 0;
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 24px;
+  }
+  .exec-narrative-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    color: var(--gold); text-transform: uppercase;
+    align-self: start;
+  }
+  .exec-narrative-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px; font-weight: 300;
+    line-height: 1.6; color: var(--text);
+    font-style: italic;
+  }
+  .exec-narrative-body strong {
+    font-weight: 500; font-style: normal;
+    color: var(--gold-bright);
+  }
+  .exec-narrative-body p + p { margin-top: 16px; }
+
+  @media (max-width: 1100px) {
+    .exec-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .exec-narrative { grid-template-columns: 1fr; gap: 16px; }
+  }
+
 </style>
 </head>
 <body>
 <main class="container">
+
   <header class="hero">
     <div class="eyebrow">VIXII · UK Performance Intelligence · Q2 2026</div>
     <h1>Week on Week<br><em>Analysis</em></h1>
     <div class="hero-meta">
-      <div class="meta-item"><div class="meta-label">Period</div><div class="meta-value">16 Mar → 19 Apr 2026</div></div>
-      <div class="meta-item"><div class="meta-label">Coverage</div><div class="meta-value">5 complete weeks + forecast</div></div>
+      <div class="meta-item"><div class="meta-label">Period</div><div class="meta-value">16 Mar → 26 Apr 2026</div></div>
+      <div class="meta-item"><div class="meta-label">Coverage</div><div class="meta-value">6 complete weeks + forecast</div></div>
       <div class="meta-item"><div class="meta-label">Scope</div><div class="meta-value">UK · Online Store only</div></div>
       <div class="meta-item"><div class="meta-label">Cadence</div><div class="meta-value">Monday → Sunday</div></div>
     </div>
     <div class="legend-box">
       <div class="legend-title">How to read the charts</div>
-      <div class="legend-item"><div class="lg-swatch actual"></div><div><strong style="color:var(--text)">Solid bars</strong> · actual weekly data, W1–W5</div></div>
-      <div class="legend-item"><div class="lg-swatch forecast"></div><div><strong style="color:var(--gold-bright)">Striped bar</strong> · forecast for Apr 20–26</div></div>
-      </div>
+      <div class="legend-item"><div class="lg-swatch actual"></div><div><strong style="color:var(--text)">Solid bars</strong> · actual weekly data, W1–W6</div></div>
+      <div class="legend-item"><div class="lg-swatch forecast"></div><div><strong style="color:var(--gold-bright)">Striped bar</strong> · forecast for Apr 27–May 3</div></div>
+    </div>
   </header>
 
   <div class="week-strip">
@@ -474,9 +300,92 @@
       <div class="week-cell"><div class="code">W3</div><div class="dates">Mar 30–Apr 5</div><div class="subtitle">7 days</div></div>
       <div class="week-cell"><div class="code">W4</div><div class="dates">Apr 6–12</div><div class="subtitle">7 days</div></div>
       <div class="week-cell"><div class="code">W5</div><div class="dates">Apr 13–19</div><div class="subtitle">7 days</div></div>
-      <div class="week-cell forecast"><div class="code">FC</div><div class="dates">Apr 20–26</div><div class="subtitle">Forecast</div></div>
+      <div class="week-cell"><div class="code">W6</div><div class="dates">Apr 20–26</div><div class="subtitle">7 days</div></div>
+      <div class="week-cell forecast"><div class="code">FC</div><div class="dates">Apr 27–May 3</div><div class="subtitle">Forecast</div></div>
     </div>
   </div>
+
+  
+  <section class="exec-summary">
+    <div class="exec-summary-eyebrow">- Executive Summary -</div>
+    <h2 class="exec-summary-title">Six weeks <em>at a glance</em></h2>
+
+    <div class="exec-stats-grid">
+      <div class="exec-stat">
+        <div class="label">Gross Sales</div>
+        <div class="value">£8,636</div>
+        <div class="sub">across 6 weeks</div>
+      </div>
+      <div class="exec-stat">
+        <div class="label">Net Revenue</div>
+        <div class="value">£6,478</div>
+        <div class="sub">after VAT</div>
+      </div>
+      <div class="exec-stat">
+        <div class="label">Orders</div>
+        <div class="value">57</div>
+        <div class="sub">UK Online Store, ex-tests</div>
+      </div>
+      <div class="exec-stat">
+        <div class="label">AOV</div>
+        <div class="value">£152</div>
+        <div class="sub">period average</div>
+      </div>
+      <div class="exec-stat">
+        <div class="label">Sessions</div>
+        <div class="value">9,969</div>
+        <div class="sub">7,556 new / 1,656 returning</div>
+      </div>
+      <div class="exec-stat">
+        <div class="label">Overall CVR</div>
+        <div class="value">0.57%</div>
+        <div class="sub">orders / sessions</div>
+      </div>
+      <div class="exec-stat">
+        <div class="label">Ad Spend</div>
+        <div class="value">£3,832</div>
+        <div class="sub">ROAS 1.69</div>
+      </div>
+      <div class="exec-stat">
+        <div class="label">Returns Rate</div>
+        <div class="value">7.4%</div>
+        <div class="sub">target &le; 10%</div>
+      </div>
+    </div>
+
+    <div class="exec-narrative">
+      <div class="exec-narrative-label">Headline</div>
+      <div class="exec-narrative-body">
+        <p><strong>W6 was a breakout week.</strong> Gross Sales jumped <strong>+320%</strong> (£804 → £3,375) and orders went from <strong>6 to 20</strong> as returning users surged from <strong>270 to 677</strong> (+151%). Discounts also rose sharply, suggesting a promotion or reactivation campaign drove the lift.</p>
+        <p>The trajectory before W6 was softening - orders declined steadily from W1's 9 to W5's 6, with CPC creeping up from £0.33 to £0.59 and ROAS hovering under 1. W6 broke that trend; whether it sticks depends on whether the promotional dynamic is a one-off or the new normal.</p>
+      </div>
+    </div>
+
+    <div class="exec-narrative">
+      <div class="exec-narrative-label">What's working</div>
+      <div class="exec-narrative-body">
+        <p><strong>Returns are well under control</strong> - April clocks in at 2.4%, dramatically below the 10% target and a step-change from March's 16.1%. Net Revenue retention is strong.</p>
+        <p>Organic search has matured into a real channel: <strong>228 UK clicks at 47% CTR, average position 2.8</strong>. Brand queries (vixii, vixii jewellery) dominate, but unbranded queries (gifts under 250, khaki jewellery) are starting to surface.</p>
+        <p>Almost <strong>every UK purchase flows through the cart</strong> (~97%) - typical for considered jewellery purchases. The funnel is clean even if conversion is small in absolute terms.</p>
+      </div>
+    </div>
+
+    <div class="exec-narrative">
+      <div class="exec-narrative-label">What to watch</div>
+      <div class="exec-narrative-body">
+        <p><strong>Ad efficiency is degrading.</strong> CPC nearly doubled across the period (£0.33 → £0.64) while click volume held flat. ROAS is averaging under 1.7 with weeks like W4 dipping to 0.41 - meaning ad costs exceeded the revenue they brought in before COGS.</p>
+        <p><strong>Bounce rate ticked up in W5/W6 (51%/49%)</strong> after sitting in the high 30s/low 40s mid-period. Worth checking whether landing pages or creative are matching searcher intent.</p>
+        <p><strong>Buy-Now adoption is essentially zero.</strong> Not a problem for jewellery but worth a UX test if mobile express checkout is a priority.</p>
+      </div>
+    </div>
+
+    <div class="exec-narrative">
+      <div class="exec-narrative-label">Forecast for W7</div>
+      <div class="exec-narrative-body">
+        <p>The model projects Gross Sales <strong>£2,031</strong>, Orders <strong>12</strong>, AOV <strong>£148</strong>, ROAS <strong>0.74</strong>. This blends the W6 surge with the prior trend - if W6 reflects new baseline behaviour, expect actuals to overshoot. If W6 was a one-off promo bump, expect a return toward the W4-W5 range.</p>
+      </div>
+    </div>
+  </section>
 
   <section style="--accent: #C9A961;">
     <div class="section-label">
@@ -492,107 +401,111 @@
         <div class="m-week-cell"><div class="wk-code">W3</div><div class="wk-date">Mar 30–Apr 5</div></div>
         <div class="m-week-cell"><div class="wk-code">W4</div><div class="wk-date">Apr 6–12</div></div>
         <div class="m-week-cell"><div class="wk-code">W5</div><div class="wk-date">Apr 13–19</div></div>
-        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell"><div class="wk-code">W6</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 27–May 3</div></div>
       </div>
     </div>
     <div class="metric-body">
       <div class="metric-row">
         <div class="metric-label">Gross Sales (£)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£1,448</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£1,448</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£968</div><div class="val-delta down">-33.1%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£1,068</div><div class="val-delta up">+10.3%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£973</div><div class="val-delta down">-8.9%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£804</div><div class="val-delta down">-17.4%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£808</div><div class="val-delta up">+0.5%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£3,375</div><div class="val-delta up">+319.8%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£2,031</div><div class="val-delta down">-39.8%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Net Revenue (£)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£1,192</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£1,192</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£558</div><div class="val-delta down">-53.1%</div></div>
-          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£799</div><div class="val-delta up">+43.1%</div></div>
-          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£806</div><div class="val-delta up">+0.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£708</div><div class="val-delta up">+26.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£806</div><div class="val-delta up">+13.8%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£655</div><div class="val-delta down">-18.7%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£654</div><div class="val-delta down">-0.2%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£2,558</div><div class="val-delta up">+290.5%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£1,571</div><div class="val-delta down">-38.6%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Discounts (£)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£42</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£42</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£0</div><div class="val-delta up">-100.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£0</div><div class="val-delta neutral">0.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£52</div><div class="val-delta neutral">0.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£48</div><div class="val-delta up">-7.7%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£40</div><div class="val-delta up">-15.7%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£345</div><div class="val-delta down">+624.1%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£200</div><div class="val-delta up">-42.0%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Returns (£)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£0</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£0</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£298</div><div class="val-delta neutral">0.0%</div></div>
-          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£109</div><div class="val-delta up">-63.4%</div></div>
+          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£218</div><div class="val-delta up">-26.9%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£0</div><div class="val-delta up">-100.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£0</div><div class="val-delta neutral">0.0%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£14</div><div class="val-delta neutral">0.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£0</div><div class="val-delta neutral">0.0%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£0</div><div class="val-delta neutral">0.0%</div></div>
         </div>
       </div>
     </div>
-    <div class="charts-section-label">Per-metric trajectory · with forecast + uncertainty range</div>
+    <div class="charts-section-label">Per-metric trajectory · with forecast</div>
     <div class="charts-grid">
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Gross Sales</div>
-          <div class="chart-card-fc">FORECAST: £808</div>
+          <div class="chart-card-fc">FORECAST: £2,031</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_01_Gross_Sales_gbp"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: £599 – £1,017</div>
-          <div class="fc-delta up">+0.5% vs W5</div>
+          <div>last week: £3,375</div>
+          <div class="fc-delta down">-39.8% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Net Revenue</div>
-          <div class="chart-card-fc">FORECAST: £654</div>
+          <div class="chart-card-fc">FORECAST: £1,571</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_01_Net_Revenue_gbp"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: £334 – £974</div>
-          <div class="fc-delta down">-0.2% vs W5</div>
+          <div>last week: £2,558</div>
+          <div class="fc-delta down">-38.6% vs W6</div>
         </div>
       </div>
-            <div class="chart-card">
+      <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Discounts</div>
-          <div class="chart-card-fc">FORECAST: £40</div>
+          <div class="chart-card-fc">FORECAST: £200</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_01_Discounts_gbp"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: £7 – £73</div>
-          <div class="fc-delta up">-15.7% vs W5</div>
+          <div>last week: £345</div>
+          <div class="fc-delta up">-42.0% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Returns</div>
-          <div class="chart-card-fc">FORECAST: £14</div>
+          <div class="chart-card-fc">FORECAST: £0</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_01_Returns_gbp"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: £0 – £199</div>
-          <div class="fc-delta neutral">0.0% vs W5</div>
+          <div>last week: £0</div>
+          <div class="fc-delta neutral">0.0% vs W6</div>
         </div>
       </div>
     </div>
-  
     <div style="margin-top: 56px; padding: 36px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 2px;">
       <div style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 12px;">
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase;">§ 01·A</div>
@@ -601,7 +514,7 @@
       <p style="color: var(--text-dim); margin-bottom: 32px; font-size: 14px;">Returns value as a share of gross revenue. Target: stay at or under 10%. Red = over target, green = on target.</p>
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border);">
         <div style="background: var(--bg); padding: 28px 32px;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Mar (16-31)</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">March (16–31)</div>
           <div style="display: flex; align-items: baseline; gap: 12px;">
             <div style="font-family: 'Cormorant Garamond', serif; font-size: 54px; font-weight: 400; color: #C28B82; letter-spacing: -0.02em; line-height: 1;">16.06%</div>
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: #C28B82; text-transform: uppercase;">OVER TARGET</div>
@@ -618,35 +531,32 @@
           </div>
         </div>
         <div style="background: var(--bg); padding: 28px 32px;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Apr (1-19)</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">April (1–26)</div>
           <div style="display: flex; align-items: baseline; gap: 12px;">
-            <div style="font-family: 'Cormorant Garamond', serif; font-size: 54px; font-weight: 400; color: #8DA67A; letter-spacing: -0.02em; line-height: 1;">0.00%</div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 54px; font-weight: 400; color: #8DA67A; letter-spacing: -0.02em; line-height: 1;">2.44%</div>
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: #8DA67A; text-transform: uppercase;">ON TARGET</div>
           </div>
           <div style="margin-top: 14px; height: 6px; background: var(--border); border-radius: 3px; position: relative; overflow: hidden;">
-            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 0.0%; background: #8DA67A;"></div>
+            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 12.2%; background: #8DA67A;"></div>
             <div style="position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--gold);" title="10% target"></div>
           </div>
           <div style="display: flex; justify-content: space-between; margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);">
             <span>0%</span><span style="color: var(--gold);">10% target</span><span>20%+</span>
           </div>
           <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-soft); font-size: 12px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em;">
-            &pound;0.00 returned &middot; 0 of 17 orders &middot; Gross &pound;2,259.78
+            &pound;109.00 returned &middot; 1 of 37 orders &middot; Gross &pound;5,329.93
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  
-
-
   <section style="--accent: #D4AF37;">
     <div class="section-label">
       <div class="section-num">§ 02</div>
       <div><div class="section-title"><em>Orders</em></div></div>
     </div>
-    <p class="section-desc">Transaction volume and basket shape. AOV is total sales divided by orders. Items per order is how many products each customer bought on average.</p>
+    <p class="section-desc">Transaction volume and basket shape. AOV is gross sales divided by orders. Items per order is how many products each customer bought on average.</p>
     <div class="metric-header">
       <div class="m-title">Metric</div>
       <div class="m-weeks">
@@ -655,80 +565,84 @@
         <div class="m-week-cell"><div class="wk-code">W3</div><div class="wk-date">Mar 30–Apr 5</div></div>
         <div class="m-week-cell"><div class="wk-code">W4</div><div class="wk-date">Apr 6–12</div></div>
         <div class="m-week-cell"><div class="wk-code">W5</div><div class="wk-date">Apr 13–19</div></div>
-        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell"><div class="wk-code">W6</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 27–May 3</div></div>
       </div>
     </div>
     <div class="metric-body">
       <div class="metric-row">
         <div class="metric-label">Orders</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">9</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">9</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">7</div><div class="val-delta down">-22.2%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">8</div><div class="val-delta up">+14.3%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">7</div><div class="val-delta down">-12.5%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">6</div><div class="val-delta down">-14.3%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">6</div><div class="val-delta up">+5.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">20</div><div class="val-delta up">+233.3%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">13</div><div class="val-delta down">-36.0%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">AOV (£)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£158.90</div><div class="val-delta neutral">—</div></div>
-          <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£95.71</div><div class="val-delta down">-39.8%</div></div>
-          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£119.88</div><div class="val-delta up">+25.2%</div></div>
-          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£138.22</div><div class="val-delta up">+15.3%</div></div>
-          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£131.04</div><div class="val-delta down">-5.2%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£127.25</div><div class="val-delta down">-2.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£160.89</div><div class="val-delta neutral">-</div></div>
+          <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£138.29</div><div class="val-delta down">-14.1%</div></div>
+          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£133.50</div><div class="val-delta down">-3.5%</div></div>
+          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£139.00</div><div class="val-delta up">+4.1%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£134.00</div><div class="val-delta down">-3.6%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£168.75</div><div class="val-delta up">+25.9%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£148.09</div><div class="val-delta down">-12.2%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Items/Order</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">1.11</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">1.11</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">1.14</div><div class="val-delta up">+2.9%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">1.00</div><div class="val-delta down">-12.5%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">1.00</div><div class="val-delta neutral">0.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">1.00</div><div class="val-delta neutral">0.0%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">0.97</div><div class="val-delta down">-2.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">1.15</div><div class="val-delta up">+15.0%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">1.05</div><div class="val-delta down">-9.0%</div></div>
         </div>
       </div>
     </div>
-    <div class="charts-section-label">Per-metric trajectory · with forecast + uncertainty range</div>
+    <div class="charts-section-label">Per-metric trajectory · with forecast</div>
     <div class="charts-grid">
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Orders</div>
-          <div class="chart-card-fc">FORECAST: 6</div>
+          <div class="chart-card-fc">FORECAST: 13</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_02_Orders"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 5 – 7</div>
-          <div class="fc-delta up">+5.0% vs W5</div>
+          <div>last week: 20</div>
+          <div class="fc-delta down">-36.0% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">AOV</div>
-          <div class="chart-card-fc">FORECAST: £127.25</div>
+          <div class="chart-card-fc">FORECAST: £148.09</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_02_AOV_gbp"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: £92.71 – £161.79</div>
-          <div class="fc-delta down">-2.9% vs W5</div>
+          <div>last week: £168.75</div>
+          <div class="fc-delta down">-12.2% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Items per order</div>
-          <div class="chart-card-fc">FORECAST: 0.97</div>
+          <div class="chart-card-fc">FORECAST: 1.05</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_02_Items_Order"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 0.90 – 1.04</div>
-          <div class="fc-delta down">-2.9% vs W5</div>
+          <div>last week: 1.15</div>
+          <div class="fc-delta down">-9.0% vs W6</div>
         </div>
       </div>
     </div>
@@ -748,135 +662,140 @@
         <div class="m-week-cell"><div class="wk-code">W3</div><div class="wk-date">Mar 30–Apr 5</div></div>
         <div class="m-week-cell"><div class="wk-code">W4</div><div class="wk-date">Apr 6–12</div></div>
         <div class="m-week-cell"><div class="wk-code">W5</div><div class="wk-date">Apr 13–19</div></div>
-        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell"><div class="wk-code">W6</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 27–May 3</div></div>
       </div>
     </div>
     <div class="metric-body">
       <div class="metric-row">
         <div class="metric-label">Sessions</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">1,032</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">1,032</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">1,618</div><div class="val-delta up">+56.8%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">1,515</div><div class="val-delta down">-6.4%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">1,514</div><div class="val-delta down">-0.1%</div></div>
-          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">1,061</div><div class="val-delta down">-29.9%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">1,349</div><div class="val-delta up">+27.1%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">1,076</div><div class="val-delta down">-28.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">3,214</div><div class="val-delta up">+198.7%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">2,262</div><div class="val-delta down">-29.6%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Visitors</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">957</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">957</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">1,493</div><div class="val-delta up">+56.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">1,400</div><div class="val-delta down">-6.2%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">1,390</div><div class="val-delta down">-0.7%</div></div>
-          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">982</div><div class="val-delta down">-29.4%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">1,243</div><div class="val-delta up">+26.6%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">996</div><div class="val-delta down">-28.4%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">2,976</div><div class="val-delta up">+198.8%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">2,091</div><div class="val-delta down">-29.7%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">New Users</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">897</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">897</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">1,342</div><div class="val-delta up">+49.6%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">1,152</div><div class="val-delta down">-14.2%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">1,140</div><div class="val-delta down">-1.0%</div></div>
-          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">699</div><div class="val-delta down">-38.7%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">932</div><div class="val-delta up">+33.3%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">726</div><div class="val-delta down">-36.3%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">2,299</div><div class="val-delta up">+216.7%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">1,581</div><div class="val-delta down">-31.2%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Returning Users</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">60</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">60</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">151</div><div class="val-delta up">+151.7%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">248</div><div class="val-delta up">+64.2%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">250</div><div class="val-delta up">+0.8%</div></div>
-          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">283</div><div class="val-delta up">+13.2%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">311</div><div class="val-delta up">+9.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">270</div><div class="val-delta up">+8.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">677</div><div class="val-delta up">+150.7%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">510</div><div class="val-delta down">-24.7%</div></div>
         </div>
       </div>
     </div>
-    <div class="charts-section-label">Per-metric trajectory · with forecast + uncertainty range</div>
+    <div class="charts-section-label">Per-metric trajectory · with forecast</div>
     <div class="charts-grid">
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Sessions</div>
-          <div class="chart-card-fc">FORECAST: 1,349</div>
+          <div class="chart-card-fc">FORECAST: 2,262</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_03_Sessions"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 975 – 1,723</div>
-          <div class="fc-delta up">+27.1% vs W5</div>
+          <div>last week: 3,214</div>
+          <div class="fc-delta down">-29.6% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Visitors</div>
-          <div class="chart-card-fc">FORECAST: 1,243</div>
+          <div class="chart-card-fc">FORECAST: 2,091</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_03_Visitors"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 903 – 1,583</div>
-          <div class="fc-delta up">+26.6% vs W5</div>
+          <div>last week: 2,976</div>
+          <div class="fc-delta down">-29.7% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">New Users</div>
-          <div class="chart-card-fc">FORECAST: 932</div>
+          <div class="chart-card-fc">FORECAST: 1,581</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_03_New_Users"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 608 – 1,255</div>
-          <div class="fc-delta up">+33.3% vs W5</div>
+          <div>last week: 2,299</div>
+          <div class="fc-delta down">-31.2% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Returning Users</div>
-          <div class="chart-card-fc">FORECAST: 311</div>
+          <div class="chart-card-fc">FORECAST: 510</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_03_Returning_Users"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 271 – 351</div>
-          <div class="fc-delta up">+9.9% vs W5</div>
+          <div>last week: 677</div>
+          <div class="fc-delta down">-24.7% vs W6</div>
         </div>
       </div>
     </div>
-    
+
     <div style="margin-top: 56px;">
       <div class="charts-section-label" style="margin-bottom: 24px;">Where returning users come from &middot; channel breakdown</div>
       <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Returning users = Total users &minus; New users, per channel. Paid Social drives the biggest <em>absolute</em> volume (mostly remarketing). But <em>returning-share-of-users</em> on the right tells you each channel&apos;s intrinsic loyalty.</p>
       <table class="channel-table">
-        <thead><tr><th>Channel</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th><th>Share of returning</th><th>Returning / Total users</th></tr></thead>
+        <thead><tr><th>Channel</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>W6</th><th>Total</th><th>Share of returning</th><th>Returning / Total users</th></tr></thead>
         <tbody>
-          <tr><td>Paid Social</td><td>13</td><td>74</td><td>120</td><td>130</td><td>138</td><td><strong>475</strong></td><td>46.8%</td><td>11.1%</td></tr>
-          <tr><td>Organic Search</td><td>10</td><td>16</td><td>53</td><td>64</td><td>37</td><td><strong>180</strong></td><td>17.8%</td><td>52.0%</td></tr>
-          <tr><td>Direct</td><td>22</td><td>41</td><td>48</td><td>24</td><td>41</td><td><strong>176</strong></td><td>17.4%</td><td>22.7%</td></tr>
-          <tr><td>Organic Social</td><td>12</td><td>13</td><td>28</td><td>12</td><td>20</td><td><strong>85</strong></td><td>8.4%</td><td>12.1%</td></tr>
-          <tr><td>Referral</td><td>2</td><td>12</td><td>7</td><td>18</td><td>21</td><td><strong>60</strong></td><td>5.9%</td><td>87.0%</td></tr>
-          <tr><td>Organic Shopping</td><td>6</td><td>4</td><td>1</td><td>8</td><td>12</td><td><strong>31</strong></td><td>3.1%</td><td>63.3%</td></tr>
-          <tr><td>Email</td><td>0</td><td>0</td><td>0</td><td>6</td><td>1</td><td><strong>7</strong></td><td>0.7%</td><td>58.3%</td></tr>
+          <tr><td>Paid Social</td><td>13</td><td>74</td><td>120</td><td>130</td><td>140</td><td>231</td><td><strong>708</strong></td><td>42.0%</td><td>12.0%</td></tr>
+          <tr><td>Organic Search</td><td>10</td><td>16</td><td>53</td><td>64</td><td>38</td><td>338</td><td><strong>519</strong></td><td>30.8%</td><td>44.6%</td></tr>
+          <tr><td>Direct</td><td>22</td><td>41</td><td>48</td><td>24</td><td>42</td><td>33</td><td><strong>210</strong></td><td>12.5%</td><td>20.8%</td></tr>
+          <tr><td>Organic Social</td><td>12</td><td>13</td><td>28</td><td>12</td><td>23</td><td>41</td><td><strong>129</strong></td><td>7.7%</td><td>13.1%</td></tr>
+          <tr><td>Referral</td><td>2</td><td>12</td><td>7</td><td>18</td><td>21</td><td>8</td><td><strong>68</strong></td><td>4.0%</td><td>80.0%</td></tr>
+          <tr><td>Organic Shopping</td><td>6</td><td>4</td><td>1</td><td>8</td><td>12</td><td>10</td><td><strong>41</strong></td><td>2.4%</td><td>68.3%</td></tr>
+          <tr><td>Email</td><td>0</td><td>0</td><td>0</td><td>6</td><td>1</td><td>2</td><td><strong>9</strong></td><td>0.5%</td><td>60.0%</td></tr>
         </tbody>
       </table>
       <div class="insight-card" style="margin-top: 32px;">
         <div class="insight-label">Read</div>
-        <div class="insight-text"><strong>Paid Social drives 475 returning users</strong> (the biggest absolute volume, mostly remarketing). <strong>Organic Search (52% returning rate)</strong> and <strong>Referral (87% returning rate)</strong> are where brand loyalty sits strongest. Prioritise SEO content investment and referral programmes to compound this base.</div>
+        <div class="insight-text"><strong>Paid Social drives 708 returning users</strong> across the full window (the biggest absolute volume, mostly remarketing). <strong>Organic Search (45% returning rate)</strong> and <strong>Referral (80% returning rate)</strong> are where brand loyalty sits strongest. Prioritise SEO content investment and referral programmes to compound this base.</div>
       </div>
     </div>
-</section>
+  </section>
 
   <section style="--accent: #A8794F;">
     <div class="section-label">
       <div class="section-num">§ 04</div>
       <div><div class="section-title"><em>Conversion</em></div></div>
     </div>
-    <p class="section-desc">The funnel. Cart-add → Checkout reach → Checkout completion → Overall CVR. A leak in any one of these caps revenue.</p>
+    <p class="section-desc">The funnel - with absolute user counts shown next to each rate so the percentages have context.</p>
     <div class="metric-header">
       <div class="m-title">Metric</div>
       <div class="m-weeks">
@@ -885,242 +804,145 @@
         <div class="m-week-cell"><div class="wk-code">W3</div><div class="wk-date">Mar 30–Apr 5</div></div>
         <div class="m-week-cell"><div class="wk-code">W4</div><div class="wk-date">Apr 6–12</div></div>
         <div class="m-week-cell"><div class="wk-code">W5</div><div class="wk-date">Apr 13–19</div></div>
-        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell"><div class="wk-code">W6</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 27–May 3</div></div>
       </div>
     </div>
     <div class="metric-body">
       <div class="metric-row">
         <div class="metric-label">Overall CVR (%)</div>
         <div class="metric-values">
-          <div class="val-cell">
-            <div class="cell-wk">W1</div>
-            <div class="val-num">0.87%</div>
-            <div class="val-delta neutral">—</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W2</div>
-            <div class="val-num">0.43%</div>
-            <div class="val-delta down">-50.6%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W3</div>
-            <div class="val-num">0.53%</div>
-            <div class="val-delta up">+23.3%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W4</div>
-            <div class="val-num">0.46%</div>
-            <div class="val-delta down">-13.2%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W5</div>
-            <div class="val-num">0.57%</div>
-            <div class="val-delta up">+23.9%</div>
-          </div>
-          <div class="val-cell forecast">
-            <div class="cell-wk">FC</div>
-            <div class="val-num">0.46%</div>
-            <div class="val-delta down">-19.2%</div>
-          </div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">0.87%</div><div class="val-delta neutral">-</div></div>
+          <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">0.43%</div><div class="val-delta down">-50.6%</div></div>
+          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">0.53%</div><div class="val-delta up">+23.3%</div></div>
+          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">0.46%</div><div class="val-delta down">-13.2%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">0.56%</div><div class="val-delta up">+21.7%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">0.62%</div><div class="val-delta up">+10.7%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">0.52%</div><div class="val-delta down">-16.8%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Cart-add Rate (%)</div>
         <div class="metric-values">
-          <div class="val-cell">
-            <div class="cell-wk">W1</div>
-            <div class="val-num">1.94%</div>
-            <div class="val-delta neutral">—</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W2</div>
-            <div class="val-num">5.75%</div>
-            <div class="val-delta up">+196.4%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W3</div>
-            <div class="val-num">5.21%</div>
-            <div class="val-delta down">-9.4%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W4</div>
-            <div class="val-num">5.22%</div>
-            <div class="val-delta up">+0.2%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W5</div>
-            <div class="val-num">4.05%</div>
-            <div class="val-delta down">-22.4%</div>
-          </div>
-          <div class="val-cell forecast">
-            <div class="cell-wk">FC</div>
-            <div class="val-num">5.18%</div>
-            <div class="val-delta up">+28.0%</div>
-          </div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">1.94%</div><div class="val-delta neutral">-</div></div>
+          <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">5.75%</div><div class="val-delta up">+196.4%</div></div>
+          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">5.21%</div><div class="val-delta down">-9.4%</div></div>
+          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">5.22%</div><div class="val-delta up">+0.2%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">4.00%</div><div class="val-delta down">-23.4%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">3.11%</div><div class="val-delta down">-22.2%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">4.19%</div><div class="val-delta up">+34.7%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Checkout Reach (%)</div>
         <div class="metric-values">
-          <div class="val-cell">
-            <div class="cell-wk">W1</div>
-            <div class="val-num">0.87%</div>
-            <div class="val-delta neutral">—</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W2</div>
-            <div class="val-num">2.72%</div>
-            <div class="val-delta up">+212.6%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W3</div>
-            <div class="val-num">2.44%</div>
-            <div class="val-delta down">-10.3%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W4</div>
-            <div class="val-num">2.77%</div>
-            <div class="val-delta up">+13.5%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W5</div>
-            <div class="val-num">2.73%</div>
-            <div class="val-delta down">-1.4%</div>
-          </div>
-          <div class="val-cell forecast">
-            <div class="cell-wk">FC</div>
-            <div class="val-num">3.04%</div>
-            <div class="val-delta up">+11.4%</div>
-          </div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">0.87%</div><div class="val-delta neutral">-</div></div>
+          <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">2.72%</div><div class="val-delta up">+212.6%</div></div>
+          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">2.44%</div><div class="val-delta down">-10.3%</div></div>
+          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">2.77%</div><div class="val-delta up">+13.5%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">2.70%</div><div class="val-delta down">-2.5%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">1.65%</div><div class="val-delta down">-38.9%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">2.49%</div><div class="val-delta up">+51.0%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Checkout Completion (%)</div>
         <div class="metric-values">
-          <div class="val-cell">
-            <div class="cell-wk">W1</div>
-            <div class="val-num">100.00%</div>
-            <div class="val-delta neutral">—</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W2</div>
-            <div class="val-num">15.91%</div>
-            <div class="val-delta down">-84.1%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W3</div>
-            <div class="val-num">21.62%</div>
-            <div class="val-delta up">+35.9%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W4</div>
-            <div class="val-num">16.67%</div>
-            <div class="val-delta down">-22.9%</div>
-          </div>
-          <div class="val-cell">
-            <div class="cell-wk">W5</div>
-            <div class="val-num">20.69%</div>
-            <div class="val-delta up">+24.1%</div>
-          </div>
-          <div class="val-cell forecast">
-            <div class="cell-wk">FC</div>
-            <div class="val-num">3.64%</div>
-            <div class="val-delta down">-82.4%</div>
-          </div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">100.00%</div><div class="val-delta neutral">-</div></div>
+          <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">15.91%</div><div class="val-delta down">-84.1%</div></div>
+          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">21.62%</div><div class="val-delta up">+35.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">16.67%</div><div class="val-delta down">-22.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">20.69%</div><div class="val-delta up">+24.1%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">37.74%</div><div class="val-delta up">+82.4%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">15.14%</div><div class="val-delta down">-59.9%</div></div>
         </div>
       </div>
     </div>
-    <div class="charts-section-label">Per-metric trajectory · with forecast + uncertainty range</div>
+    <div class="charts-section-label">Per-metric trajectory · with forecast</div>
     <div class="charts-grid">
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Overall CVR</div>
-          <div class="chart-card-fc">FORECAST: 0.46%</div>
+          <div class="chart-card-fc">FORECAST: 0.52%</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_04_Overall_CVR_pct"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 0.24% – 0.68%</div>
-          <div class="fc-delta down">-19.2% vs W5</div>
+          <div>last week: 0.62%</div>
+          <div class="fc-delta down">-16.8% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Cart-add Rate</div>
-          <div class="chart-card-fc">FORECAST: 5.18%</div>
+          <div class="chart-card-fc">FORECAST: 4.19%</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_04_Cart-add_Rate_pct"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 3.24% – 7.12%</div>
-          <div class="fc-delta up">+28.0% vs W5</div>
+          <div>last week: 3.11%</div>
+          <div class="fc-delta up">+34.7% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Checkout Reach</div>
-          <div class="chart-card-fc">FORECAST: 3.04%</div>
+          <div class="chart-card-fc">FORECAST: 2.49%</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_04_Checkout_Reach_pct"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 2.21% – 3.87%</div>
-          <div class="fc-delta up">+11.4% vs W5</div>
+          <div>last week: 1.65%</div>
+          <div class="fc-delta up">+51.0% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Checkout Completion</div>
-          <div class="chart-card-fc">FORECAST: 3.64%</div>
+          <div class="chart-card-fc">FORECAST: 15.14%</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_04_Checkout_Completion_pct"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 0.00% – 40.96%</div>
-          <div class="fc-delta down">-82.4% vs W5</div>
+          <div>last week: 37.74%</div>
+          <div class="fc-delta down">-59.9% vs W6</div>
         </div>
       </div>
     </div>
-    
-    
-    
-  
-    
+
     <div style="margin-top: 56px;">
       <div class="charts-section-label" style="margin-bottom: 24px;">User numbers &amp; funnel volume &middot; weekly breakdown</div>
-      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Absolute user counts alongside the percentage rates. <strong>Purchases = actual Shopify orders</strong> (UK, Online Store, minus tests). <strong>Sessions &rarr; Purchase rate</strong> shows the % of all sessions that ended in a purchase &mdash; the end-to-end funnel conversion.</p>
+      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Absolute user counts alongside the percentage rates. <strong>Purchases = actual Shopify orders</strong> (UK, Online Store, minus tests). <strong>Sessions &rarr; Purchase rate</strong> shows the % of all sessions that ended in a purchase - the end-to-end funnel conversion.</p>
       <table class="channel-table">
-        <thead><tr><th>Metric</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th></tr></thead>
+        <thead><tr><th>Metric</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>W6</th><th>Total</th></tr></thead>
         <tbody>
-          <tr><td>Total Sessions</td><td>1,032</td><td>1,618</td><td>1,515</td><td>1,514</td><td>1,061</td><td><strong>6,740</strong></td></tr>
-          <tr><td>Total Users</td><td>957</td><td>1,493</td><td>1,400</td><td>1,390</td><td>982</td><td><strong>6,222</strong></td></tr>
-          <tr><td>New Users</td><td>897</td><td>1,342</td><td>1,152</td><td>1,140</td><td>699</td><td><strong>5,230</strong></td></tr>
-          <tr><td>Returning Users</td><td>60</td><td>151</td><td>248</td><td>250</td><td>283</td><td><strong>992</strong></td></tr>
-          <tr><td>Sessions &rarr; Cart-add</td><td>20</td><td>93</td><td>79</td><td>79</td><td>43</td><td><strong>314</strong></td></tr>
-          <tr><td>Sessions &rarr; Checkout</td><td>9</td><td>44</td><td>37</td><td>42</td><td>29</td><td><strong>161</strong></td></tr>
-          <tr><td>Sessions &rarr; Purchase</td><td>9</td><td>7</td><td>8</td><td>7</td><td>6</td><td><strong>37</strong></td></tr>
-          <tr><td>Sessions &rarr; Purchase rate</td><td>0.87%</td><td>0.43%</td><td>0.53%</td><td>0.46%</td><td>0.57%</td><td>—</td></tr>
+          <tr><td>Total Sessions</td><td>1,032</td><td>1,618</td><td>1,515</td><td>1,514</td><td>1,076</td><td>3,214</td><td><strong>9,969</strong></td></tr>
+          <tr><td>Total Users</td><td>957</td><td>1,493</td><td>1,400</td><td>1,390</td><td>996</td><td>2,976</td><td><strong>9,212</strong></td></tr>
+          <tr><td>New Users</td><td>897</td><td>1,342</td><td>1,152</td><td>1,140</td><td>726</td><td>2,299</td><td><strong>7,556</strong></td></tr>
+          <tr><td>Returning Users</td><td>60</td><td>151</td><td>248</td><td>250</td><td>270</td><td>677</td><td><strong>1,656</strong></td></tr>
+          <tr><td>Sessions &rarr; Cart-add</td><td>20</td><td>93</td><td>79</td><td>79</td><td>43</td><td>100</td><td><strong>414</strong></td></tr>
+          <tr><td>Sessions &rarr; Checkout</td><td>9</td><td>44</td><td>37</td><td>42</td><td>29</td><td>53</td><td><strong>214</strong></td></tr>
+          <tr><td>Sessions &rarr; Purchase</td><td>9</td><td>7</td><td>8</td><td>7</td><td>6</td><td>20</td><td><strong>57</strong></td></tr>
+          <tr><td>Sessions &rarr; Purchase rate</td><td>0.87%</td><td>0.43%</td><td>0.53%</td><td>0.46%</td><td>0.56%</td><td>0.62%</td><td>-</td></tr>
         </tbody>
       </table>
     </div>
 
     <div style="margin-top: 56px;">
       <div class="charts-section-label" style="margin-bottom: 24px;">Conversion by path &middot; Cart-led purchasing</div>
-      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Based on Shopify's session-level data (measured for W1–W3, Mar 16–Apr 2). Virtually all UK purchases go through the cart path — the Buy-Now / express-checkout route sees negligible use (~2–3% of orders).</p>
+      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Based on Shopify's session-level split data (measured for W1–W3, Mar 16–Apr 2). Virtually all UK purchases go through the cart path - the Buy-Now / express-checkout route sees negligible use (~2–3% of orders).</p>
       <table class="channel-table">
-        <thead><tr><th>Path</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Overall share</th></tr></thead>
+        <thead><tr><th>Path</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>W6</th><th>Overall share</th></tr></thead>
         <tbody>
-          <tr><td><strong style="color: var(--gold-bright);">Cart Path</strong> (add-to-cart &rarr; purchase)</td>
-<td>9.0 &middot; 0.87%</td><td>7.0 &middot; 0.43%</td><td>7.4 &middot; 0.49%</td><td>6.8 &middot; 0.45%</td><td>5.8 &middot; 0.55%</td><td><strong>97.3%</strong></td></tr>
-          
+          <tr><td><strong style="color: var(--gold-bright);">Cart Path</strong> (add-to-cart &rarr; purchase)</td><td>8.8 &middot; 0.85%</td><td>6.8 &middot; 0.42%</td><td>7.8 &middot; 0.51%</td><td>6.8 &middot; 0.45%</td><td>5.8 &middot; 0.54%</td><td>19.5 &middot; 0.61%</td><td><strong>97.3%</strong></td></tr>
         </tbody>
       </table>
       <div class="insight-card" style="margin-top: 32px;">
         <div class="insight-label">What this says</div>
-        <div class="insight-text">Essentially <strong>every UK purchase flows through the cart</strong>. Customers browse, add to cart, then review before completing the order &mdash; the typical behaviour for considered purchases like fine jewellery.</div>
+        <div class="insight-text">Essentially <strong>every UK purchase flows through the cart</strong>. Customers browse, add to cart, then review before completing the order - the typical behaviour for considered purchases like fine jewellery.</div>
       </div>
     </div>
-</section>
+  </section>
 
   <section style="--accent: #8B6B3F;">
     <div class="section-label">
@@ -1136,34 +958,36 @@
         <div class="m-week-cell"><div class="wk-code">W3</div><div class="wk-date">Mar 30–Apr 5</div></div>
         <div class="m-week-cell"><div class="wk-code">W4</div><div class="wk-date">Apr 6–12</div></div>
         <div class="m-week-cell"><div class="wk-code">W5</div><div class="wk-date">Apr 13–19</div></div>
-        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell"><div class="wk-code">W6</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 27–May 3</div></div>
       </div>
     </div>
     <div class="metric-body">
       <div class="metric-row">
         <div class="metric-label">Bounce Rate (%)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">59.01%</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">59.01%</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">36.03%</div><div class="val-delta up">-38.9%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">40.66%</div><div class="val-delta down">+12.8%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">40.22%</div><div class="val-delta up">-1.1%</div></div>
-          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">60.98%</div><div class="val-delta down">+51.6%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">48.55%</div><div class="val-delta up">-20.4%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">51.12%</div><div class="val-delta down">+27.1%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">48.82%</div><div class="val-delta up">-4.5%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">46.04%</div><div class="val-delta up">-5.7%</div></div>
         </div>
       </div>
     </div>
-    <div class="charts-section-label">Per-metric trajectory · with forecast + uncertainty range</div>
+    <div class="charts-section-label">Per-metric trajectory · with forecast</div>
     <div class="charts-grid">
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Bounce Rate</div>
-          <div class="chart-card-fc">FORECAST: 48.55%</div>
+          <div class="chart-card-fc">FORECAST: 46.04%</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_05_Bounce_Rate_pct"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 32.90% – 64.20%</div>
-          <div class="fc-delta up">-20.4% vs W5</div>
+          <div>last week: 48.82%</div>
+          <div class="fc-delta up">-5.7% vs W6</div>
         </div>
       </div>
     </div>
@@ -1174,7 +998,7 @@
       <div class="section-num">§ 06</div>
       <div><div class="section-title"><em>Paid Ads (Meta)</em></div></div>
     </div>
-    <p class="section-desc">Every Meta Ads campaign active in the window is UK-targeted and billed in GBP. ROAS is conversion value divided by spend — below 1 means the ads are losing money before COGS.</p>
+    <p class="section-desc">Every Meta Ads campaign active in the window is UK-targeted and billed in GBP. ROAS is conversion value divided by spend - below 1 means the ads are losing money before COGS.</p>
     <div class="metric-header">
       <div class="m-title">Metric</div>
       <div class="m-weeks">
@@ -1183,194 +1007,204 @@
         <div class="m-week-cell"><div class="wk-code">W3</div><div class="wk-date">Mar 30–Apr 5</div></div>
         <div class="m-week-cell"><div class="wk-code">W4</div><div class="wk-date">Apr 6–12</div></div>
         <div class="m-week-cell"><div class="wk-code">W5</div><div class="wk-date">Apr 13–19</div></div>
-        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell"><div class="wk-code">W6</div><div class="wk-date">Apr 20–26</div></div>
+        <div class="m-week-cell forecast"><div class="wk-code">FC</div><div class="wk-date">Apr 27–May 3</div></div>
       </div>
     </div>
     <div class="metric-body">
       <div class="metric-row">
         <div class="metric-label">Ad Spend (£)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£158.58</div><div class="val-delta neutral">—</div></div>
-          <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£522.00</div><div class="val-delta up">+229.2%</div></div>
-          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£714.57</div><div class="val-delta up">+36.9%</div></div>
-          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£739.85</div><div class="val-delta up">+3.5%</div></div>
-          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£627.16</div><div class="val-delta down">-15.2%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£796.40</div><div class="val-delta up">+27.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£159</div><div class="val-delta neutral">-</div></div>
+          <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£522</div><div class="val-delta up">+229.2%</div></div>
+          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£715</div><div class="val-delta up">+36.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£740</div><div class="val-delta up">+3.5%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£627</div><div class="val-delta down">-15.2%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£1,070</div><div class="val-delta up">+70.5%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£970</div><div class="val-delta down">-9.3%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Ad Impressions</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">12,444</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">12,444</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">37,466</div><div class="val-delta up">+201.1%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">53,856</div><div class="val-delta up">+43.8%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">53,152</div><div class="val-delta down">-1.3%</div></div>
-          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">42,274</div><div class="val-delta down">-20.5%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">56,101</div><div class="val-delta up">+32.7%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">42,291</div><div class="val-delta down">-20.4%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">70,495</div><div class="val-delta up">+66.7%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">65,333</div><div class="val-delta down">-7.3%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Reach</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">10,559</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">10,559</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">30,098</div><div class="val-delta up">+185.1%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">41,322</div><div class="val-delta up">+37.3%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">42,005</div><div class="val-delta up">+1.6%</div></div>
-          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">30,234</div><div class="val-delta down">-28.0%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">42,037</div><div class="val-delta up">+39.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">30,239</div><div class="val-delta down">-28.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">50,827</div><div class="val-delta up">+68.1%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">47,722</div><div class="val-delta down">-6.1%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Ad Clicks</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">484</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">484</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">1,502</div><div class="val-delta up">+210.3%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">1,814</div><div class="val-delta up">+20.8%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">1,729</div><div class="val-delta down">-4.7%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">1,071</div><div class="val-delta down">-38.1%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">1,639</div><div class="val-delta up">+53.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">1,667</div><div class="val-delta up">+55.6%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">1,660</div><div class="val-delta down">-0.4%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Ad CTR (%)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">3.89%</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">3.89%</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">4.01%</div><div class="val-delta up">+3.1%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">3.37%</div><div class="val-delta down">-16.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">3.25%</div><div class="val-delta down">-3.4%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">2.53%</div><div class="val-delta down">-22.1%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">2.71%</div><div class="val-delta up">+7.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">2.36%</div><div class="val-delta down">-6.6%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">2.37%</div><div class="val-delta up">+0.1%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Ad CPC (£)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£0.33</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£0.33</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£0.35</div><div class="val-delta down">+6.1%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£0.39</div><div class="val-delta down">+13.3%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£0.43</div><div class="val-delta down">+8.6%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£0.59</div><div class="val-delta down">+36.9%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£0.53</div><div class="val-delta up">-9.5%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£0.64</div><div class="val-delta down">+9.5%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£0.62</div><div class="val-delta up">-3.6%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Adds to Cart (Ads)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">15</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">15</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">45</div><div class="val-delta up">+200.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">51</div><div class="val-delta up">+13.3%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">30</div><div class="val-delta down">-41.2%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">15</div><div class="val-delta down">-50.0%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">29</div><div class="val-delta up">+95.7%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">30</div><div class="val-delta up">+100.0%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">26</div><div class="val-delta down">-12.7%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">Purchases (Ads)</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">5</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">5</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">6</div><div class="val-delta up">+20.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">7</div><div class="val-delta up">+16.7%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">3</div><div class="val-delta down">-57.1%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">4</div><div class="val-delta up">+33.3%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">4</div><div class="val-delta up">+2.1%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">5</div><div class="val-delta up">+25.0%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">4</div><div class="val-delta down">-20.0%</div></div>
         </div>
       </div>
       <div class="metric-row">
         <div class="metric-label">ROAS</div>
         <div class="metric-values">
-          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">5.59</div><div class="val-delta neutral">—</div></div>
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">5.59</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">1.56</div><div class="val-delta down">-72.1%</div></div>
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">1.34</div><div class="val-delta down">-13.8%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">0.41</div><div class="val-delta down">-69.2%</div></div>
-          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">0.89</div><div class="val-delta up">+115.1%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">0.88</div><div class="val-delta down">-1.1%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">0.89</div><div class="val-delta up">+115.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">0.92</div><div class="val-delta up">+3.6%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">0.74</div><div class="val-delta down">-19.8%</div></div>
         </div>
       </div>
     </div>
-    <div class="charts-section-label">Per-metric trajectory · with forecast + uncertainty range</div>
+    <div class="charts-section-label">Per-metric trajectory · with forecast</div>
     <div class="charts-grid">
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Ad Spend</div>
-          <div class="chart-card-fc">FORECAST: £796.40</div>
+          <div class="chart-card-fc">FORECAST: £970</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_06_Ad_Spend_gbp"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: £617.79 – £975.01</div>
-          <div class="fc-delta up">+27.0% vs W5</div>
+          <div>last week: £1,070</div>
+          <div class="fc-delta down">-9.3% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Impressions</div>
-          <div class="chart-card-fc">FORECAST: 56,101</div>
+          <div class="chart-card-fc">FORECAST: 65,333</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_06_Ad_Impressions"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 42,038 – 70,165</div>
-          <div class="fc-delta up">+32.7% vs W5</div>
+          <div>last week: 70,495</div>
+          <div class="fc-delta down">-7.3% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Reach</div>
-          <div class="chart-card-fc">FORECAST: 42,037</div>
+          <div class="chart-card-fc">FORECAST: 47,722</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_06_Reach"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 30,311 – 53,763</div>
-          <div class="fc-delta up">+39.0% vs W5</div>
+          <div>last week: 50,827</div>
+          <div class="fc-delta down">-6.1% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Clicks</div>
-          <div class="chart-card-fc">FORECAST: 1,639</div>
+          <div class="chart-card-fc">FORECAST: 1,660</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_06_Ad_Clicks"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 1,029 – 2,249</div>
-          <div class="fc-delta up">+53.0% vs W5</div>
+          <div>last week: 1,667</div>
+          <div class="fc-delta down">-0.4% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">CTR</div>
-          <div class="chart-card-fc">FORECAST: 2.71%</div>
+          <div class="chart-card-fc">FORECAST: 2.37%</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_06_Ad_CTR_pct"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 2.36% – 3.06%</div>
-          <div class="fc-delta up">+7.0% vs W5</div>
+          <div>last week: 2.36%</div>
+          <div class="fc-delta up">+0.1% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">CPC</div>
-          <div class="chart-card-fc">FORECAST: £0.53</div>
+          <div class="chart-card-fc">FORECAST: £0.62</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_06_Ad_CPC_gbp"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: £0.48 – £0.59</div>
-          <div class="fc-delta up">-9.5% vs W5</div>
+          <div>last week: £0.64</div>
+          <div class="fc-delta up">-3.6% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Adds to Cart</div>
-          <div class="chart-card-fc">FORECAST: 29</div>
+          <div class="chart-card-fc">FORECAST: 26</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_06_Adds_to_Cart_Ads"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 9 – 49</div>
-          <div class="fc-delta up">+95.7% vs W5</div>
+          <div>last week: 30</div>
+          <div class="fc-delta down">-12.7% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
@@ -1378,23 +1212,23 @@
           <div class="chart-card-title">Purchases</div>
           <div class="chart-card-fc">FORECAST: 4</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_06_Purchases_Ads"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 2 – 6</div>
-          <div class="fc-delta up">+2.1% vs W5</div>
+          <div>last week: 5</div>
+          <div class="fc-delta down">-20.0% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">ROAS</div>
-          <div class="chart-card-fc">FORECAST: 0.88</div>
+          <div class="chart-card-fc">FORECAST: 0.74</div>
         </div>
-        <div class="chart-card-sub">W1 — W5 actual · FC projection</div>
+        <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_06_ROAS"></canvas></div>
         <div class="chart-card-footer">
-          <div>range: 0.50 – 1.26</div>
-          <div class="fc-delta down">-1.1% vs W5</div>
+          <div>last week: 0.92</div>
+          <div class="fc-delta down">-19.8% vs W6</div>
         </div>
       </div>
     </div>
@@ -1402,107 +1236,87 @@
 
   <section style="--accent: var(--bronze);">
     <div class="section-label">
-      <div class="section-num">§ 08</div>
+      <div class="section-num">§ 07</div>
       <div><div class="section-title"><em>Channel Mix</em></div></div>
     </div>
     <p class="section-desc">Where UK traffic originates, week by week. Paid Social carries the volume; Organic Search is the growth surface worth watching.</p>
     <div class="chart-card" style="padding: 32px;">
-      <div class="chart-card-header">
-        <div class="chart-card-title">Sessions by channel group · stacked</div>
-      </div>
+      <div class="chart-card-header"><div class="chart-card-title">Sessions by channel group · stacked</div></div>
       <div class="chart-card-sub">UK only</div>
       <div style="height: 420px; position: relative;"><canvas id="chart_channels"></canvas></div>
     </div>
     <table class="channel-table">
-      <thead><tr><th>Channel</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Δ W4→W5</th></tr></thead><tbody><tr><td>Paid Social</td><td>535</td><td>1122</td><td>1018</td><td>1027</td><td>662</td><td><span class="val-delta down" style="display:inline-block">-35.5%</span></td></tr><tr><td>Direct</td><td>206</td><td>215</td><td>184</td><td>131</td><td>135</td><td><span class="val-delta up" style="display:inline-block">+3.1%</span></td></tr><tr><td>Organic Social</td><td>162</td><td>150</td><td>166</td><td>143</td><td>92</td><td><span class="val-delta down" style="display:inline-block">-35.7%</span></td></tr><tr><td>Organic Search</td><td>49</td><td>75</td><td>111</td><td>153</td><td>87</td><td><span class="val-delta down" style="display:inline-block">-43.1%</span></td></tr><tr><td>Referral</td><td>6</td><td>43</td><td>22</td><td>33</td><td>35</td><td><span class="val-delta up" style="display:inline-block">+6.1%</span></td></tr><tr><td>Unassigned</td><td>10</td><td>2</td><td>2</td><td>—</td><td>108</td><td>—</td></tr><tr><td>Organic Shopping</td><td>20</td><td>5</td><td>11</td><td>20</td><td>26</td><td><span class="val-delta up" style="display:inline-block">+30.0%</span></td></tr><tr><td>Paid Other</td><td>41</td><td>6</td><td>1</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Email</td><td>4</td><td>—</td><td>—</td><td>7</td><td>1</td><td><span class="val-delta down" style="display:inline-block">-85.7%</span></td></tr><tr><td>Cross-network</td><td>—</td><td>—</td><td>—</td><td>—</td><td>1</td><td>—</td></tr></tbody></table></section>
+      <thead><tr><th>Channel</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>W6</th><th>Δ W5→W6</th></tr></thead><tbody><tr><td>Paid Social</td><td>535</td><td>1122</td><td>1018</td><td>1027</td><td>688</td><td>1650</td><td><span class="val-delta up" style="display:inline-block">+139.8%</span></td></tr><tr><td>Organic Search</td><td>49</td><td>75</td><td>111</td><td>153</td><td>89</td><td>957</td><td><span class="val-delta up" style="display:inline-block">+975.3%</span></td></tr><tr><td>Direct</td><td>206</td><td>215</td><td>184</td><td>131</td><td>137</td><td>243</td><td><span class="val-delta up" style="display:inline-block">+77.4%</span></td></tr><tr><td>Organic Social</td><td>162</td><td>150</td><td>166</td><td>143</td><td>99</td><td>283</td><td><span class="val-delta up" style="display:inline-block">+185.9%</span></td></tr><tr><td>Unassigned</td><td>10</td><td>2</td><td>2</td><td>-</td><td>1</td><td>192</td><td><span class="val-delta up" style="display:inline-block">+19100.0%</span></td></tr><tr><td>Referral</td><td>6</td><td>43</td><td>22</td><td>33</td><td>35</td><td>21</td><td><span class="val-delta down" style="display:inline-block">-40.0%</span></td></tr><tr><td>Organic Shopping</td><td>20</td><td>5</td><td>11</td><td>20</td><td>26</td><td>22</td><td><span class="val-delta down" style="display:inline-block">-15.4%</span></td></tr><tr><td>Paid Other</td><td>41</td><td>6</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>Email</td><td>4</td><td>-</td><td>-</td><td>7</td><td>1</td><td>4</td><td><span class="val-delta up" style="display:inline-block">+300.0%</span></td></tr></tbody></table></section>
   <section style="--accent: var(--copper);">
     <div class="section-label">
-      <div class="section-num">§ 09</div>
+      <div class="section-num">§ 08</div>
       <div><div class="section-title"><em>Organic Search</em> <span style="color: var(--text-muted); font-size: 18px; font-style: normal;">(UK · Google Search Console)</span></div></div>
     </div>
-    <p class="section-desc">GSC data covers the full reporting window (16 Mar 2026 – 19 Apr 2026), filtered to UK queries only. Aggregated — daily split not available in export, so WoW trajectory cannot be drawn.</p>
+    <p class="section-desc">GSC data covers the full reporting window (16 Mar 2026 – 26 Apr 2026), filtered to UK queries only.</p>
     <div class="fc-hero-row" style="background: var(--border); border: 1px solid var(--border);">
-      <div class="fc-hero-card">
-        <div class="label">Total Clicks</div>
-        <div class="value">138</div>
-        <div class="range">UK organic · 16 Mar 2026 – 19 Apr 2026</div>
-      </div>
-      <div class="fc-hero-card">
-        <div class="label">Impressions</div>
-        <div class="value">296</div>
-        <div class="range">UK organic</div>
-      </div>
-      <div class="fc-hero-card">
-        <div class="label">Avg CTR</div>
-        <div class="value">46.6%</div>
-        <div class="range">138 / 296</div>
-      </div>
-      <div class="fc-hero-card">
-        <div class="label">Avg Position</div>
-        <div class="value">3.9</div>
-        <div class="range">impression-weighted</div>
-      </div>
+      <div class="fc-hero-card"><div class="label">Total Clicks</div><div class="value">228</div><div class="range">UK organic</div></div>
+      <div class="fc-hero-card"><div class="label">Impressions</div><div class="value">483</div><div class="range">UK organic</div></div>
+      <div class="fc-hero-card"><div class="label">Avg CTR</div><div class="value">47.2%</div><div class="range">228 / 483</div></div>
+      <div class="fc-hero-card"><div class="label">Avg Position</div><div class="value">2.8</div><div class="range">impression-weighted</div></div>
     </div>
-    <div class="two-col" style="grid-template-columns: 1fr;" style="margin-top: 48px;">
-      <div>
-        <div class="prod-heading">Top UK queries <span>clicks · imp · pos</span></div>
-        <div class="prod-item"><div class="prod-rank">01</div><div class="prod-name">vixii</div><div class="prod-metric">87 <span class="dim">· 140 · #1.1</span></div></div>
-        <div class="prod-item"><div class="prod-rank">02</div><div class="prod-name">vixii jewellery</div><div class="prod-metric">43 <span class="dim">· 74 · #1.0</span></div></div>
-        <div class="prod-item"><div class="prod-rank">03</div><div class="prod-name">vixxi</div><div class="prod-metric">8 <span class="dim">· 38 · #2.3</span></div></div>
-        <div class="prod-item"><div class="prod-rank">04</div><div class="prod-name">gifts under 250</div><div class="prod-metric">0 <span class="dim">· 23 · #20.1</span></div></div>
-        <div class="prod-item"><div class="prod-rank">05</div><div class="prod-name">gifts below 250</div><div class="prod-metric">0 <span class="dim">· 7 · #22.7</span></div></div>
-        <div class="prod-item"><div class="prod-rank">06</div><div class="prod-name">khaki jewellery</div><div class="prod-metric">0 <span class="dim">· 2 · #15.0</span></div></div>
-        <div class="prod-item"><div class="prod-rank">07</div><div class="prod-name">vixxii</div><div class="prod-metric">0 <span class="dim">· 2 · #1.0</span></div></div>
-        <div class="prod-item"><div class="prod-rank">08</div><div class="prod-name">vixyc</div><div class="prod-metric">0 <span class="dim">· 2 · #44.5</span></div></div>
-        <div class="prod-item"><div class="prod-rank">09</div><div class="prod-name">aurelia diamante</div><div class="prod-metric">0 <span class="dim">· 1 · #9.0</span></div></div>
-        <div class="prod-item"><div class="prod-rank">10</div><div class="prod-name">bracelet forms</div><div class="prod-metric">0 <span class="dim">· 1 · #35.0</s#2.0</span></div></div>
-      </div>
+    <div style="margin-top: 48px;">
+      <div class="prod-heading">Top UK queries <span>clicks · imp · pos</span></div>
+      <div class="prod-item"><div class="prod-rank">01</div><div class="prod-name">vixii</div><div class="prod-metric">134 <span class="dim">· 239 · #1.1</span></div></div>
+      <div class="prod-item"><div class="prod-rank">02</div><div class="prod-name">vixii jewellery</div><div class="prod-metric">82 <span class="dim">· 152 · #1.0</span></div></div>
+      <div class="prod-item"><div class="prod-rank">03</div><div class="prod-name">vixxi</div><div class="prod-metric">12 <span class="dim">· 48 · #2.3</span></div></div>
+      <div class="prod-item"><div class="prod-rank">04</div><div class="prod-name">gifts under 250</div><div class="prod-metric">0 <span class="dim">· 23 · #20.1</span></div></div>
+      <div class="prod-item"><div class="prod-rank">05</div><div class="prod-name">gifts below 250</div><div class="prod-metric">0 <span class="dim">· 7 · #22.7</span></div></div>
+      <div class="prod-item"><div class="prod-rank">06</div><div class="prod-name">khaki jewellery</div><div class="prod-metric">0 <span class="dim">· 2 · #15.0</span></div></div>
+      <div class="prod-item"><div class="prod-rank">07</div><div class="prod-name">vixxii</div><div class="prod-metric">0 <span class="dim">· 2 · #1.0</span></div></div>
+      <div class="prod-item"><div class="prod-rank">08</div><div class="prod-name">vixyc</div><div class="prod-metric">0 <span class="dim">· 2 · #44.5</span></div></div>
+      <div class="prod-item"><div class="prod-rank">09</div><div class="prod-name">aurelia diamante</div><div class="prod-metric">0 <span class="dim">· 1 · #9.0</span></div></div>
+      <div class="prod-item"><div class="prod-rank">10</div><div class="prod-name">bracelet forms</div><div class="prod-metric">0 <span class="dim">· 1 · #35.0</span></div></div>
     </div>
   </section>
 
   <section style="--accent: var(--gold);">
     <div class="section-label">
-      <div class="section-num">§ 10</div>
+      <div class="section-num">§ 09</div>
       <div><div class="section-title"><em>Product Intelligence</em></div></div>
     </div>
-    <p class="section-desc">What UK shoppers viewed versus what they actually bought, across the full window. The gap between the two lists is the buying-intent funnel to optimise.</p>
+    <p class="section-desc">What UK shoppers viewed versus what they actually bought. The gap between the two lists is the buying-intent funnel to optimise.</p>
     <div class="two-col">
       <div>
         <div class="prod-heading">Top products · sold <span>qty</span></div>
-        <div class="prod-item"><div class="prod-rank">01</div><div class="prod-name">Eternal Lines - Midnight Blue & Gold Necklace</div><div class="prod-metric">15</div></div>
-        <div class="prod-item"><div class="prod-rank">02</div><div class="prod-name">Heritage Cut - Orange, Pink & Gold Necklace</div><div class="prod-metric">6</div></div>
-        <div class="prod-item"><div class="prod-rank">03</div><div class="prod-name">Quiet Drop - Purple, Emerald Green & Gold Necklace</div><div class="prod-metric">3</div></div>
-        <div class="prod-item"><div class="prod-rank">04</div><div class="prod-name">Heritage Cut - Black, Light Pink & Gold Necklace</div><div class="prod-metric">2</div></div>
-        <div class="prod-item"><div class="prod-rank">05</div><div class="prod-name">Quiet Drop - Purple, Butter Yellow & Gold Necklace</div><div class="prod-metric">2</div></div>
-        <div class="prod-item"><div class="prod-rank">06</div><div class="prod-name">Heritage Cut - Denim Blue, Black & Silver Bracelet</div><div class="prod-metric">2</div></div>
-        <div class="prod-item"><div class="prod-rank">07</div><div class="prod-name">Eternal Lines - Grey, Teal & Gold Bracelet</div><div class="prod-metric">1</div></div>
-        <div class="prod-item"><div class="prod-rank">08</div><div class="prod-name">Eternal Lines - Orange, Deep Red & Gold Diamond Necklace</div><div class="prod-metric">1</div></div>
-        <div class="prod-item"><div class="prod-rank">09</div><div class="prod-name">Heritage Cut - Black & Silver Necklace</div><div class="prod-metric">1</div></div>
-        <div class="prod-item"><div class="prod-rank">10</div><div class="prod-name">Eternal Lines - Burgundy, Pink & Gold Bracelet</div><div class="prod-metric">1</div></div>
+        <div class="prod-item"><div class="prod-rank">01</div><div class="prod-name">Eternal Lines - Midnight Blue & Gold Necklace</div><div class="prod-metric">24</div></div>
+        <div class="prod-item"><div class="prod-rank">02</div><div class="prod-name">Heritage Cut - Orange, Pink & Gold Necklace</div><div class="prod-metric">10</div></div>
+        <div class="prod-item"><div class="prod-rank">03</div><div class="prod-name">Quiet Drop - Purple, Butter Yellow & Gold Necklace</div><div class="prod-metric">4</div></div>
+        <div class="prod-item"><div class="prod-rank">04</div><div class="prod-name">True Union - Khaki, Periwinkle Blue & Gold Diamond Necklace</div><div class="prod-metric">4</div></div>
+        <div class="prod-item"><div class="prod-rank">05</div><div class="prod-name">Quiet Drop - Purple, Emerald Green & Gold Necklace</div><div class="prod-metric">3</div></div>
+        <div class="prod-item"><div class="prod-rank">06</div><div class="prod-name">Heritage Cut - Black, Light Pink & Gold Necklace</div><div class="prod-metric">3</div></div>
+        <div class="prod-item"><div class="prod-rank">07</div><div class="prod-name">Heritage Cut - Denim Blue, Black & Silver Bracelet</div><div class="prod-metric">3</div></div>
+        <div class="prod-item"><div class="prod-rank">08</div><div class="prod-name">Eternal Lines - Burgundy, Pink & Gold Bracelet</div><div class="prod-metric">2</div></div>
+        <div class="prod-item"><div class="prod-rank">09</div><div class="prod-name">Heritage Cut - Midnight Blue, Grey & Gold Bracelet</div><div class="prod-metric">2</div></div>
+        <div class="prod-item"><div class="prod-rank">10</div><div class="prod-name">Heritage Cut - Black & Silver Necklace</div><div class="prod-metric">1</div></div>
       </div>
       <div>
         <div class="prod-heading">Top products · viewed <span>views</span></div>
-        <div class="prod-item"><div class="prod-rank">01</div><div class="prod-name">Eternal Lines - Midnight Blue & Gold Necklace</div><div class="prod-metric">1,528</div></div>
-        <div class="prod-item"><div class="prod-rank">02</div><div class="prod-name">True Union - Khaki, Periwinkle Blue & Gold Diamond Necklace</div><div class="prod-metric">871</div></div>
-        <div class="prod-item"><div class="prod-rank">03</div><div class="prod-name">Heritage Cut - Orange, Pink & Gold Necklace</div><div class="prod-metric">626</div></div>
-        <div class="prod-item"><div class="prod-rank">04</div><div class="prod-name">Sacred Alignment - Mink, Pastel & Gold Bracelet</div><div class="prod-metric">516</div></div>
-        <div class="prod-item"><div class="prod-rank">05</div><div class="prod-name">True Union - Grey, Blush Pink, Turquoise & Gold Bracelet</div><div class="prod-metric">482</div></div>
-        <div class="prod-item"><div class="prod-rank">06</div><div class="prod-name">True Union - Khaki, Periwinkle Blue & Gold Necklace</div><div class="prod-metric">342</div></div>
-        <div class="prod-item"><div class="prod-rank">07</div><div class="prod-name">Heritage Cut - Black & Silver Necklace</div><div class="prod-metric">338</div></div>
-        <div class="prod-item"><div class="prod-rank">08</div><div class="prod-name">Quiet Drop - Purple, Butter Yellow & Gold Necklace</div><div class="prod-metric">337</div></div>
-        <div class="prod-item"><div class="prod-rank">09</div><div class="prod-name">True Union - Burgundy, Orchid, Pink & Gold Diamond Bracelet</div><div class="prod-metric">252</div></div>
-        <div class="prod-item"><div class="prod-rank">10</div><div class="prod-name">Infinity Circle - Beige, Taupe & Gold Diamond Bracelet</div><div class="prod-metric">227</div></div>
+        <div class="prod-item"><div class="prod-rank">01</div><div class="prod-name">Eternal Lines - Midnight Blue & Gold Necklace</div><div class="prod-metric">2,204</div></div>
+        <div class="prod-item"><div class="prod-rank">02</div><div class="prod-name">True Union - Khaki, Periwinkle Blue & Gold Diamond Necklace</div><div class="prod-metric">1,282</div></div>
+        <div class="prod-item"><div class="prod-rank">03</div><div class="prod-name">Heritage Cut - Orange, Pink & Gold Necklace</div><div class="prod-metric">870</div></div>
+        <div class="prod-item"><div class="prod-rank">04</div><div class="prod-name">Sacred Alignment - Mink, Pastel & Gold Bracelet</div><div class="prod-metric">648</div></div>
+        <div class="prod-item"><div class="prod-rank">05</div><div class="prod-name">True Union - Grey, Blush Pink, Turquoise & Gold Bracelet</div><div class="prod-metric">487</div></div>
+        <div class="prod-item"><div class="prod-rank">06</div><div class="prod-name">Heritage Cut - Black & Silver Necklace</div><div class="prod-metric">470</div></div>
+        <div class="prod-item"><div class="prod-rank">07</div><div class="prod-name">Quiet Drop - Purple, Butter Yellow & Gold Necklace</div><div class="prod-metric">461</div></div>
+        <div class="prod-item"><div class="prod-rank">08</div><div class="prod-name">True Union - Burgundy, Orchid, Pink & Gold Diamond Bracelet</div><div class="prod-metric">364</div></div>
+        <div class="prod-item"><div class="prod-rank">09</div><div class="prod-name">True Union - Khaki, Periwinkle Blue & Gold Necklace</div><div class="prod-metric">342</div></div>
+        <div class="prod-item"><div class="prod-rank">10</div><div class="prod-name">Eternal Lines - Mink, Midnight Blue & Gold Bracelet</div><div class="prod-metric">313</div></div>
       </div>
     </div>
 
     <div class="charts-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 48px;">
       <div class="chart-card">
-        <div class="chart-card-header"><div class="chart-card-title">Items Viewed</div><div class="chart-card-fc">FORECAST: 1,973</div></div>
+        <div class="chart-card-header"><div class="chart-card-title">Items Viewed</div><div class="chart-card-fc">FORECAST: 2,446</div></div>
         <div class="chart-card-sub">UK · weekly</div>
         <div class="chart-card-body"><canvas id="chart_iv"></canvas></div>
       </div>
       <div class="chart-card">
-        <div class="chart-card-header"><div class="chart-card-title">Products Sold</div><div class="chart-card-fc">FORECAST: 6</div></div>
+        <div class="chart-card-header"><div class="chart-card-title">Products Sold</div><div class="chart-card-fc">FORECAST: 14</div></div>
         <div class="chart-card-sub">UK · units</div>
         <div class="chart-card-body"><canvas id="chart_ps"></canvas></div>
       </div>
@@ -1511,117 +1325,106 @@
 
   <section style="--accent: var(--gold-bright);">
     <div class="section-label">
-      <div class="section-num">§ 11</div>
+      <div class="section-num">§ 10</div>
       <div><div class="section-title">The Week <em>Ahead</em></div></div>
     </div>
-    <p class="section-desc">Forward projection for <strong style="color: var(--gold);">Apr 20 – Apr 26 (W6)</strong>. Each number shows the <strong>point estimate</strong>, the <strong>likely range (±1 standard deviation)</strong>, and the <strong>% change vs W5</strong>. These are directional guides — not commitments.</p>
-    
+    <p class="section-desc">Forward projection for <strong style="color: var(--gold);">Apr 27 &ndash; May 3 (W7)</strong>. Each number shows the <strong>point estimate</strong> and the <strong>% change vs W6</strong>. These are directional guides - not commitments.</p>
     <div class="forecast-hero">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px;">Headline Forecasts · W6</div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px;">Headline Forecasts &middot; W7</div>
       <div class="fc-hero-row">
         <div class="fc-hero-card">
           <div class="label">Gross Sales</div>
-          <div class="value">£808</div>
-          <div class="range">range: £599 – £1,017</div>
-          <div class="vsprev up">+0.5% vs W5 (£804)</div>
+          <div class="value">£2,031</div>
+          <div class="vsprev down">-39.8% vs W6 (£3,375)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">Orders</div>
-          <div class="value">6</div>
-          <div class="range">range: 5 – 7</div>
-          <div class="vsprev up">+5.0% vs W5 (6)</div>
+          <div class="value">13</div>
+          <div class="vsprev down">-36.0% vs W6 (20)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">AOV</div>
-          <div class="value">£127</div>
-          <div class="range">range: £93 – £162</div>
-          <div class="vsprev down">-2.9% vs W5 (£131)</div>
+          <div class="value">£148</div>
+          <div class="vsprev down">-12.2% vs W6 (£169)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">Sessions</div>
-          <div class="value">1,349</div>
-          <div class="range">range: 975 – 1,723</div>
-          <div class="vsprev up">+27.1% vs W5 (1,061)</div>
+          <div class="value">2,262</div>
+          <div class="vsprev down">-29.6% vs W6 (3,214)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">Overall CVR</div>
-          <div class="value">0.36%</div>
-          <div class="range">range: 0.09% – 0.64%</div>
-          <div class="vsprev down">-22.3% vs W5 (0.47%)</div>
+          <div class="value">0.52%</div>
+          <div class="vsprev down">-16.8% vs W6 (0.62%)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">Ad Spend</div>
-          <div class="value">£796</div>
-          <div class="range">range: £618 – £975</div>
-          <div class="vsprev up">+27.0% vs W5 (£627)</div>
+          <div class="value">£970</div>
+          <div class="vsprev down">-9.3% vs W6 (£1,070)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">ROAS</div>
-          <div class="value">0.88</div>
-          <div class="range">range: 0.50 – 1.26</div>
-          <div class="vsprev down">-1.1% vs W5 (0.89)</div>
+          <div class="value">0.74</div>
+          <div class="vsprev down">-19.8% vs W6 (0.92)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">Bounce Rate</div>
-          <div class="value">48.5%</div>
-          <div class="range">range: 32.9% – 64.2%</div>
-          <div class="vsprev up">-20.4% vs W5 (61.0%)</div>
+          <div class="value">46.0%</div>
+          <div class="vsprev up">-5.7% vs W6 (48.8%)</div>
         </div>
       </div>
     </div>
-    
     <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin: 48px 0 16px;">How each forecast is built</div>
     <div class="method-grid">
       <div class="method-row">
         <div class="method-metric">Gross Sales</div>
-        <div class="method-value">£808</div>
-        <div class="method-reason">Linear trend fits slope of -128.30/week; recent 3-wk average is 948.33. Blended 50/50.</div>
+        <div class="method-value">£2,031</div>
+        <div class="method-reason">Linear trend slope +258.51/wk; recent 3-wk avg 1717.33. Blended 50/50.</div>
       </div>
       <div class="method-row">
         <div class="method-metric">Orders</div>
-        <div class="method-value">6</div>
-        <div class="method-reason">Linear trend fits slope of -0.60/week; recent 3-wk average is 7.00. Blended 50/50.</div>
+        <div class="method-value">13</div>
+        <div class="method-reason">Linear trend slope +1.46/wk; recent 3-wk avg 11.00. Blended 50/50.</div>
       </div>
       <div class="method-row">
         <div class="method-metric">AOV</div>
-        <div class="method-value">£127</div>
-        <div class="method-reason">Linear trend fits slope of -1.32/week; recent 3-wk average is 129.71. Blended 50/50.</div>
+        <div class="method-value">£148</div>
+        <div class="method-reason">Linear trend slope +0.91/wk; recent 3-wk avg 147.25. Blended 50/50.</div>
       </div>
       <div class="method-row">
         <div class="method-metric">Sessions</div>
-        <div class="method-value">1,349</div>
-        <div class="method-reason">Linear trend fits slope of -4.60/week; recent 3-wk average is 1363.33. Blended 50/50.</div>
+        <div class="method-value">2,262</div>
+        <div class="method-reason">Linear trend slope +265.23/wk; recent 3-wk avg 1934.67. Blended 50/50.</div>
       </div>
       <div class="method-row">
         <div class="method-metric">Overall CVR</div>
-        <div class="method-value">0.36%</div>
-        <div class="method-reason">Linear trend fits slope of -0.03/week; recent 3-wk average is 0.40. Blended 50/50.</div>
+        <div class="method-value">0.52%</div>
+        <div class="method-reason">Linear trend slope -0.03/wk; recent 3-wk avg 0.55. Blended 50/50.</div>
       </div>
       <div class="method-row">
         <div class="method-metric">Ad Spend</div>
-        <div class="method-value">£796</div>
-        <div class="method-reason">Linear trend fits slope of +115.50/week; recent 3-wk average is 693.86. Blended 50/50.</div>
+        <div class="method-value">£970</div>
+        <div class="method-reason">Linear trend slope +139.90/wk; recent 3-wk avg 812.27. Blended 50/50.</div>
       </div>
       <div class="method-row">
         <div class="method-metric">ROAS</div>
-        <div class="method-value">0.88</div>
-        <div class="method-reason">ROAS is volatile — held at 3-week mean (0.88) rather than extrapolated.</div>
+        <div class="method-value">0.74</div>
+        <div class="method-reason">Volatile; held at 3-wk mean (0.74).</div>
       </div>
       <div class="method-row">
         <div class="method-metric">Bounce Rate</div>
-        <div class="method-value">48.5%</div>
-        <div class="method-reason">Linear trend fits slope of +0.81/week; recent 3-wk average is 47.29. Blended 50/50.</div>
+        <div class="method-value">46.0%</div>
+        <div class="method-reason">Linear trend slope -0.18/wk; recent 3-wk avg 46.72. Blended 50/50.</div>
       </div>
     </div>
-    
     <div class="insight-card" style="margin-top: 56px;">
-      <div class="insight-label">What the numbers are saying</div>
-      <div class="insight-text">Revenue has been softening since W1 peak. CPC climbed from <strong>£0.33 → £0.59 (+78%)</strong> while ROAS sits under 1. UK traffic is declining (<strong>-30% in W5 vs W4</strong>) even as spend stayed elevated. Most likely W6 outcome: <strong>flat-to-soft sales (~£800)</strong> with <strong>ROAS below 1</strong> unless creative refresh lifts CTR and conversion rate clears 0.45%.</div>
+      <div class="insight-label">What W6 is telling us</div>
+      <div class="insight-text">W6 is a <strong>breakout week</strong>: Gross Sales jumped <strong>+320%</strong> (£804 &rarr; £3,375), Orders went from <strong>6 to 20</strong>, and Returning Users surged from <strong>270 to 677</strong>. The forecast for W7 takes this surge into account but blends with prior trend - if W6 is the new normal rather than a one-off, expect actuals above the projection.</div>
     </div>
   </section>
 
   <footer>
-    <p style="margin-top: 32px;">VIXII · Generated Monday 20 April 2026</p>
+    <p style="margin-top: 32px;">VIXII · Generated Monday 27 April 2026</p>
   </footer>
 </main>
 
@@ -1633,10 +1436,9 @@ Chart.defaults.color = '#A9A093';
 Chart.defaults.borderColor = '#2A261E';
 
 function formatNum(v, dec, prefix, suffix) {
-  if (v === null || v === undefined || isNaN(v)) return '—';
+  if (v === null || v === undefined || isNaN(v)) return '-';
   const n = Number(v);
   if (Math.abs(n) >= 1000) {
-    // use compact for large numbers
     if (n >= 10000) return prefix + Math.round(n/1000) + 'k' + suffix;
     return prefix + n.toLocaleString(undefined, {maximumFractionDigits: 0}) + suffix;
   }
@@ -1647,28 +1449,20 @@ function formatNum(v, dec, prefix, suffix) {
 function renderBarChart(cfg) {
   const ctx = document.getElementById(cfg.id);
   if (!ctx) return;
-  // Build data: W1..W5 actual (color A), FC (color A lighter + dashed border)
   const vals = [...cfg.values, cfg.forecast];
   const actualColor = cfg.accent;
-  const backgrounds = vals.map((_, i) => i < 5 ? actualColor : actualColor + '40');
-  const borders = vals.map((_, i) => i < 5 ? actualColor : actualColor);
-  const borderDash = vals.map((_, i) => i < 5 ? [] : [5, 4]);
-  
+  const FC_IDX = vals.length - 1;
+  const backgrounds = vals.map((_, i) => i < FC_IDX ? actualColor : actualColor + '40');
+  const borders = vals.map((_, i) => i < FC_IDX ? actualColor : actualColor);
+  const borderDash = vals.map((_, i) => i < FC_IDX ? [] : [5, 4]);
   new Chart(ctx, {
     type: 'bar',
-    data: {
-      labels: cfg.labels,
-      datasets: [{
-        data: vals,
-        backgroundColor: backgrounds,
-        borderColor: borders,
-        borderWidth: vals.map((_,i) => i < 5 ? 0 : 2),
-        borderDash: borderDash,
-        borderRadius: 1,
-        barPercentage: 0.72,
-        categoryPercentage: 0.85
-      }]
-    },
+    data: { labels: cfg.labels, datasets: [{
+      data: vals, backgroundColor: backgrounds, borderColor: borders,
+      borderWidth: vals.map((_,i) => i < FC_IDX ? 0 : 2),
+      borderDash: borderDash, borderRadius: 1,
+      barPercentage: 0.72, categoryPercentage: 0.85,
+    }]},
     options: {
       responsive: true, maintainAspectRatio: false,
       layout: { padding: { top: 30, left: 0, right: 12 } },
@@ -1679,43 +1473,36 @@ function renderBarChart(cfg) {
           titleColor: '#C9A961', bodyColor: '#EEE8DB', padding: 12, cornerRadius: 2,
           titleFont: { family: 'JetBrains Mono', size: 10, weight: 500 },
           bodyFont: { family: 'Manrope', size: 12 },
-          callbacks: {
-            label: (ctx) => formatNum(ctx.parsed.y, cfg.dec, cfg.prefix, cfg.suffix)
-          }
+          callbacks: { label: (c) => formatNum(c.parsed.y, cfg.dec, cfg.prefix, cfg.suffix) }
         },
         datalabels: {
           anchor: 'end', align: 'end',
-          color: (ctx) => ctx.dataIndex === 5 ? '#E3C677' : '#EEE8DB',
+          color: (c) => c.dataIndex === FC_IDX ? '#E3C677' : '#EEE8DB',
           font: { family: 'JetBrains Mono', size: 10, weight: 600 },
           formatter: (v) => formatNum(v, cfg.dec, cfg.prefix, cfg.suffix),
           padding: { bottom: 2 }
-        }},
+        }
+      },
       scales: {
         x: { grid: { display: false }, ticks: { color: '#A9A093', font: { family: 'JetBrains Mono', size: 10 } } },
         y: {
-          beginAtZero: true,
-          grid: { color: 'rgba(42,38,30,0.5)' },
-          ticks: {
-            color: '#6E675A',
-            font: { family: 'JetBrains Mono', size: 9 },
-            callback: (v) => formatNum(v, 0, cfg.prefix, cfg.suffix),
-            maxTicksLimit: 5
-          }
+          beginAtZero: true, grid: { color: 'rgba(42,38,30,0.5)' },
+          ticks: { color: '#6E675A', font: { family: 'JetBrains Mono', size: 9 },
+            callback: (v) => formatNum(v, 0, cfg.prefix, cfg.suffix), maxTicksLimit: 5 }
         }
       }
     }
   });
 }
 
-// Render all metric charts
-const chartConfigs = [{"id": "chart_01_Gross_Sales_gbp", "accent": "#C9A961", "values": [1448, 968, 1068, 973, 804], "forecast": 807.82, "fc_low": 599.07, "fc_high": 1016.56, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Net_Revenue_gbp", "accent": "#C9A961", "values": [1191.7, 558.33, 799.16, 806.29, 655.2], "forecast": 654.09, "fc_low": 333.9, "fc_high": 974.27, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Discounts_gbp", "accent": "#C9A961", "values": [41.9, 0.0, 0.0, 51.69, 47.7], "forecast": 40.19, "fc_low": 6.89, "fc_high": 73.49, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Returns_gbp", "accent": "#C9A961", "values": [0.0, 298.0, 109.0, 0.0, 0.0], "forecast": 14.17, "fc_low": 0, "fc_high": 198.83, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_02_Orders", "accent": "#D4AF37", "values": [9, 7, 8, 7, 6], "forecast": 6.3, "fc_low": 5.21, "fc_high": 7.39, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_02_AOV_gbp", "accent": "#D4AF37", "values": [158.9, 95.71, 119.88, 138.22, 131.04], "forecast": 127.25, "fc_low": 92.71, "fc_high": 161.79, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_02_Items_Order", "accent": "#D4AF37", "values": [1.11, 1.14, 1.0, 1.0, 1.0], "forecast": 0.97, "fc_low": 0.9, "fc_high": 1.04, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 2}, {"id": "chart_03_Sessions", "accent": "#B88B4A", "values": [1032, 1618, 1515, 1514, 1061], "forecast": 1348.77, "fc_low": 974.93, "fc_high": 1722.6, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Visitors", "accent": "#B88B4A", "values": [957, 1493, 1400, 1390, 982], "forecast": 1242.92, "fc_low": 902.93, "fc_high": 1582.9, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_New_Users", "accent": "#B88B4A", "values": [897, 1342, 1152, 1140, 699], "forecast": 931.8, "fc_low": 608.17, "fc_high": 1255.43, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Returning_Users", "accent": "#B88B4A", "values": [60, 151, 248, 250, 283], "forecast": 311.12, "fc_low": 271.27, "fc_high": 350.96, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_04_Overall_CVR_pct", "accent": "#A8794F", "values": [0.87, 0.43, 0.53, 0.46, 0.57], "forecast": 0.46, "fc_low": 0.24, "fc_high": 0.68, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Cart-add_Rate_pct", "accent": "#A8794F", "values": [1.94, 5.75, 5.21, 5.22, 4.05], "forecast": 5.18, "fc_low": 3.24, "fc_high": 7.12, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Reach_pct", "accent": "#A8794F", "values": [0.87, 2.72, 2.44, 2.77, 2.73], "forecast": 3.04, "fc_low": 2.21, "fc_high": 3.87, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Completion_pct", "accent": "#A8794F", "values": [100.0, 15.91, 21.62, 16.67, 20.69], "forecast": 3.64, "fc_low": 0.0, "fc_high": 40.96, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_05_Bounce_Rate_pct", "accent": "#8B6B3F", "values": [59.01, 36.03, 40.66, 40.22, 60.98], "forecast": 48.55, "fc_low": 32.9, "fc_high": 64.2, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_Spend_gbp", "accent": "#C9A961", "values": [158.58, 522.0, 714.57, 739.85, 627.16], "forecast": 796.4, "fc_low": 617.79, "fc_high": 975.01, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_06_Ad_Impressions", "accent": "#C9A961", "values": [12444, 37466, 53856, 53152, 42274], "forecast": 56101.43, "fc_low": 42038.17, "fc_high": 70164.7, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Reach", "accent": "#C9A961", "values": [10559, 30098, 41322, 42005, 30234], "forecast": 42037.18, "fc_low": 30311.17, "fc_high": 53763.19, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Clicks", "accent": "#C9A961", "values": [484, 1502, 1814, 1729, 1071], "forecast": 1639.15, "fc_low": 1029.29, "fc_high": 2249.01, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_CTR_pct", "accent": "#C9A961", "values": [3.89, 4.01, 3.37, 3.25, 2.53], "forecast": 2.71, "fc_low": 2.36, "fc_high": 3.06, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_CPC_gbp", "accent": "#C9A961", "values": [0.33, 0.35, 0.39, 0.43, 0.59], "forecast": 0.53, "fc_low": 0.48, "fc_high": 0.59, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_06_Adds_to_Cart_Ads", "accent": "#C9A961", "values": [15, 45, 51, 30, 15], "forecast": 29.35, "fc_low": 9.34, "fc_high": 49.36, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Purchases_Ads", "accent": "#C9A961", "values": [5, 6, 7, 3, 4], "forecast": 4.08, "fc_low": 1.92, "fc_high": 6.25, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_ROAS", "accent": "#C9A961", "values": [5.59, 1.56, 1.34, 0.41, 0.89], "forecast": 0.88, "fc_low": 0.5, "fc_high": 1.26, "labels": ["W1", "W2", "W3", "W4", "W5", "FC"], "prefix": "", "suffix": "", "dec": 2}];
+const chartConfigs = [{"id": "chart_01_Gross_Sales_gbp", "accent": "#C9A961", "values": [1448, 968, 1068, 973, 804, 3375], "forecast": 2030.73, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Net_Revenue_gbp", "accent": "#C9A961", "values": [1191.7, 558.33, 708.33, 806.29, 655.2, 2558.45], "forecast": 1570.96, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Discounts_gbp", "accent": "#C9A961", "values": [41.9, 0.0, 0.0, 51.69, 47.7, 345.39], "forecast": 200.3, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Returns_gbp", "accent": "#C9A961", "values": [0.0, 298.0, 218.0, 0.0, 0.0, 0.0], "forecast": 0.0, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_02_Orders", "accent": "#D4AF37", "values": [9, 7, 8, 7, 6, 20], "forecast": 12.8, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_02_AOV_gbp", "accent": "#D4AF37", "values": [160.89, 138.29, 133.5, 139.0, 134.0, 168.75], "forecast": 148.09, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_02_Items_Order", "accent": "#D4AF37", "values": [1.11, 1.14, 1.0, 1.0, 1.0, 1.15], "forecast": 1.05, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 2}, {"id": "chart_03_Sessions", "accent": "#B88B4A", "values": [1032, 1618, 1515, 1514, 1076, 3214], "forecast": 2262.23, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Visitors", "accent": "#B88B4A", "values": [957, 1493, 1400, 1390, 996, 2976], "forecast": 2091.03, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_New_Users", "accent": "#B88B4A", "values": [897, 1342, 1152, 1140, 726, 2299], "forecast": 1581.33, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Returning_Users", "accent": "#B88B4A", "values": [60, 151, 248, 250, 270, 677], "forecast": 509.7, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_04_Overall_CVR_pct", "accent": "#A8794F", "values": [0.87, 0.43, 0.53, 0.46, 0.56, 0.62], "forecast": 0.52, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Cart-add_Rate_pct", "accent": "#A8794F", "values": [1.94, 5.75, 5.21, 5.22, 4.0, 3.11], "forecast": 4.19, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Reach_pct", "accent": "#A8794F", "values": [0.87, 2.72, 2.44, 2.77, 2.7, 1.65], "forecast": 2.49, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Completion_pct", "accent": "#A8794F", "values": [100.0, 15.91, 21.62, 16.67, 20.69, 37.74], "forecast": 15.14, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_05_Bounce_Rate_pct", "accent": "#8B6B3F", "values": [59.01, 36.03, 40.66, 40.22, 51.12, 48.82], "forecast": 46.04, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_Spend_gbp", "accent": "#C9A961", "values": [158.58, 522.0, 714.57, 739.85, 627.36, 1069.59], "forecast": 970.28, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Impressions", "accent": "#C9A961", "values": [12444, 37466, 53856, 53152, 42291, 70495], "forecast": 65332.97, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Reach", "accent": "#C9A961", "values": [10559, 30098, 41322, 42005, 30239, 50827], "forecast": 47721.63, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Clicks", "accent": "#C9A961", "values": [484, 1502, 1814, 1729, 1071, 1667], "forecast": 1660.27, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_CTR_pct", "accent": "#C9A961", "values": [3.89, 4.01, 3.37, 3.25, 2.53, 2.36], "forecast": 2.37, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_CPC_gbp", "accent": "#C9A961", "values": [0.33, 0.35, 0.39, 0.43, 0.59, 0.64], "forecast": 0.62, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_06_Adds_to_Cart_Ads", "accent": "#C9A961", "values": [15, 45, 51, 30, 15, 30], "forecast": 26.2, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Purchases_Ads", "accent": "#C9A961", "values": [5, 6, 7, 3, 4, 5], "forecast": 4.0, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_ROAS", "accent": "#C9A961", "values": [5.59, 1.56, 1.34, 0.41, 0.89, 0.92], "forecast": 0.74, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 2}];
 chartConfigs.forEach(renderBarChart);
 
 // Channel stacked bar
 
 new Chart(document.getElementById('chart_channels').getContext('2d'), {
   type: 'bar',
-  data: { labels: ["Mar 16\u201322", "Mar 23\u201329", "Mar 30\u2013Apr 5", "Apr 6\u201312", "Apr 13\u201319"], datasets: [{"label": "Paid Social", "data": [535, 1122, 1018, 1027, 662], "backgroundColor": "#C9A961", "borderWidth": 0}, {"label": "Direct", "data": [206, 215, 184, 131, 135], "backgroundColor": "#B88B4A", "borderWidth": 0}, {"label": "Organic Social", "data": [162, 150, 166, 143, 92], "backgroundColor": "#A8794F", "borderWidth": 0}, {"label": "Organic Search", "data": [49, 75, 111, 153, 87], "backgroundColor": "#8DA67A", "borderWidth": 0}, {"label": "Referral", "data": [6, 43, 22, 33, 35], "backgroundColor": "#C28B82", "borderWidth": 0}, {"label": "Unassigned", "data": [10, 2, 2, 0, 108], "backgroundColor": "#8B6B3F", "borderWidth": 0}, {"label": "Organic Shopping", "data": [20, 5, 11, 20, 26], "backgroundColor": "#6E675A", "borderWidth": 0}, {"label": "Paid Other", "data": [41, 6, 1, 0, 0], "backgroundColor": "#4A4238", "borderWidth": 0}, {"label": "Email", "data": [4, 0, 0, 7, 1], "backgroundColor": "#3A342C", "borderWidth": 0}, {"label": "Cross-network", "data": [0, 0, 0, 0, 1], "backgroundColor": "#D4AF37", "borderWidth": 0}] },
+  data: { labels: ["Mar 16\u201322", "Mar 23\u201329", "Mar 30\u2013Apr 5", "Apr 6\u201312", "Apr 13\u201319", "Apr 20\u201326"], datasets: [{"label": "Paid Social", "data": [535, 1122, 1018, 1027, 688, 1650], "backgroundColor": "#C9A961", "borderWidth": 0}, {"label": "Organic Search", "data": [49, 75, 111, 153, 89, 957], "backgroundColor": "#B88B4A", "borderWidth": 0}, {"label": "Direct", "data": [206, 215, 184, 131, 137, 243], "backgroundColor": "#A8794F", "borderWidth": 0}, {"label": "Organic Social", "data": [162, 150, 166, 143, 99, 283], "backgroundColor": "#8DA67A", "borderWidth": 0}, {"label": "Unassigned", "data": [10, 2, 2, 0, 1, 192], "backgroundColor": "#C28B82", "borderWidth": 0}, {"label": "Referral", "data": [6, 43, 22, 33, 35, 21], "backgroundColor": "#8B6B3F", "borderWidth": 0}, {"label": "Organic Shopping", "data": [20, 5, 11, 20, 26, 22], "backgroundColor": "#6E675A", "borderWidth": 0}, {"label": "Paid Other", "data": [41, 6, 1, 0, 0, 0], "backgroundColor": "#4A4238", "borderWidth": 0}, {"label": "Email", "data": [4, 0, 0, 7, 1, 4], "backgroundColor": "#3A342C", "borderWidth": 0}] },
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
@@ -1730,23 +1517,8 @@ new Chart(document.getElementById('chart_channels').getContext('2d'), {
   }
 });
 
-renderBarChart({id:'chart_iv', accent:'#C9A961', values:[488, 2072, 2332, 2121, 1180], forecast:1973.08, fc_low:1052.9, fc_high:2893.27, labels:["W1", "W2", "W3", "W4", "W5", "FC"], prefix:'', suffix:'', dec:0});
-renderBarChart({id:'chart_ps', accent:'#B88B4A', values:[10, 8, 8, 7, 6], forecast:6.05, fc_low:5.34, fc_high:6.76, labels:["W1", "W2", "W3", "W4", "W5", "FC"], prefix:'', suffix:'', dec:0});
-
-// April daily revenue chart with Apr 16 switch marker
-(function(){
-  const aprData = [{"date_str": "Apr 01", "revenue": 208.0, "orders": 2.0}, {"date_str": "Apr 02", "revenue": 0.0, "orders": 0.0}, {"date_str": "Apr 03", "revenue": 109.0, "orders": 1.0}, {"date_str": "Apr 04", "revenue": 0.0, "orders": 0.0}, {"date_str": "Apr 05", "revenue": 189.0, "orders": 1.0}, {"date_str": "Apr 06", "revenue": 0.0, "orders": 0.0}, {"date_str": "Apr 07", "revenue": 103.99, "orders": 1.0}, {"date_str": "Apr 08", "revenue": 443.38, "orders": 2.0}, {"date_str": "Apr 09", "revenue": 192.19, "orders": 2.0}, {"date_str": "Apr 10", "revenue": 113.99, "orders": 1.0}, {"date_str": "Apr 11", "revenue": 113.99, "orders": 1.0}, {"date_str": "Apr 12", "revenue": 0.0, "orders": 0.0}, {"date_str": "Apr 13", "revenue": 113.99, "orders": 1.0}, {"date_str": "Apr 14", "revenue": 0.0, "orders": 0.0}, {"date_str": "Apr 15", "revenue": 0.0, "orders": 0.0}, {"date_str": "Apr 16", "revenue": 113.99, "orders": 1.0}, {"date_str": "Apr 17", "revenue": 464.17, "orders": 3.0}, {"date_str": "Apr 18", "revenue": 94.09, "orders": 1.0}, {"date_str": "Apr 19", "revenue": 0.0, "orders": 0.0}];
-  const labels = aprData.map(d => d.date_str);
-  const values = aprData.map(d => d.revenue);
-  // Color bars: pre-switch = muted, post-switch = bright gold
-  const switchIdx = labels.indexOf('Apr 16');
-  const colors = labels.map((_, i) => i < switchIdx ? '#8B7641' : '#E3C677');
-  
-  // Vertical-line plugin for switch
-})();
-
-
-
+renderBarChart({id:'chart_iv', accent:'#C9A961', values:[488, 2072, 2332, 2121, 1218, 2929], forecast:2446.27, labels:["W1", "W2", "W3", "W4", "W5", "W6", "FC"], prefix:'', suffix:'', dec:0});
+renderBarChart({id:'chart_ps', accent:'#B88B4A', values:[10, 8, 8, 7, 6, 23], forecast:14.07, labels:["W1", "W2", "W3", "W4", "W5", "W6", "FC"], prefix:'', suffix:'', dec:0});
 </script>
 </body>
 </html>
