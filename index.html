@@ -198,79 +198,20 @@
 
   /* === EXECUTIVE SUMMARY === */
   .exec-summary { padding: 80px 0; border-bottom: 1px solid var(--border); }
-  .exec-summary-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 20px;
-  }
-  .exec-summary-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(40px, 5vw, 64px); font-weight: 300;
-    line-height: 1; letter-spacing: -0.02em;
-    color: var(--text); margin-bottom: 40px;
-  }
+  .exec-summary-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .exec-summary-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 5vw, 64px); font-weight: 300; line-height: 1; letter-spacing: -0.02em; color: var(--text); margin-bottom: 40px; }
   .exec-summary-title em { font-style: italic; color: var(--gold); }
-  .exec-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px; background: var(--border);
-    border: 1px solid var(--border);
-    margin-bottom: 48px;
-  }
-  .exec-stat {
-    background: var(--bg-soft);
-    padding: 28px 24px;
-  }
-  .exec-stat .label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.2em;
-    color: var(--text-muted); text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .exec-stat .value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 38px; font-weight: 400;
-    color: var(--text); letter-spacing: -0.02em;
-    line-height: 1; margin-bottom: 8px;
-    font-variant-numeric: tabular-nums;
-  }
-  .exec-stat .sub {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--text-muted);
-    letter-spacing: 0.05em;
-  }
-  .exec-narrative {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 48px;
-    padding: 40px 0;
-    border-top: 1px solid var(--border-soft);
-    border-bottom: 1px solid var(--border-soft);
-    margin-bottom: 24px;
-  }
-  .exec-narrative-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.22em;
-    color: var(--gold); text-transform: uppercase;
-    align-self: start;
-  }
-  .exec-narrative-body {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 21px; font-weight: 300;
-    line-height: 1.6; color: var(--text);
-    font-style: italic;
-  }
-  .exec-narrative-body strong {
-    font-weight: 500; font-style: normal;
-    color: var(--gold-bright);
-  }
+  .exec-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 48px; }
+  .exec-stat { background: var(--bg-soft); padding: 28px 24px; }
+  .exec-stat .label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px; }
+  .exec-stat .value { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400; color: var(--text); letter-spacing: -0.02em; line-height: 1; margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+  .exec-stat .sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); letter-spacing: 0.05em; }
+  .exec-narrative { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 40px 0; border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); margin-bottom: 24px; }
+  .exec-narrative-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; align-self: start; }
+  .exec-narrative-body { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 300; line-height: 1.6; color: var(--text); font-style: italic; }
+  .exec-narrative-body strong { font-weight: 500; font-style: normal; color: var(--gold-bright); }
   .exec-narrative-body p + p { margin-top: 16px; }
-
-  @media (max-width: 1100px) {
-    .exec-stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .exec-narrative { grid-template-columns: 1fr; gap: 16px; }
-  }
+  @media (max-width: 1100px) { .exec-stats-grid { grid-template-columns: repeat(2, 1fr); } .exec-narrative { grid-template-columns: 1fr; gap: 16px; } }
 
 </style>
 </head>
@@ -311,52 +252,21 @@
     <h2 class="exec-summary-title">Six weeks <em>at a glance</em></h2>
 
     <div class="exec-stats-grid">
-      <div class="exec-stat">
-        <div class="label">Gross Sales</div>
-        <div class="value">£8,636</div>
-        <div class="sub">across 6 weeks</div>
-      </div>
-      <div class="exec-stat">
-        <div class="label">Net Revenue</div>
-        <div class="value">£6,478</div>
-        <div class="sub">after VAT</div>
-      </div>
-      <div class="exec-stat">
-        <div class="label">Orders</div>
-        <div class="value">57</div>
-        <div class="sub">UK Online Store, ex-tests</div>
-      </div>
-      <div class="exec-stat">
-        <div class="label">AOV</div>
-        <div class="value">£152</div>
-        <div class="sub">period average</div>
-      </div>
-      <div class="exec-stat">
-        <div class="label">Sessions</div>
-        <div class="value">9,969</div>
-        <div class="sub">7,556 new / 1,656 returning</div>
-      </div>
-      <div class="exec-stat">
-        <div class="label">Overall CVR</div>
-        <div class="value">0.57%</div>
-        <div class="sub">orders / sessions</div>
-      </div>
-      <div class="exec-stat">
-        <div class="label">Ad Spend</div>
-        <div class="value">£3,832</div>
-        <div class="sub">ROAS 1.69</div>
-      </div>
-      <div class="exec-stat">
-        <div class="label">Returns Rate</div>
-        <div class="value">7.4%</div>
-        <div class="sub">target &le; 10%</div>
-      </div>
+      <div class="exec-stat"><div class="label">Gross Sales</div><div class="value">£8,537</div><div class="sub">across 6 weeks</div></div>
+      <div class="exec-stat"><div class="label">Net Revenue</div><div class="value">£6,478</div><div class="sub">after VAT</div></div>
+      <div class="exec-stat"><div class="label">Orders</div><div class="value">56</div><div class="sub">UK Online Store, ex-tests</div></div>
+      <div class="exec-stat"><div class="label">AOV</div><div class="value">£152</div><div class="sub">period average</div></div>
+      <div class="exec-stat"><div class="label">Sessions</div><div class="value">9,969</div><div class="sub">7,556 new / 1,656 returning</div></div>
+      <div class="exec-stat"><div class="label">Overall CVR</div><div class="value">0.56%</div><div class="sub">orders / sessions</div></div>
+      <div class="exec-stat"><div class="label">Ad Spend</div><div class="value">£3,832</div><div class="sub">ROAS 1.69</div></div>
+      <div class="exec-stat"><div class="label">Returns Rate</div><div class="value">7.4%</div><div class="sub">target &le; 10%</div></div>
     </div>
+
     <div class="exec-narrative">
       <div class="exec-narrative-label">The story so far</div>
       <div class="exec-narrative-body">
         <p>The first five weeks of the period set a measured baseline: <strong>orders held in a 6-9 per week range, AOV averaged £130, and the brand built a steady stream of returning visitors</strong> through paid social and organic search. The fundamentals were stable while the team optimised the foundation.</p>
-        <p>Then W6 changed the picture. <strong>Gross sales rose +320% (£804 to £3,375)</strong>, orders moved from 6 to 20, and returning users surged from 270 to 677 - a +151% jump. Coordinated promotional activity met with notable cultural amplification, producing the strongest week of the period.</p>
+        <p>Then W6 changed the picture. <strong>Gross sales rose +307% (£804 to £3,276)</strong>, orders moved from 6 to 19, and returning users surged from 270 to 677 - a +151% jump. Coordinated promotional activity met with notable cultural amplification, producing the strongest week of the period.</p>
       </div>
     </div>
 
@@ -371,7 +281,7 @@
     <div class="exec-narrative">
       <div class="exec-narrative-label">Where the brand is winning</div>
       <div class="exec-narrative-body">
-        <p><strong>Returns are well managed.</strong> April returns sit at 2.4%, comfortably below the 10% target and a clear improvement on March's higher figure. Customers are keeping what they buy - a leading indicator of product fit and expectation alignment.</p>
+        <p><strong>Returns are well managed.</strong> April returns sit at 2.4%, comfortably below the 10% target and a clear improvement on March. Customers are keeping what they buy - a leading indicator of product fit and expectation alignment.</p>
         <p><strong>Organic search has reached a real inflection point.</strong> 228 UK clicks at 47% CTR with average position 2.8 reflects strong brand recall. Branded queries dominate today, but unbranded discovery terms (gifts under £250, khaki jewellery, polki bracelet) are now appearing in impressions - a signal that broader category visibility is starting to compound.</p>
         <p><strong>Loyalty signals show up clearly in the channel data.</strong> Organic Search returns 52% of its visitors and Referral 87%, indicating word-of-mouth dynamics alongside paid reach.</p>
       </div>
@@ -380,12 +290,11 @@
     <div class="exec-narrative">
       <div class="exec-narrative-label">Other observations</div>
       <div class="exec-narrative-body">
-        <p><strong>Paid efficiency trends.</strong> CPC moved from £0.33 in W1 to £0.64 in W6 while click volume stayed close to flat. Period ROAS sits at 1.69, with individual weeks ranging from 0.41 (W4) to a high of 5.59 (W1).</p>
-        <p><strong>Organic search picture.</strong> Branded queries (vixii, vixii jewellery) carry the bulk of UK clicks at 38-46% CTR and an average position of 2.3. Unbranded discovery queries (gifts under 250, khaki jewellery, polki bracelet) are showing impressions but currently sit on page 2-3+ with no clicks recorded.</p>
-        <p><strong>Audience composition.</strong> Returning users grew from 270 in W5 to 677 in W6. Across the period, Paid Social accounts for the largest share of returning visitors (475 of 1,114), while Organic Search and Referral show the highest returning-share-of-users at 52% and 87% respectively.</p>
+        <p><strong>Paid efficiency trends.</strong> CPC moved from £0.33 in W1 to £0.64 in W6 while click volume stayed close to flat. Period ROAS sits at 1.69, with individual weeks ranging from 0.41 (W4) to 5.59 (W1).</p>
+        <p><strong>Organic search picture.</strong> Branded queries (vixii, vixii jewellery) carry the bulk of UK clicks at 38-46% CTR and an average position of 2.3. Unbranded discovery queries are showing impressions but currently sit on page 2-3+ with no clicks recorded.</p>
+        <p><strong>Audience composition.</strong> Returning users grew from 270 in W5 to 677 in W6. Across the period, Paid Social accounts for the largest share of returning visitors, while Organic Search and Referral show the highest returning-share-of-users.</p>
       </div>
     </div>
-
   </section>
 
   <section style="--accent: #C9A961;">
@@ -415,8 +324,8 @@
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£1,068</div><div class="val-delta up">+10.3%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£973</div><div class="val-delta down">-8.9%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£804</div><div class="val-delta down">-17.4%</div></div>
-          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£3,375</div><div class="val-delta up">+319.8%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£2,031</div><div class="val-delta down">-39.8%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£3,276</div><div class="val-delta up">+307.5%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£1,981</div><div class="val-delta down">-39.5%</div></div>
         </div>
       </div>
       <div class="metric-row">
@@ -439,8 +348,8 @@
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£0</div><div class="val-delta neutral">0.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£52</div><div class="val-delta neutral">0.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£48</div><div class="val-delta up">-7.7%</div></div>
-          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£345</div><div class="val-delta down">+624.1%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£200</div><div class="val-delta up">-42.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£246</div><div class="val-delta down">+416.5%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£151</div><div class="val-delta up">-38.8%</div></div>
         </div>
       </div>
       <div class="metric-row">
@@ -448,7 +357,7 @@
         <div class="metric-values">
           <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£0</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£298</div><div class="val-delta neutral">0.0%</div></div>
-          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£218</div><div class="val-delta up">-26.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£218</div><div class="val-delta up">-26.8%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£0</div><div class="val-delta up">-100.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£0</div><div class="val-delta neutral">0.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£0</div><div class="val-delta neutral">0.0%</div></div>
@@ -461,13 +370,13 @@
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Gross Sales</div>
-          <div class="chart-card-fc">FORECAST: £2,031</div>
+          <div class="chart-card-fc">FORECAST: £1,981</div>
         </div>
         <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_01_Gross_Sales_gbp"></canvas></div>
         <div class="chart-card-footer">
-          <div>last week: £3,375</div>
-          <div class="fc-delta down">-39.8% vs W6</div>
+          <div>last week: £3,276</div>
+          <div class="fc-delta down">-39.5% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
@@ -485,13 +394,13 @@
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Discounts</div>
-          <div class="chart-card-fc">FORECAST: £200</div>
+          <div class="chart-card-fc">FORECAST: £151</div>
         </div>
         <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_01_Discounts_gbp"></canvas></div>
         <div class="chart-card-footer">
-          <div>last week: £345</div>
-          <div class="fc-delta up">-42.0% vs W6</div>
+          <div>last week: £246</div>
+          <div class="fc-delta up">-38.8% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
@@ -545,12 +454,56 @@
             <span>0%</span><span style="color: var(--gold);">10% target</span><span>20%+</span>
           </div>
           <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-soft); font-size: 12px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em;">
-            &pound;109.00 returned &middot; 1 of 37 orders &middot; Gross &pound;5,329.93
+            &pound;109.00 returned &middot; 1 of 36 orders &middot; Gross &pound;5,329.93
           </div>
         </div>
       </div>
     </div>
-  </section>
+  
+    <div style="margin-top: 56px; padding: 36px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 2px;">
+      <div style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 12px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase;">§ 01·A</div>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 400; color: var(--text); font-style: italic;">Returns Rate <span style="color: var(--text-muted); font-size: 18px; font-style: normal; margin-left: 12px;">Monthly &middot; Target &le; 10%</span></h3>
+      </div>
+      <p style="color: var(--text-dim); margin-bottom: 32px; font-size: 14px;">Returns value as a share of gross revenue. Target: stay at or under 10%. Red = over target, green = on target.</p>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border);">
+        <div style="background: var(--bg); padding: 28px 32px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">March (16–31)</div>
+          <div style="display: flex; align-items: baseline; gap: 12px;">
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 54px; font-weight: 400; color: #C28B82; letter-spacing: -0.02em; line-height: 1;">16.06%</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: #C28B82; text-transform: uppercase;">OVER TARGET</div>
+          </div>
+          <div style="margin-top: 14px; height: 6px; background: var(--border); border-radius: 3px; position: relative; overflow: hidden;">
+            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 80.3%; background: #C28B82;"></div>
+            <div style="position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--gold);"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);">
+            <span>0%</span><span style="color: var(--gold);">10% target</span><span>20%+</span>
+          </div>
+          <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-soft); font-size: 12px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em;">
+            &pound;407.00 returned &middot; 2 of 20 orders &middot; Gross &pound;2,960.06
+          </div>
+        </div>
+        <div style="background: var(--bg); padding: 28px 32px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">April (1–26)</div>
+          <div style="display: flex; align-items: baseline; gap: 12px;">
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 54px; font-weight: 400; color: #8DA67A; letter-spacing: -0.02em; line-height: 1;">2.44%</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: #8DA67A; text-transform: uppercase;">ON TARGET</div>
+          </div>
+          <div style="margin-top: 14px; height: 6px; background: var(--border); border-radius: 3px; position: relative; overflow: hidden;">
+            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 12.2%; background: #8DA67A;"></div>
+            <div style="position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--gold);"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);">
+            <span>0%</span><span style="color: var(--gold);">10% target</span><span>20%+</span>
+          </div>
+          <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-soft); font-size: 12px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em;">
+            &pound;109.00 returned &middot; 1 of 36 orders &middot; Gross &pound;5,329.93
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
 
   <section style="--accent: #D4AF37;">
     <div class="section-label">
@@ -579,8 +532,8 @@
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">8</div><div class="val-delta up">+14.3%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">7</div><div class="val-delta down">-12.5%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">6</div><div class="val-delta down">-14.3%</div></div>
-          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">20</div><div class="val-delta up">+233.3%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">13</div><div class="val-delta down">-36.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">19</div><div class="val-delta up">+216.7%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">12</div><div class="val-delta down">-35.3%</div></div>
         </div>
       </div>
       <div class="metric-row">
@@ -591,8 +544,8 @@
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£133.50</div><div class="val-delta down">-3.5%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£139.00</div><div class="val-delta up">+4.1%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£134.00</div><div class="val-delta down">-3.6%</div></div>
-          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£168.75</div><div class="val-delta up">+25.9%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£148.09</div><div class="val-delta down">-12.2%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£172.42</div><div class="val-delta up">+28.7%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£149.93</div><div class="val-delta down">-13.0%</div></div>
         </div>
       </div>
       <div class="metric-row">
@@ -603,8 +556,8 @@
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">1.00</div><div class="val-delta down">-12.5%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">1.00</div><div class="val-delta neutral">0.0%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">1.00</div><div class="val-delta neutral">0.0%</div></div>
-          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">1.15</div><div class="val-delta up">+15.0%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">1.05</div><div class="val-delta down">-9.0%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">1.16</div><div class="val-delta up">+15.8%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">1.05</div><div class="val-delta down">-9.2%</div></div>
         </div>
       </div>
     </div>
@@ -613,25 +566,25 @@
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Orders</div>
-          <div class="chart-card-fc">FORECAST: 13</div>
+          <div class="chart-card-fc">FORECAST: 12</div>
         </div>
         <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_02_Orders"></canvas></div>
         <div class="chart-card-footer">
-          <div>last week: 20</div>
-          <div class="fc-delta down">-36.0% vs W6</div>
+          <div>last week: 19</div>
+          <div class="fc-delta down">-35.3% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">AOV</div>
-          <div class="chart-card-fc">FORECAST: £148.09</div>
+          <div class="chart-card-fc">FORECAST: £149.93</div>
         </div>
         <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_02_AOV_gbp"></canvas></div>
         <div class="chart-card-footer">
-          <div>last week: £168.75</div>
-          <div class="fc-delta down">-12.2% vs W6</div>
+          <div>last week: £172.42</div>
+          <div class="fc-delta down">-13.0% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
@@ -642,8 +595,8 @@
         <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_02_Items_Order"></canvas></div>
         <div class="chart-card-footer">
-          <div>last week: 1.15</div>
-          <div class="fc-delta down">-9.0% vs W6</div>
+          <div>last week: 1.16</div>
+          <div class="fc-delta down">-9.2% vs W6</div>
         </div>
       </div>
     </div>
@@ -786,10 +739,31 @@
       </table>
       <div class="insight-card" style="margin-top: 32px;">
         <div class="insight-label">Read</div>
-        <div class="insight-text"><strong>Paid Social drives 708 returning users</strong> across the full window (the biggest absolute volume, mostly remarketing). <strong>Organic Search (45% returning rate)</strong> and <strong>Referral (80% returning rate)</strong> are where brand loyalty sits strongest. Across the 6-week window, these two channels carry the highest intrinsic loyalty signal in the data.</div>
+        <div class="insight-text"><strong>Paid Social drives 708 returning users</strong> across the full window (the biggest absolute volume, mostly remarketing). <strong>Organic Search (45% returning rate)</strong> and <strong>Referral (80% returning rate)</strong> are where brand loyalty sits strongest. Prioritise SEO content investment and referral programmes to compound this base.</div>
       </div>
     </div>
-  </section>
+  
+    <div style="margin-top: 56px;">
+      <div class="charts-section-label" style="margin-bottom: 24px;">Where returning users come from &middot; channel breakdown</div>
+      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Returning users = Total users &minus; New users, per channel. Paid Social drives the biggest <em>absolute</em> volume (mostly remarketing). The <em>returning-share-of-users</em> column on the right shows each channel's intrinsic loyalty rate.</p>
+      <table class="channel-table">
+        <thead><tr><th>Channel</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>W6</th><th>Total</th><th>Share of returning</th><th>Returning / Total users</th></tr></thead>
+        <tbody>
+          <tr><td>Paid Social</td><td>13</td><td>74</td><td>120</td><td>130</td><td>140</td><td>231</td><td><strong>708</strong></td><td>42.0%</td><td>12.0%</td></tr>
+          <tr><td>Organic Search</td><td>10</td><td>16</td><td>53</td><td>64</td><td>38</td><td>338</td><td><strong>519</strong></td><td>30.8%</td><td>44.6%</td></tr>
+          <tr><td>Direct</td><td>22</td><td>41</td><td>48</td><td>24</td><td>42</td><td>33</td><td><strong>210</strong></td><td>12.5%</td><td>20.8%</td></tr>
+          <tr><td>Organic Social</td><td>12</td><td>13</td><td>28</td><td>12</td><td>23</td><td>41</td><td><strong>129</strong></td><td>7.7%</td><td>13.1%</td></tr>
+          <tr><td>Referral</td><td>2</td><td>12</td><td>7</td><td>18</td><td>21</td><td>8</td><td><strong>68</strong></td><td>4.0%</td><td>80.0%</td></tr>
+          <tr><td>Organic Shopping</td><td>6</td><td>4</td><td>1</td><td>8</td><td>12</td><td>10</td><td><strong>41</strong></td><td>2.4%</td><td>68.3%</td></tr>
+          <tr><td>Email</td><td>0</td><td>0</td><td>0</td><td>6</td><td>1</td><td>2</td><td><strong>9</strong></td><td>0.5%</td><td>60.0%</td></tr>
+        </tbody>
+      </table>
+      <div class="insight-card" style="margin-top: 32px;">
+        <div class="insight-label">Read</div>
+        <div class="insight-text"><strong>Paid Social drives 708 returning users</strong> across the full window (the biggest absolute volume, mostly remarketing). <strong>Organic Search (45% returning rate)</strong> and <strong>Referral (80% returning rate)</strong> show the highest intrinsic loyalty signal in the data.</div>
+      </div>
+    </div>
+</section>
 
   <section style="--accent: #A8794F;">
     <div class="section-label">
@@ -818,8 +792,8 @@
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">0.53%</div><div class="val-delta up">+23.3%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">0.46%</div><div class="val-delta down">-13.2%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">0.56%</div><div class="val-delta up">+21.7%</div></div>
-          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">0.62%</div><div class="val-delta up">+10.7%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">0.52%</div><div class="val-delta down">-16.8%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">0.59%</div><div class="val-delta up">+5.4%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">0.50%</div><div class="val-delta down">-15.1%</div></div>
         </div>
       </div>
       <div class="metric-row">
@@ -854,8 +828,8 @@
           <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">21.62%</div><div class="val-delta up">+35.9%</div></div>
           <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">16.67%</div><div class="val-delta down">-22.9%</div></div>
           <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">20.69%</div><div class="val-delta up">+24.1%</div></div>
-          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">37.74%</div><div class="val-delta up">+82.4%</div></div>
-          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">15.14%</div><div class="val-delta down">-59.9%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">35.85%</div><div class="val-delta up">+73.3%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">14.20%</div><div class="val-delta down">-60.4%</div></div>
         </div>
       </div>
     </div>
@@ -864,13 +838,13 @@
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Overall CVR</div>
-          <div class="chart-card-fc">FORECAST: 0.52%</div>
+          <div class="chart-card-fc">FORECAST: 0.50%</div>
         </div>
         <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_04_Overall_CVR_pct"></canvas></div>
         <div class="chart-card-footer">
-          <div>last week: 0.62%</div>
-          <div class="fc-delta down">-16.8% vs W6</div>
+          <div>last week: 0.59%</div>
+          <div class="fc-delta down">-15.1% vs W6</div>
         </div>
       </div>
       <div class="chart-card">
@@ -900,13 +874,13 @@
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">Checkout Completion</div>
-          <div class="chart-card-fc">FORECAST: 15.14%</div>
+          <div class="chart-card-fc">FORECAST: 14.20%</div>
         </div>
         <div class="chart-card-sub">W1 - W6 actual · FC projection</div>
         <div class="chart-card-body"><canvas id="chart_04_Checkout_Completion_pct"></canvas></div>
         <div class="chart-card-footer">
-          <div>last week: 37.74%</div>
-          <div class="fc-delta down">-59.9% vs W6</div>
+          <div>last week: 35.85%</div>
+          <div class="fc-delta down">-60.4% vs W6</div>
         </div>
       </div>
     </div>
@@ -923,27 +897,31 @@
           <tr><td>Returning Users</td><td>60</td><td>151</td><td>248</td><td>250</td><td>270</td><td>677</td><td><strong>1,656</strong></td></tr>
           <tr><td>Sessions &rarr; Cart-add</td><td>20</td><td>93</td><td>79</td><td>79</td><td>43</td><td>100</td><td><strong>414</strong></td></tr>
           <tr><td>Sessions &rarr; Checkout</td><td>9</td><td>44</td><td>37</td><td>42</td><td>29</td><td>53</td><td><strong>214</strong></td></tr>
-          <tr><td>Sessions &rarr; Purchase</td><td>9</td><td>7</td><td>8</td><td>7</td><td>6</td><td>20</td><td><strong>57</strong></td></tr>
-          <tr><td>Sessions &rarr; Purchase rate</td><td>0.87%</td><td>0.43%</td><td>0.53%</td><td>0.46%</td><td>0.56%</td><td>0.62%</td><td>-</td></tr>
+          <tr><td>Sessions &rarr; Purchase</td><td>9</td><td>7</td><td>8</td><td>7</td><td>6</td><td>19</td><td><strong>56</strong></td></tr>
+          <tr><td>Sessions &rarr; Purchase rate</td><td>0.87%</td><td>0.43%</td><td>0.53%</td><td>0.46%</td><td>0.56%</td><td>0.59%</td><td>-</td></tr>
         </tbody>
       </table>
     </div>
-
+  
     <div style="margin-top: 56px;">
-      <div class="charts-section-label" style="margin-bottom: 24px;">Conversion by path &middot; Cart-led purchasing</div>
-      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Based on Shopify's session-level split data (measured for W1–W3, Mar 16–Apr 2). Virtually all UK purchases go through the cart path - the Buy-Now / express-checkout route sees negligible use (~2–3% of orders).</p>
+      <div class="charts-section-label" style="margin-bottom: 24px;">User funnel &middot; weekly breakdown</div>
+      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">A user-level view of the funnel. <strong>Total Users</strong> are unique visitors per week (from GA4). <strong>Cart-add Users</strong> and <strong>Checkout Users</strong> are estimated by adjusting the session-level events for the average sessions-per-user ratio (~1.08). <strong>Purchases</strong> are actual Shopify orders (UK, Online Store, ex-tests).</p>
       <table class="channel-table">
-        <thead><tr><th>Path</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>W6</th><th>Overall share</th></tr></thead>
+        <thead><tr><th>Metric</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>W6</th><th>Total</th></tr></thead>
         <tbody>
-          <tr><td><strong style="color: var(--gold-bright);">Cart Path</strong> (add-to-cart &rarr; purchase)</td><td>8.8 &middot; 0.85%</td><td>6.8 &middot; 0.42%</td><td>7.8 &middot; 0.51%</td><td>6.8 &middot; 0.45%</td><td>5.8 &middot; 0.54%</td><td>19.5 &middot; 0.61%</td><td><strong>97.3%</strong></td></tr>
+          <tr><td>Total Users</td><td>957</td><td>1,493</td><td>1,400</td><td>1,390</td><td>996</td><td>2,976</td><td><strong>9,212</strong></td></tr>
+          <tr><td>New Users</td><td>897</td><td>1,342</td><td>1,152</td><td>1,140</td><td>726</td><td>2,299</td><td><strong>7,556</strong></td></tr>
+          <tr><td>Returning Users</td><td>60</td><td>151</td><td>248</td><td>250</td><td>270</td><td>677</td><td><strong>1,656</strong></td></tr>
+          <tr><td>Users &rarr; Cart-add</td><td>19</td><td>86</td><td>73</td><td>73</td><td>40</td><td>93</td><td><strong>384</strong></td></tr>
+          <tr><td>Users &rarr; Checkout</td><td>8</td><td>41</td><td>34</td><td>39</td><td>27</td><td>49</td><td><strong>198</strong></td></tr>
+          <tr><td>Users &rarr; Purchase</td><td>9</td><td>7</td><td>8</td><td>7</td><td>6</td><td>19</td><td><strong>56</strong></td></tr>
+          <tr><td>Cart-add Rate (% users)</td><td>1.99%</td><td>5.76%</td><td>5.21%</td><td>5.25%</td><td>4.02%</td><td>3.12%</td><td>-</td></tr>
+          <tr><td>Checkout Rate (% users)</td><td>0.84%</td><td>2.75%</td><td>2.43%</td><td>2.81%</td><td>2.71%</td><td>1.65%</td><td>-</td></tr>
+          <tr><td>User CVR (% users)</td><td>0.94%</td><td>0.47%</td><td>0.57%</td><td>0.50%</td><td>0.60%</td><td>0.64%</td><td>-</td></tr>
         </tbody>
       </table>
-      <div class="insight-card" style="margin-top: 32px;">
-        <div class="insight-label">What this says</div>
-        <div class="insight-text">Essentially <strong>every UK purchase flows through the cart</strong>. Customers browse, add to cart, then review before completing the order - the typical behaviour for considered purchases like fine jewellery.</div>
-      </div>
     </div>
-  </section>
+</section>
 
   <section style="--accent: #8B6B3F;">
     <div class="section-label">
@@ -1236,197 +1214,63 @@
   
     <div style="margin-top: 56px;">
       <div class="charts-section-label" style="margin-bottom: 24px;">Ad-level deep dive &middot; format, campaign, creative</div>
-      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 32px;">A view inside the £3,906 of Meta Ad spend. Period totals across 26 unique ads. Format and campaign breakdowns show where the money is working; the creative-level table flags clear winners and clear waste.</p>
+      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 32px;">A view inside the £3,906 of Meta Ad spend. Period totals across 26 unique ads.</p>
 
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin: 32px 0 16px;">Funnel from impression to purchase</div>
-
       <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border);">
-        <div style="background: var(--bg-soft); padding: 22px 18px;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Impressions</div>
-          <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">275,844</div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);">100% baseline</div>
-        </div>
-        <div style="background: var(--bg-soft); padding: 22px 18px;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Clicks</div>
-          <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">8,379</div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">3.0% CTR</div>
-        </div>
-        <div style="background: var(--bg-soft); padding: 22px 18px;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Landing Pg Views</div>
-          <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">4,471</div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">53.4% of clicks</div>
-        </div>
-        <div style="background: var(--bg-soft); padding: 22px 18px;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Add to Cart</div>
-          <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">189</div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">4.2% of LPV</div>
-        </div>
-        <div style="background: var(--bg-soft); padding: 22px 18px;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Init Checkout</div>
-          <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">130</div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">68.8% of ATC</div>
-        </div>
-        <div style="background: var(--bg-soft); padding: 22px 18px;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--gold-bright); text-transform: uppercase; margin-bottom: 10px;">Purchases</div>
-          <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--gold-bright); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">30</div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">23.1% of IC</div>
-        </div>
+        <div style="background: var(--bg-soft); padding: 22px 18px;"><div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Impressions</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">275,844</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);">100% baseline</div></div>
+        <div style="background: var(--bg-soft); padding: 22px 18px;"><div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Clicks</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">8,379</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">3.0% CTR</div></div>
+        <div style="background: var(--bg-soft); padding: 22px 18px;"><div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Landing Pg Views</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">4,471</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">53.4% of clicks</div></div>
+        <div style="background: var(--bg-soft); padding: 22px 18px;"><div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Add to Cart</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">189</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">4.2% of LPV</div></div>
+        <div style="background: var(--bg-soft); padding: 22px 18px;"><div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Init Checkout</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">130</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">68.8% of ATC</div></div>
+        <div style="background: var(--bg-soft); padding: 22px 18px;"><div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--gold-bright); text-transform: uppercase; margin-bottom: 10px;">Purchases</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--gold-bright); line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums;">30</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">23.1% of IC</div></div>
       </div>
-
-      <p style="color: var(--text-dim); font-size: 13px; margin-top: 16px;">Top-of-funnel CTR is 3.04% and LPV rate is 53% of clicks. The largest drop sits between <strong>Add to Cart and Initiate Checkout</strong> (69% drop) and again between <strong>Initiate Checkout and Purchase</strong> (23% completion).</p>
+      <p style="color: var(--text-dim); font-size: 13px; margin-top: 16px;">Top-of-funnel CTR is 3.0% and LPV rate is 53.4% of clicks. The largest drop sits between <strong>Add to Cart and Initiate Checkout</strong> (32% drop) and again between <strong>Initiate Checkout and Purchase</strong> (23.1% completion).</p>
 
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin: 56px 0 16px;">Performance by ad format</div>
       <table class="channel-table">
-        <thead>
-          <tr><th>Format</th><th>Spend</th><th>Imp</th><th>Clicks</th><th>CTR</th><th>CPC</th><th>Purch</th><th>Rev</th><th>ROAS</th></tr>
-        </thead>
+        <thead><tr><th>Format</th><th>Spend</th><th>Imp</th><th>Clicks</th><th>CTR</th><th>CPC</th><th>Purch</th><th>Rev</th><th>ROAS</th></tr></thead>
         <tbody>
-        <tr>
-          <td>Image</td>
-          <td>£2,005</td>
-          <td>148,564</td>
-          <td>4,195</td>
-          <td>2.82%</td>
-          <td>£0.48</td>
-          <td>15</td>
-          <td>£2,737</td>
-          <td style="color: var(--green); font-weight: 500;">1.37</td>
-        </tr>
-        <tr>
-          <td>Carousel</td>
-          <td>£1,103</td>
-          <td>70,118</td>
-          <td>2,655</td>
-          <td>3.79%</td>
-          <td>£0.42</td>
-          <td>9</td>
-          <td>£1,107</td>
-          <td style="color: var(--green); font-weight: 500;">1.00</td>
-        </tr>
-        <tr>
-          <td>Video</td>
-          <td>£478</td>
-          <td>32,460</td>
-          <td>702</td>
-          <td>2.16%</td>
-          <td>£0.68</td>
-          <td>5</td>
-          <td>£555</td>
-          <td style="color: var(--green); font-weight: 500;">1.16</td>
-        </tr>
-        <tr>
-          <td>Collection</td>
-          <td>£321</td>
-          <td>24,702</td>
-          <td>827</td>
-          <td>3.35%</td>
-          <td>£0.39</td>
-          <td>1</td>
-          <td>£109</td>
-          <td style="color: var(--red); font-weight: 500;">0.34</td>
-        </tr>
+        <tr><td>Image</td><td>£2,005</td><td>148,564</td><td>4,195</td><td>2.82%</td><td>£0.48</td><td>15</td><td>£2,737</td><td style="color: var(--green); font-weight: 500;">1.37</td></tr>
+        <tr><td>Carousel</td><td>£1,103</td><td>70,118</td><td>2,655</td><td>3.79%</td><td>£0.42</td><td>9</td><td>£1,107</td><td style="color: var(--green); font-weight: 500;">1.00</td></tr>
+        <tr><td>Video</td><td>£478</td><td>32,460</td><td>702</td><td>2.16%</td><td>£0.68</td><td>5</td><td>£555</td><td style="color: var(--green); font-weight: 500;">1.16</td></tr>
+        <tr><td>Collection</td><td>£321</td><td>24,702</td><td>827</td><td>3.35%</td><td>£0.39</td><td>1</td><td>£109</td><td style="color: var(--red); font-weight: 500;">0.34</td></tr>
         </tbody>
       </table>
-      <p style="color: var(--text-dim); font-size: 13px; margin-top: 16px;">Image carries the largest share of spend (£2,005) and the highest revenue contribution at ROAS 1.37. Video sits at ROAS 1.16 on £478 spend. Collection delivered clicks (827) on £321 spend but recorded one purchase, returning ROAS 0.34.</p>
+      <p style="color: var(--text-dim); font-size: 13px; margin-top: 16px;">Image carries the largest share of spend (£2,005) and the highest revenue contribution at ROAS 1.37. Video sits at ROAS 1.16 on £478 spend. Collection delivered clicks (827) on £321 spend but recorded 1 purchase, returning ROAS 0.34.</p>
 
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin: 56px 0 16px;">Performance by campaign</div>
       <table class="channel-table">
-        <thead>
-          <tr><th>Campaign</th><th>Spend</th><th>Imp</th><th>CTR</th><th>CPC</th><th>Purch</th><th>ROAS</th></tr>
-        </thead>
+        <thead><tr><th>Campaign</th><th>Spend</th><th>Imp</th><th>CTR</th><th>CPC</th><th>Purch</th><th>ROAS</th></tr></thead>
         <tbody>
-        <tr>
-          <td title="BB - VIXII - UK - Purchases - March 2026">BB - VIXII - UK - Purchases - March 2026</td>
-          <td>£2,680</td>
-          <td>197,284</td>
-          <td>2.73%</td>
-          <td>£0.50</td>
-          <td>21</td>
-          <td style="color: var(--green); font-weight: 500;">1.27</td>
-        </tr>
-        <tr>
-          <td title="BB - VIXII - UK - Adv + Catalogue Sales - March 2026">BB - VIXII - UK - Adv + Catalogue Sales - March...</td>
-          <td>£1,220</td>
-          <td>77,478</td>
-          <td>3.85%</td>
-          <td>£0.41</td>
-          <td>9</td>
-          <td style="color: var(--red); font-weight: 500;">0.91</td>
-        </tr>
-        <tr>
-          <td title="Post: "WE ARE OFFICIALLY LIVE ✨"">Post: "WE ARE OFFICIALLY LIVE ✨"</td>
-          <td>£6</td>
-          <td>1,082</td>
-          <td>1.66%</td>
-          <td>£0.33</td>
-          <td>0</td>
-          <td style="color: var(--red); font-weight: 500;">0.00</td>
-        </tr>
+        <tr><td title="BB - VIXII - UK - Purchases - March 2026">BB - VIXII - UK - Purchases - March 2026</td><td>£2,680</td><td>197,284</td><td>2.73%</td><td>£0.50</td><td>21</td><td style="color: var(--green); font-weight: 500;">1.27</td></tr>
+        <tr><td title="BB - VIXII - UK - Adv + Catalogue Sales - March 2026">BB - VIXII - UK - Adv + Catalogue Sales - March...</td><td>£1,220</td><td>77,478</td><td>3.85%</td><td>£0.41</td><td>9</td><td style="color: var(--red); font-weight: 500;">0.91</td></tr>
+        <tr><td title="Post: "WE ARE OFFICIALLY LIVE ✨"">Post: "WE ARE OFFICIALLY LIVE ✨"</td><td>£6</td><td>1,082</td><td>1.66%</td><td>£0.33</td><td>0</td><td style="color: var(--red); font-weight: 500;">0.00</td></tr>
         </tbody>
       </table>
 
       <div class="two-col" style="margin-top: 56px;">
         <div>
           <div class="prod-heading" style="color: var(--green);">Top performers <span>min £30 spend &middot; ROAS</span></div>
-        <div class="prod-item">
-          <div class="prod-rank">01</div>
-          <div class="prod-name" title="Catalogue - Necklace - Static - Shop Now">Catalogue - Necklace - Static - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Image &middot; £106 spent &middot; 3 purchases</span></div>
-          <div class="prod-metric" style="color: var(--green);">4.37x</div>
-        </div>
-        <div class="prod-item">
-          <div class="prod-rank">02</div>
-          <div class="prod-name" title="Bracelet - Sacred Alignment Mink Pastel & Gold -Unboxing - Video - Shop Now">Bracelet - Sacred Alignment Mink Pastel & Gold -Unboxing ...<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Video &middot; £31 spent &middot; 1 purchases</span></div>
-          <div class="prod-metric" style="color: var(--green);">3.57x</div>
-        </div>
-        <div class="prod-item">
-          <div class="prod-rank">03</div>
-          <div class="prod-name" title="Necklace - Hello - Static - Shop Now">Necklace - Hello - Static - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Image &middot; £273 spent &middot; 2 purchases</span></div>
-          <div class="prod-metric" style="color: var(--green);">2.19x</div>
-        </div>
-        <div class="prod-item">
-          <div class="prod-rank">04</div>
-          <div class="prod-name" title="Combo - Video - Building a Brand - Shop Now">Combo - Video - Building a Brand - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Video &middot; £79 spent &middot; 1 purchases</span></div>
-          <div class="prod-metric" style="color: var(--green);">1.96x</div>
-        </div>
-        <div class="prod-item">
-          <div class="prod-rank">05</div>
-          <div class="prod-name" title="Flex - Video - Brand/Bracelets - Shop Now">Flex - Video - Brand/Bracelets - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Video &middot; £167 spent &middot; 3 purchases</span></div>
-          <div class="prod-metric" style="color: var(--green);">1.74x</div>
-        </div>
+        <div class="prod-item"><div class="prod-rank">01</div><div class="prod-name" title="Catalogue - Necklace - Static - Shop Now">Catalogue - Necklace - Static - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Image &middot; £106 spent &middot; 3 purchases</span></div><div class="prod-metric" style="color: var(--green);">4.37x</div></div>
+        <div class="prod-item"><div class="prod-rank">02</div><div class="prod-name" title="Bracelet - Sacred Alignment Mink Pastel & Gold -Unboxing - Video - Shop Now">Bracelet - Sacred Alignment Mink Pastel & Gold -Unboxing ...<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Video &middot; £31 spent &middot; 1 purchases</span></div><div class="prod-metric" style="color: var(--green);">3.57x</div></div>
+        <div class="prod-item"><div class="prod-rank">03</div><div class="prod-name" title="Necklace - Hello - Static - Shop Now">Necklace - Hello - Static - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Image &middot; £273 spent &middot; 2 purchases</span></div><div class="prod-metric" style="color: var(--green);">2.19x</div></div>
+        <div class="prod-item"><div class="prod-rank">04</div><div class="prod-name" title="Combo - Video - Building a Brand - Shop Now">Combo - Video - Building a Brand - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Video &middot; £79 spent &middot; 1 purchases</span></div><div class="prod-metric" style="color: var(--green);">1.96x</div></div>
+        <div class="prod-item"><div class="prod-rank">05</div><div class="prod-name" title="Flex - Video - Brand/Bracelets - Shop Now">Flex - Video - Brand/Bracelets - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Video &middot; £167 spent &middot; 3 purchases</span></div><div class="prod-metric" style="color: var(--green);">1.74x</div></div>
         </div>
         <div>
           <div class="prod-heading" style="color: var(--red);">Worth reviewing <span>£30+ spend &middot; ROAS &lt; 0.5</span></div>
-        <div class="prod-item">
-          <div class="prod-rank">01</div>
-          <div class="prod-name" title="Flex  - Combo - Static - Shop Now">Flex  - Combo - Static - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Image &middot; £269 spent &middot; 0 purchases</span></div>
-          <div class="prod-metric" style="color: var(--red);">0.00x</div>
-        </div>
-        <div class="prod-item">
-          <div class="prod-rank">02</div>
-          <div class="prod-name" title="All Products – Catalogue Ads – Collection">All Products – Catalogue Ads – Collection<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Collection &middot; £142 spent &middot; 0 purchases</span></div>
-          <div class="prod-metric" style="color: var(--red);">0.00x</div>
-        </div>
-        <div class="prod-item">
-          <div class="prod-rank">03</div>
-          <div class="prod-name" title="Flex  - Combo - Motion - Shop Now">Flex  - Combo - Motion - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Video &middot; £105 spent &middot; 0 purchases</span></div>
-          <div class="prod-metric" style="color: var(--red);">0.00x</div>
-        </div>
-        <div class="prod-item">
-          <div class="prod-rank">04</div>
-          <div class="prod-name" title="Bracelet - Infinity Circle Beige Taupe Gold - Static - Shop Now">Bracelet - Infinity Circle Beige Taupe Gold - Static - Sh...<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Image &middot; £94 spent &middot; 0 purchases</span></div>
-          <div class="prod-metric" style="color: var(--red);">0.00x</div>
-        </div>
-        <div class="prod-item">
-          <div class="prod-rank">05</div>
-          <div class="prod-name" title="Flex  - Neckalce - AI - Static - Shop Now">Flex  - Neckalce - AI - Static - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Image &middot; £72 spent &middot; 0 purchases</span></div>
-          <div class="prod-metric" style="color: var(--red);">0.00x</div>
-        </div>
+        <div class="prod-item"><div class="prod-rank">01</div><div class="prod-name" title="Flex  - Combo - Static - Shop Now">Flex  - Combo - Static - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Image &middot; £269 spent &middot; 0 purchases</span></div><div class="prod-metric" style="color: var(--red);">0.00x</div></div>
+        <div class="prod-item"><div class="prod-rank">02</div><div class="prod-name" title="All Products – Catalogue Ads – Collection">All Products – Catalogue Ads – Collection<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Collection &middot; £142 spent &middot; 0 purchases</span></div><div class="prod-metric" style="color: var(--red);">0.00x</div></div>
+        <div class="prod-item"><div class="prod-rank">03</div><div class="prod-name" title="Flex  - Combo - Motion - Shop Now">Flex  - Combo - Motion - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Video &middot; £105 spent &middot; 0 purchases</span></div><div class="prod-metric" style="color: var(--red);">0.00x</div></div>
+        <div class="prod-item"><div class="prod-rank">04</div><div class="prod-name" title="Bracelet - Infinity Circle Beige Taupe Gold - Static - Shop Now">Bracelet - Infinity Circle Beige Taupe Gold - Static - Sh...<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Image &middot; £94 spent &middot; 0 purchases</span></div><div class="prod-metric" style="color: var(--red);">0.00x</div></div>
+        <div class="prod-item"><div class="prod-rank">05</div><div class="prod-name" title="Flex  - Neckalce - AI - Static - Shop Now">Flex  - Neckalce - AI - Static - Shop Now<br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em;">Image &middot; £72 spent &middot; 0 purchases</span></div><div class="prod-metric" style="color: var(--red);">0.00x</div></div>
         </div>
       </div>
 
       <div class="insight-card" style="margin-top: 48px;">
         <div class="insight-label">What the numbers show</div>
-        <div class="insight-text">Three observations. <strong>"Catalogue - Necklace - Static" returned 4.37x</strong> on £106 spent, the highest ROAS among ads with statistically meaningful spend. The <strong>biggest funnel drop happens between Add to Cart and Initiate Checkout</strong> - only 31% of cart-adders move forward. And across the period, <strong>roughly £682 of spend appears against ads with zero recorded purchases</strong>.</div>
+        <div class="insight-text">Three observations. <strong>"Catalogue - Necklace - Static" returned 4.37x</strong> on £106 spent, the highest ROAS among ads with statistically meaningful spend. The <strong>biggest funnel drop happens between Add to Cart and Initiate Checkout</strong> - only 68% of cart-adders move forward. Across the period, <strong>roughly £682 of spend appears against ads with zero recorded purchases</strong>.</div>
       </div>
     </div>
 </section>
@@ -1538,10 +1382,10 @@
         </tbody>
       </table>
     </div>
+
     <div style="margin-top: 56px;">
       <div class="charts-section-label" style="margin-bottom: 24px;">Organic search trajectory &middot; week on week</div>
-      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Daily GSC export available from Mar 30 only (W3 onwards). Not country-filtered - reflects all countries. UK accounts for ~58% of clicks; the trajectory shape is representative. The W6 spike reflects the same TikTok-driven moment seen elsewhere in the report - branded queries (vixii, vixii jewellery) lit up search demand, and the brand's #1 ranking captured nearly all of it.</p>
-
+      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Daily GSC export available from Mar 30 only (W3 onwards). Not country-filtered - reflects all countries. UK accounts for ~58% of clicks; the trajectory shape is representative. The W6 spike reflects the same TikTok-driven moment seen elsewhere in the report.</p>
       <table class="channel-table">
         <thead><tr><th>Week</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Avg Position</th></tr></thead>
         <tbody>
@@ -1553,7 +1397,6 @@
 <tr><td>W6</td><td>335<br><span class="val-delta up" style="display: inline-block; font-size: 10px;">+644.4%</span></td><td>791<br><span class="val-delta up" style="display: inline-block; font-size: 10px;">+307.7%</span></td><td>42.4%<br><span class="val-delta up" style="display: inline-block; font-size: 10px;">+19.15pp</span></td><td>#2.56<br><span class="val-delta up" style="display: inline-block; font-size: 10px;">-0.19</span></td></tr>
         </tbody>
       </table>
-
       <div class="charts-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 32px;">
         <div class="chart-card">
           <div class="chart-card-header"><div class="chart-card-title">Organic Clicks</div></div>
@@ -1576,13 +1419,7 @@
           <div class="chart-card-body"><canvas id="chart_gsc_position"></canvas></div>
         </div>
       </div>
-
-      <div class="insight-card" style="margin-top: 32px;">
-        <div class="insight-label">Read</div>
-        <div class="insight-text">The W3-W5 baseline was steady around <strong>40-45 weekly clicks at 18-23% CTR</strong>. W6 broke through to <strong>335 clicks at 42% CTR</strong>, a +644% click jump. Average position simultaneously improved to <strong>#2.56</strong>, the strongest of the period. This is the algorithm responding to a sudden surge in branded search demand - the TikTok video drove people to search "vixii" rather than click straight from the platform, and the brand's already-strong ranking captured it cleanly.</div>
-      </div>
     </div>
-
 </section>
 
   <section style="--accent: var(--gold);">
@@ -1595,7 +1432,7 @@
       <div>
         <div class="prod-heading">Top products · sold <span>qty</span></div>
         <div class="prod-item"><div class="prod-rank">01</div><div class="prod-name">Eternal Lines - Midnight Blue & Gold Necklace</div><div class="prod-metric">24</div></div>
-        <div class="prod-item"><div class="prod-rank">02</div><div class="prod-name">Heritage Cut - Orange, Pink & Gold Necklace</div><div class="prod-metric">10</div></div>
+        <div class="prod-item"><div class="prod-rank">02</div><div class="prod-name">Heritage Cut - Orange, Pink & Gold Necklace</div><div class="prod-metric">9</div></div>
         <div class="prod-item"><div class="prod-rank">03</div><div class="prod-name">Quiet Drop - Purple, Butter Yellow & Gold Necklace</div><div class="prod-metric">4</div></div>
         <div class="prod-item"><div class="prod-rank">04</div><div class="prod-name">True Union - Khaki, Periwinkle Blue & Gold Diamond Necklace</div><div class="prod-metric">4</div></div>
         <div class="prod-item"><div class="prod-rank">05</div><div class="prod-name">Quiet Drop - Purple, Emerald Green & Gold Necklace</div><div class="prod-metric">3</div></div>
@@ -1627,7 +1464,7 @@
         <div class="chart-card-body"><canvas id="chart_iv"></canvas></div>
       </div>
       <div class="chart-card">
-        <div class="chart-card-header"><div class="chart-card-title">Products Sold</div><div class="chart-card-fc">FORECAST: 14</div></div>
+        <div class="chart-card-header"><div class="chart-card-title">Products Sold</div><div class="chart-card-fc">FORECAST: 13</div></div>
         <div class="chart-card-sub">UK · units</div>
         <div class="chart-card-body"><canvas id="chart_ps"></canvas></div>
       </div>
@@ -1645,18 +1482,18 @@
       <div class="fc-hero-row">
         <div class="fc-hero-card">
           <div class="label">Gross Sales</div>
-          <div class="value">£2,031</div>
-          <div class="vsprev down">-39.8% vs W6 (£3,375)</div>
+          <div class="value">£1,981</div>
+          <div class="vsprev down">-39.5% vs W6 (£3,276)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">Orders</div>
-          <div class="value">13</div>
-          <div class="vsprev down">-36.0% vs W6 (20)</div>
+          <div class="value">12</div>
+          <div class="vsprev down">-35.3% vs W6 (19)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">AOV</div>
-          <div class="value">£148</div>
-          <div class="vsprev down">-12.2% vs W6 (£169)</div>
+          <div class="value">£150</div>
+          <div class="vsprev down">-13.0% vs W6 (£172)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">Sessions</div>
@@ -1665,8 +1502,8 @@
         </div>
         <div class="fc-hero-card">
           <div class="label">Overall CVR</div>
-          <div class="value">0.52%</div>
-          <div class="vsprev down">-16.8% vs W6 (0.62%)</div>
+          <div class="value">0.50%</div>
+          <div class="vsprev down">-15.1% vs W6 (0.59%)</div>
         </div>
         <div class="fc-hero-card">
           <div class="label">Ad Spend</div>
@@ -1689,18 +1526,18 @@
     <div class="method-grid">
       <div class="method-row">
         <div class="method-metric">Gross Sales</div>
-        <div class="method-value">£2,031</div>
-        <div class="method-reason">Linear trend slope +258.51/wk; recent 3-wk avg 1717.33. Blended 50/50.</div>
+        <div class="method-value">£1,981</div>
+        <div class="method-reason">Linear trend slope +244.37/wk; recent 3-wk avg 1684.33. Blended 50/50.</div>
       </div>
       <div class="method-row">
         <div class="method-metric">Orders</div>
-        <div class="method-value">13</div>
-        <div class="method-reason">Linear trend slope +1.46/wk; recent 3-wk avg 11.00. Blended 50/50.</div>
+        <div class="method-value">12</div>
+        <div class="method-reason">Linear trend slope +1.31/wk; recent 3-wk avg 10.67. Blended 50/50.</div>
       </div>
       <div class="method-row">
         <div class="method-metric">AOV</div>
-        <div class="method-value">£148</div>
-        <div class="method-reason">Linear trend slope +0.91/wk; recent 3-wk avg 147.25. Blended 50/50.</div>
+        <div class="method-value">£150</div>
+        <div class="method-reason">Linear trend slope +1.44/wk; recent 3-wk avg 148.47. Blended 50/50.</div>
       </div>
       <div class="method-row">
         <div class="method-metric">Sessions</div>
@@ -1709,8 +1546,8 @@
       </div>
       <div class="method-row">
         <div class="method-metric">Overall CVR</div>
-        <div class="method-value">0.52%</div>
-        <div class="method-reason">Linear trend slope -0.03/wk; recent 3-wk avg 0.55. Blended 50/50.</div>
+        <div class="method-value">0.50%</div>
+        <div class="method-reason">Linear trend slope -0.03/wk; recent 3-wk avg 0.54. Blended 50/50.</div>
       </div>
       <div class="method-row">
         <div class="method-metric">Ad Spend</div>
@@ -1730,7 +1567,7 @@
     </div>
     <div class="insight-card" style="margin-top: 56px;">
       <div class="insight-label">What W6 is telling us</div>
-      <div class="insight-text">W6 is a <strong>breakout week</strong>: Gross Sales jumped <strong>+320%</strong> (£804 &rarr; £3,375), Orders went from <strong>6 to 20</strong>, and Returning Users surged from <strong>270 to 677</strong>. The forecast for W7 takes this surge into account but blends with prior trend - if W6 is the new normal rather than a one-off, expect actuals above the projection.</div>
+      <div class="insight-text">W6 is a <strong>breakout week</strong>: Gross Sales jumped <strong>+307%</strong> (£804 &rarr; £3,276), Orders went from <strong>6 to 19</strong>, and Returning Users surged from <strong>270 to 677</strong>. The forecast for W7 takes this surge into account but blends with prior trend - if W6 is the new normal rather than a one-off, expect actuals above the projection.</div>
     </div>
   </section>
 
@@ -1806,7 +1643,7 @@ function renderBarChart(cfg) {
   });
 }
 
-const chartConfigs = [{"id": "chart_01_Gross_Sales_gbp", "accent": "#C9A961", "values": [1448, 968, 1068, 973, 804, 3375], "forecast": 2030.73, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Net_Revenue_gbp", "accent": "#C9A961", "values": [1191.7, 558.33, 708.33, 806.29, 655.2, 2558.45], "forecast": 1570.96, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Discounts_gbp", "accent": "#C9A961", "values": [41.9, 0.0, 0.0, 51.69, 47.7, 345.39], "forecast": 200.3, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Returns_gbp", "accent": "#C9A961", "values": [0.0, 298.0, 218.0, 0.0, 0.0, 0.0], "forecast": 0.0, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_02_Orders", "accent": "#D4AF37", "values": [9, 7, 8, 7, 6, 20], "forecast": 12.8, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_02_AOV_gbp", "accent": "#D4AF37", "values": [160.89, 138.29, 133.5, 139.0, 134.0, 168.75], "forecast": 148.09, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_02_Items_Order", "accent": "#D4AF37", "values": [1.11, 1.14, 1.0, 1.0, 1.0, 1.15], "forecast": 1.05, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 2}, {"id": "chart_03_Sessions", "accent": "#B88B4A", "values": [1032, 1618, 1515, 1514, 1076, 3214], "forecast": 2262.23, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Visitors", "accent": "#B88B4A", "values": [957, 1493, 1400, 1390, 996, 2976], "forecast": 2091.03, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_New_Users", "accent": "#B88B4A", "values": [897, 1342, 1152, 1140, 726, 2299], "forecast": 1581.33, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Returning_Users", "accent": "#B88B4A", "values": [60, 151, 248, 250, 270, 677], "forecast": 509.7, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_04_Overall_CVR_pct", "accent": "#A8794F", "values": [0.87, 0.43, 0.53, 0.46, 0.56, 0.62], "forecast": 0.52, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Cart-add_Rate_pct", "accent": "#A8794F", "values": [1.94, 5.75, 5.21, 5.22, 4.0, 3.11], "forecast": 4.19, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Reach_pct", "accent": "#A8794F", "values": [0.87, 2.72, 2.44, 2.77, 2.7, 1.65], "forecast": 2.49, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Completion_pct", "accent": "#A8794F", "values": [100.0, 15.91, 21.62, 16.67, 20.69, 37.74], "forecast": 15.14, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_05_Bounce_Rate_pct", "accent": "#8B6B3F", "values": [59.01, 36.03, 40.66, 40.22, 51.12, 48.82], "forecast": 46.04, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_Spend_gbp", "accent": "#C9A961", "values": [158.58, 522.0, 714.57, 739.85, 627.36, 1069.59], "forecast": 970.28, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Impressions", "accent": "#C9A961", "values": [12444, 37466, 53856, 53152, 42291, 70495], "forecast": 65332.97, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Reach", "accent": "#C9A961", "values": [10559, 30098, 41322, 42005, 30239, 50827], "forecast": 47721.63, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Clicks", "accent": "#C9A961", "values": [484, 1502, 1814, 1729, 1071, 1667], "forecast": 1660.27, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_CTR_pct", "accent": "#C9A961", "values": [3.89, 4.01, 3.37, 3.25, 2.53, 2.36], "forecast": 2.37, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_CPC_gbp", "accent": "#C9A961", "values": [0.33, 0.35, 0.39, 0.43, 0.59, 0.64], "forecast": 0.62, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_06_Adds_to_Cart_Ads", "accent": "#C9A961", "values": [15, 45, 51, 30, 15, 30], "forecast": 26.2, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Purchases_Ads", "accent": "#C9A961", "values": [5, 6, 7, 3, 4, 5], "forecast": 4.0, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_ROAS", "accent": "#C9A961", "values": [5.59, 1.56, 1.34, 0.41, 0.89, 0.92], "forecast": 0.74, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 2}];
+const chartConfigs = [{"id": "chart_01_Gross_Sales_gbp", "accent": "#C9A961", "values": [1448, 968, 1068, 973, 804, 3276], "forecast": 1981.23, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Net_Revenue_gbp", "accent": "#C9A961", "values": [1191.7, 558.33, 708.33, 806.29, 655.2, 2558.45], "forecast": 1570.96, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Discounts_gbp", "accent": "#C9A961", "values": [41.9, 0.0, 0.0, 51.69, 47.7, 246.39], "forecast": 150.8, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Returns_gbp", "accent": "#C9A961", "values": [0.0, 298.0, 218.0, 0.0, 0.0, 0.0], "forecast": 0.0, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_02_Orders", "accent": "#D4AF37", "values": [9, 7, 8, 7, 6, 19], "forecast": 12.3, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_02_AOV_gbp", "accent": "#D4AF37", "values": [160.89, 138.29, 133.5, 139.0, 134.0, 172.42], "forecast": 149.93, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_02_Items_Order", "accent": "#D4AF37", "values": [1.11, 1.14, 1.0, 1.0, 1.0, 1.16], "forecast": 1.05, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 2}, {"id": "chart_03_Sessions", "accent": "#B88B4A", "values": [1032, 1618, 1515, 1514, 1076, 3214], "forecast": 2262.23, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Visitors", "accent": "#B88B4A", "values": [957, 1493, 1400, 1390, 996, 2976], "forecast": 2091.03, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_New_Users", "accent": "#B88B4A", "values": [897, 1342, 1152, 1140, 726, 2299], "forecast": 1581.33, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Returning_Users", "accent": "#B88B4A", "values": [60, 151, 248, 250, 270, 677], "forecast": 509.7, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_04_Overall_CVR_pct", "accent": "#A8794F", "values": [0.87, 0.43, 0.53, 0.46, 0.56, 0.59], "forecast": 0.5, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Cart-add_Rate_pct", "accent": "#A8794F", "values": [1.94, 5.75, 5.21, 5.22, 4.0, 3.11], "forecast": 4.19, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Reach_pct", "accent": "#A8794F", "values": [0.87, 2.72, 2.44, 2.77, 2.7, 1.65], "forecast": 2.49, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Completion_pct", "accent": "#A8794F", "values": [100.0, 15.91, 21.62, 16.67, 20.69, 35.85], "forecast": 14.2, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_05_Bounce_Rate_pct", "accent": "#8B6B3F", "values": [59.01, 36.03, 40.66, 40.22, 51.12, 48.82], "forecast": 46.04, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_Spend_gbp", "accent": "#C9A961", "values": [158.58, 522.0, 714.57, 739.85, 627.36, 1069.59], "forecast": 970.28, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Impressions", "accent": "#C9A961", "values": [12444, 37466, 53856, 53152, 42291, 70495], "forecast": 65332.97, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Reach", "accent": "#C9A961", "values": [10559, 30098, 41322, 42005, 30239, 50827], "forecast": 47721.63, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Clicks", "accent": "#C9A961", "values": [484, 1502, 1814, 1729, 1071, 1667], "forecast": 1660.27, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_CTR_pct", "accent": "#C9A961", "values": [3.89, 4.01, 3.37, 3.25, 2.53, 2.36], "forecast": 2.37, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_CPC_gbp", "accent": "#C9A961", "values": [0.33, 0.35, 0.39, 0.43, 0.59, 0.64], "forecast": 0.62, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_06_Adds_to_Cart_Ads", "accent": "#C9A961", "values": [15, 45, 51, 30, 15, 30], "forecast": 26.2, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Purchases_Ads", "accent": "#C9A961", "values": [5, 6, 7, 3, 4, 5], "forecast": 4.0, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_ROAS", "accent": "#C9A961", "values": [5.59, 1.56, 1.34, 0.41, 0.89, 0.92], "forecast": 0.74, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "FC"], "prefix": "", "suffix": "", "dec": 2}];
 chartConfigs.forEach(renderBarChart);
 
 // Channel stacked bar
@@ -1829,59 +1666,35 @@ new Chart(document.getElementById('chart_channels').getContext('2d'), {
 });
 
 renderBarChart({id:'chart_iv', accent:'#C9A961', values:[488, 2072, 2332, 2121, 1218, 2929], forecast:2446.27, labels:["W1", "W2", "W3", "W4", "W5", "W6", "FC"], prefix:'', suffix:'', dec:0});
-renderBarChart({id:'chart_ps', accent:'#B88B4A', values:[10, 8, 8, 7, 6, 23], forecast:14.07, labels:["W1", "W2", "W3", "W4", "W5", "W6", "FC"], prefix:'', suffix:'', dec:0});
+renderBarChart({id:'chart_ps', accent:'#B88B4A', values:[10, 8, 8, 7, 6, 22], forecast:13.57, labels:["W1", "W2", "W3", "W4", "W5", "W6", "FC"], prefix:'', suffix:'', dec:0});
 
-// === GSC weekly trajectory charts ===
+
+// GSC weekly trajectory charts
 (function() {
   const labels = ["W3", "W4", "W5", "W6"];
   const accent = '#A8794F';
-  
   function makeGscChart(id, values, dec, prefix, suffix, lowerBetter) {
     const ctx = document.getElementById(id);
     if (!ctx) return;
     new Chart(ctx, {
       type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          data: values,
-          backgroundColor: accent,
-          borderWidth: 0,
-          borderRadius: 1,
-          barPercentage: 0.62, categoryPercentage: 0.85,
-        }]
-      },
+      data: { labels, datasets: [{ data: values, backgroundColor: accent, borderWidth: 0, borderRadius: 1, barPercentage: 0.62, categoryPercentage: 0.85 }] },
       options: {
         responsive: true, maintainAspectRatio: false,
         layout: { padding: { top: 30, left: 0, right: 12 } },
         plugins: {
           legend: { display: false },
-          tooltip: {
-            backgroundColor: '#14130F', borderColor: '#2A261E', borderWidth: 1,
-            titleColor: '#C9A961', bodyColor: '#EEE8DB', padding: 12, cornerRadius: 2,
-            callbacks: { label: (c) => formatNum(c.parsed.y, dec, prefix, suffix) }
-          },
-          datalabels: {
-            anchor: 'end', align: 'end', color: '#EEE8DB',
-            font: { family: 'JetBrains Mono', size: 10, weight: 600 },
-            formatter: (v) => formatNum(v, dec, prefix, suffix),
-            padding: { bottom: 2 }
-          }
+          tooltip: { backgroundColor: '#14130F', borderColor: '#2A261E', borderWidth: 1, titleColor: '#C9A961', bodyColor: '#EEE8DB', padding: 12, cornerRadius: 2,
+            callbacks: { label: (c) => formatNum(c.parsed.y, dec, prefix, suffix) } },
+          datalabels: { anchor: 'end', align: 'end', color: '#EEE8DB', font: { family: 'JetBrains Mono', size: 10, weight: 600 }, formatter: (v) => formatNum(v, dec, prefix, suffix), padding: { bottom: 2 } }
         },
         scales: {
           x: { grid: { display: false }, ticks: { color: '#A9A093', font: { family: 'JetBrains Mono', size: 10 } } },
-          y: {
-            beginAtZero: !lowerBetter,
-            reverse: lowerBetter ? true : false,
-            grid: { color: 'rgba(42,38,30,0.5)' },
-            ticks: { color: '#6E675A', font: { family: 'JetBrains Mono', size: 9 },
-              callback: (v) => formatNum(v, 0, prefix, suffix), maxTicksLimit: 5 }
-          }
+          y: { beginAtZero: !lowerBetter, reverse: lowerBetter, grid: { color: 'rgba(42,38,30,0.5)' }, ticks: { color: '#6E675A', font: { family: 'JetBrains Mono', size: 9 }, callback: (v) => formatNum(v, 0, prefix, suffix), maxTicksLimit: 5 } }
         }
       }
     });
   }
-  
   makeGscChart('chart_gsc_clicks',      [34, 41, 45, 335],    0, '', '',  false);
   makeGscChart('chart_gsc_impressions', [191, 179, 194, 791],      0, '', '',  false);
   makeGscChart('chart_gsc_ctr',         [17.8, 22.91, 23.2, 42.35],      1, '', '%', false);
