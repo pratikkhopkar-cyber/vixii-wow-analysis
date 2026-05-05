@@ -212,6 +212,10 @@
   .exec-narrative-body p + p { margin-top: 16px; }
   @media (max-width: 1100px) { .exec-stats-grid { grid-template-columns: repeat(2, 1fr); } .exec-narrative { grid-template-columns: 1fr; gap: 16px; } }
 
+
+  .metric-label-wrap { display: flex; flex-direction: column; gap: 4px; }
+  .metric-sublabel { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--text-muted); font-weight: 400; line-height: 1.4; max-width: 240px; text-transform: none; }
+
 </style>
 </head>
 <body>
@@ -221,8 +225,8 @@
     <div class="eyebrow">VIXII · UK Performance Intelligence · Q2 2026</div>
     <h1>Week on Week<br><em>Analysis</em></h1>
     <div class="hero-meta">
-      <div class="meta-item"><div class="meta-label">Period</div><div class="meta-value">16 Mar → 26 Apr 2026</div></div>
-      <div class="meta-item"><div class="meta-label">Coverage</div><div class="meta-value">6 complete weeks + forecast</div></div>
+      <div class="meta-item"><div class="meta-label">Period</div><div class="meta-value">16 Mar &rarr; 3 May 2026</div></div>
+      <div class="meta-item"><div class="meta-label">Coverage</div><div class="meta-value">7 complete weeks + forecast</div></div>
       <div class="meta-item"><div class="meta-label">Scope</div><div class="meta-value">UK · Online Store only</div></div>
       <div class="meta-item"><div class="meta-label">Cadence</div><div class="meta-value">Monday → Sunday</div></div>
     </div>
@@ -313,7 +317,7 @@
     </div>
     <div class="metric-body">
       <div class="metric-row">
-        <div class="metric-label">Gross Sales (£)</div>
+        <div class="metric-label-wrap"><div class="metric-label">Gross Sales (£)</div><div class="metric-sublabel">list price &times; quantity (pre-discount, pre-tax)</div></div>
         <div class="metric-values">
           <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£1,448</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£968</div><div class="val-delta down">-33.1%</div></div>
@@ -325,8 +329,24 @@
           <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£1,824</div><div class="val-delta up">+73.8%</div></div>
         </div>
       </div>
-      <div class="metric-row">
-        <div class="metric-label">Net Revenue (£)</div>
+            <div class="metric-row">
+        <div class="metric-label-wrap">
+          <div class="metric-label">Subtotal (£)</div>
+          <div class="metric-sublabel">post-discount, pre-tax (Gross Sales &minus; Discounts)</div>
+        </div>
+        <div class="metric-values">
+          <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£1,406</div><div class="val-delta neutral">-</div></div>
+          <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£968</div><div class="val-delta down">-31.2%</div></div>
+          <div class="val-cell"><div class="cell-wk">W3</div><div class="val-num">£1,068</div><div class="val-delta up">+10.3%</div></div>
+          <div class="val-cell"><div class="cell-wk">W4</div><div class="val-num">£926</div><div class="val-delta down">-13.3%</div></div>
+          <div class="val-cell"><div class="cell-wk">W5</div><div class="val-num">£756</div><div class="val-delta down">-18.4%</div></div>
+          <div class="val-cell"><div class="cell-wk">W6</div><div class="val-num">£3,174</div><div class="val-delta up">+319.7%</div></div>
+          <div class="val-cell"><div class="cell-wk">W7</div><div class="val-num">£978</div><div class="val-delta down">-69.2%</div></div>
+          <div class="val-cell forecast"><div class="cell-wk">FC</div><div class="val-num">£1,636</div><div class="val-delta up">+67.3%</div></div>
+        </div>
+      </div>
+<div class="metric-row">
+        <div class="metric-label-wrap"><div class="metric-label">Net Revenue (£)</div><div class="metric-sublabel">what the brand keeps after VAT &amp; refunds (Total &minus; Taxes)</div></div>
         <div class="metric-values">
           <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£1,192</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£458</div><div class="val-delta down">-61.6%</div></div>
@@ -339,7 +359,7 @@
         </div>
       </div>
       <div class="metric-row">
-        <div class="metric-label">Discounts (£)</div>
+        <div class="metric-label-wrap"><div class="metric-label">Discounts (£)</div><div class="metric-sublabel">discount amount applied to orders</div></div>
         <div class="metric-values">
           <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£42</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£0</div><div class="val-delta up">-100.0%</div></div>
@@ -352,7 +372,7 @@
         </div>
       </div>
       <div class="metric-row">
-        <div class="metric-label">Returns (£)</div>
+        <div class="metric-label-wrap"><div class="metric-label">Returns (£)</div><div class="metric-sublabel">subtotal value of fully refunded orders</div></div>
         <div class="metric-values">
           <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£0</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£417</div><div class="val-delta neutral">0.0%</div></div>
@@ -365,7 +385,7 @@
         </div>
       </div>
           <div class="metric-row">
-        <div class="metric-label">Partial Refunds (£)</div>
+        <div class="metric-label-wrap"><div class="metric-label">Partial Refunds (£)</div><div class="metric-sublabel">compensation refunds (delivery delay/issue, customer kept item)</div></div>
         <div class="metric-values">
           <div class="val-cell"><div class="cell-wk">W1</div><div class="val-num">£0</div><div class="val-delta neutral">-</div></div>
           <div class="val-cell"><div class="cell-wk">W2</div><div class="val-num">£10</div><div class="val-delta neutral">-</div></div>
@@ -390,6 +410,18 @@
         <div class="chart-card-footer">
           <div>last week: £1,050</div>
           <div class="fc-delta up">+73.8% vs W7</div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div class="chart-card-title">Subtotal</div>
+          <div class="chart-card-fc">FORECAST: £1,636</div>
+        </div>
+        <div class="chart-card-sub">post-discount, pre-tax</div>
+        <div class="chart-card-body"><canvas id="chart_01_Subtotal_gbp"></canvas></div>
+        <div class="chart-card-footer">
+          <div>last week: £978</div>
+          <div class="fc-delta up">+67.3% vs W7</div>
         </div>
       </div>
       <div class="chart-card">
@@ -1623,7 +1655,7 @@ function renderBarChart(cfg) {
   });
 }
 
-const chartConfigs = [{"id": "chart_01_Gross_Sales_gbp", "accent": "#C9A961", "values": [1448, 968, 1068, 973, 804, 3431, 1050], "forecast": 1824.4, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Net_Revenue_gbp", "accent": "#C9A961", "values": [1191.7, 457.6, 708.33, 634.73, 655.2, 2467.62, 814.83], "forecast": 1353.87, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Discounts_gbp", "accent": "#C9A961", "values": [41.9, 0.0, 0.0, 51.69, 47.7, 261.89, 72.2], "forecast": 144.9, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Returns_gbp", "accent": "#C9A961", "values": [0.0, 416.9, 218.0, 198.9, 0.0, 248.5, 0.0], "forecast": 79.1, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Partial_Refunds_gbp", "accent": "#C9A961", "values": [0.0, 9.9, 0.0, 9.9, 0.0, 0.0, 0.0], "forecast": 0, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_02_Orders", "accent": "#D4AF37", "values": [9, 7, 8, 7, 6, 19, 5], "forecast": 10.07, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_02_AOV_gbp", "accent": "#D4AF37", "values": [160.89, 138.29, 133.5, 139.0, 134.0, 180.58, 210.0], "forecast": 182.34, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_02_Items_Order", "accent": "#D4AF37", "values": [1.11, 1.14, 1.0, 1.0, 1.0, 1.21, 1.2], "forecast": 1.14, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 2}, {"id": "chart_03_Sessions", "accent": "#B88B4A", "values": [1032, 1618, 1515, 1514, 1076, 3218, 1394], "forecast": 2034.71, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Visitors", "accent": "#B88B4A", "values": [957, 1493, 1400, 1390, 996, 2980, 1275], "forecast": 1876.24, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_New_Users", "accent": "#B88B4A", "values": [897, 1342, 1152, 1140, 726, 2315, 830], "forecast": 1339.52, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Returning_Users", "accent": "#B88B4A", "values": [60, 151, 248, 250, 270, 665, 445], "forecast": 536.71, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_04_Overall_CVR_pct", "accent": "#A8794F", "values": [0.87, 0.43, 0.53, 0.46, 0.56, 0.59, 0.36], "forecast": 0.44, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Cart-add_Rate_pct", "accent": "#A8794F", "values": [1.94, 5.75, 5.21, 5.22, 4.0, 3.14, 2.58], "forecast": 3.29, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Reach_pct", "accent": "#A8794F", "values": [0.87, 2.72, 2.44, 2.77, 2.7, 1.65, 1.94], "forecast": 2.22, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Completion_pct", "accent": "#A8794F", "values": [100.0, 15.91, 21.62, 16.67, 20.69, 35.85, 18.52], "forecast": 14.21, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_05_Bounce_Rate_pct", "accent": "#8B6B3F", "values": [59.01, 36.03, 40.66, 40.22, 51.12, 43.23, 50.07], "forecast": 46.81, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_Spend_gbp", "accent": "#C9A961", "values": [158.58, 522.0, 714.57, 739.85, 627.36, 1069.63, 796.23], "forecast": 954.77, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Impressions", "accent": "#C9A961", "values": [12444, 37466, 53856, 53152, 42291, 70498, 63065], "forecast": 67818.57, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Reach", "accent": "#C9A961", "values": [10559, 30098, 41322, 42005, 30239, 50830, 40196], "forecast": 46249.48, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Clicks", "accent": "#C9A961", "values": [484, 1502, 1814, 1729, 1071, 1668, 1296], "forecast": 1500.29, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_CTR_pct", "accent": "#C9A961", "values": [3.89, 4.01, 3.37, 3.25, 2.53, 2.37, 2.06], "forecast": 2.01, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_CPC_gbp", "accent": "#C9A961", "values": [0.33, 0.35, 0.39, 0.43, 0.59, 0.64, 0.61], "forecast": 0.66, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_06_Adds_to_Cart_Ads", "accent": "#C9A961", "values": [15, 45, 51, 30, 15, 30, 18], "forecast": 21.0, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Purchases_Ads", "accent": "#C9A961", "values": [5, 6, 7, 3, 4, 5, 5], "forecast": 4.48, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_ROAS", "accent": "#C9A961", "values": [5.59, 1.56, 1.34, 0.41, 0.89, 0.92, 1.23], "forecast": 1.01, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 2}];
+const chartConfigs = [{"id": "chart_01_Gross_Sales_gbp", "accent": "#C9A961", "values": [1448, 968, 1068, 973, 804, 3431, 1050], "forecast": 1824.4, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Subtotal_gbp", "accent": "#C9A961", "values": [1406.1, 968.0, 1068.0, 926.3, 756.3, 3174.1, 977.8], "forecast": 1636.07, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Net_Revenue_gbp", "accent": "#C9A961", "values": [1191.7, 457.6, 708.33, 634.73, 655.2, 2467.62, 814.83], "forecast": 1353.87, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Discounts_gbp", "accent": "#C9A961", "values": [41.9, 0.0, 0.0, 51.69, 47.7, 261.89, 72.2], "forecast": 144.9, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Returns_gbp", "accent": "#C9A961", "values": [0.0, 416.9, 218.0, 198.9, 0.0, 248.5, 0.0], "forecast": 79.1, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_01_Partial_Refunds_gbp", "accent": "#C9A961", "values": [0.0, 9.9, 0.0, 9.9, 0.0, 0.0, 0.0], "forecast": 0, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_02_Orders", "accent": "#D4AF37", "values": [9, 7, 8, 7, 6, 19, 5], "forecast": 10.07, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_02_AOV_gbp", "accent": "#D4AF37", "values": [160.89, 138.29, 133.5, 139.0, 134.0, 180.58, 210.0], "forecast": 182.34, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_02_Items_Order", "accent": "#D4AF37", "values": [1.11, 1.14, 1.0, 1.0, 1.0, 1.21, 1.2], "forecast": 1.14, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 2}, {"id": "chart_03_Sessions", "accent": "#B88B4A", "values": [1032, 1618, 1515, 1514, 1076, 3218, 1394], "forecast": 2034.71, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Visitors", "accent": "#B88B4A", "values": [957, 1493, 1400, 1390, 996, 2980, 1275], "forecast": 1876.24, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_New_Users", "accent": "#B88B4A", "values": [897, 1342, 1152, 1140, 726, 2315, 830], "forecast": 1339.52, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_03_Returning_Users", "accent": "#B88B4A", "values": [60, 151, 248, 250, 270, 665, 445], "forecast": 536.71, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_04_Overall_CVR_pct", "accent": "#A8794F", "values": [0.87, 0.43, 0.53, 0.46, 0.56, 0.59, 0.36], "forecast": 0.44, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Cart-add_Rate_pct", "accent": "#A8794F", "values": [1.94, 5.75, 5.21, 5.22, 4.0, 3.14, 2.58], "forecast": 3.29, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Reach_pct", "accent": "#A8794F", "values": [0.87, 2.72, 2.44, 2.77, 2.7, 1.65, 1.94], "forecast": 2.22, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_04_Checkout_Completion_pct", "accent": "#A8794F", "values": [100.0, 15.91, 21.62, 16.67, 20.69, 35.85, 18.52], "forecast": 14.21, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_05_Bounce_Rate_pct", "accent": "#8B6B3F", "values": [59.01, 36.03, 40.66, 40.22, 51.12, 43.23, 50.07], "forecast": 46.81, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_Spend_gbp", "accent": "#C9A961", "values": [158.58, 522.0, 714.57, 739.85, 627.36, 1069.63, 796.23], "forecast": 954.77, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Impressions", "accent": "#C9A961", "values": [12444, 37466, 53856, 53152, 42291, 70498, 63065], "forecast": 67818.57, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Reach", "accent": "#C9A961", "values": [10559, 30098, 41322, 42005, 30239, 50830, 40196], "forecast": 46249.48, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_Clicks", "accent": "#C9A961", "values": [484, 1502, 1814, 1729, 1071, 1668, 1296], "forecast": 1500.29, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Ad_CTR_pct", "accent": "#C9A961", "values": [3.89, 4.01, 3.37, 3.25, 2.53, 2.37, 2.06], "forecast": 2.01, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "%", "dec": 2}, {"id": "chart_06_Ad_CPC_gbp", "accent": "#C9A961", "values": [0.33, 0.35, 0.39, 0.43, 0.59, 0.64, 0.61], "forecast": 0.66, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "\u00a3", "suffix": "", "dec": 2}, {"id": "chart_06_Adds_to_Cart_Ads", "accent": "#C9A961", "values": [15, 45, 51, 30, 15, 30, 18], "forecast": 21.0, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_Purchases_Ads", "accent": "#C9A961", "values": [5, 6, 7, 3, 4, 5, 5], "forecast": 4.48, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 0}, {"id": "chart_06_ROAS", "accent": "#C9A961", "values": [5.59, 1.56, 1.34, 0.41, 0.89, 0.92, 1.23], "forecast": 1.01, "labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "FC"], "prefix": "", "suffix": "", "dec": 2}];
 chartConfigs.forEach(renderBarChart);
 
 // Channel stacked bar
