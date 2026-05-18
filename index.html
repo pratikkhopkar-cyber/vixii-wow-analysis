@@ -687,11 +687,42 @@
       </div>
     </div>
 
-    <div style="margin-top: 56px;">
+
+    <div style="margin-top: 32px; padding: 32px 36px; background: rgba(194,139,130,0.04); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 2px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px;">Post-order economics</div>
+      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 24px; line-height: 1.55;">NIFT takes <strong style="color: var(--gold-bright);">28%</strong> off the order total - <strong>25% commission</strong> plus <strong>3% platform charges</strong>. Net to VIXII is the remaining 72%.</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border);">
+        <div style="background: var(--bg); padding: 22px 20px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Order Total</div>
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--text); line-height: 1; font-variant-numeric: tabular-nums; margin-bottom: 6px;">£279.00</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);">gross customer payment</div>
+        </div>
+        <div style="background: var(--bg); padding: 22px 20px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: #C28B82; text-transform: uppercase; margin-bottom: 10px;">- Commission (25%)</div>
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #C28B82; line-height: 1; font-variant-numeric: tabular-nums; margin-bottom: 6px;">£69.75</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);">NIFT commission</div>
+        </div>
+        <div style="background: var(--bg); padding: 22px 20px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: #C28B82; text-transform: uppercase; margin-bottom: 10px;">- Platform Charges (3%)</div>
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #C28B82; line-height: 1; font-variant-numeric: tabular-nums; margin-bottom: 6px;">£8.37</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);">platform charges</div>
+        </div>
+        <div style="background: var(--bg); padding: 22px 20px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: #8DA67A; text-transform: uppercase; margin-bottom: 10px;">= VIXII Net (72%)</div>
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #8DA67A; line-height: 1; font-variant-numeric: tabular-nums; margin-bottom: 6px;">£200.88</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);">after NIFT take</div>
+        </div>
+      </div>
+      <div style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; text-align: right;">
+        Total NIFT take: <strong style="color: var(--gold-bright);">£78.12</strong> (28% of order total)
+      </div>
+    </div>
+
+        <div style="margin-top: 56px;">
       <div class="charts-section-label" style="margin-bottom: 24px;">Order-by-order detail</div>
       <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Full list of NIFT-channel orders received in the period.</p>
       <table class="channel-table">
-        <thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Items</th><th>Subtotal</th><th>Total</th></tr></thead>
+        <thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Items</th><th>Subtotal</th><th>Total</th><th>- Commission (25%)</th><th>- Platform Charges (3%)</th><th>= VIXII Net (72%)</th></tr></thead>
         <tbody>
           <tr>
             <td>#1103</td>
@@ -700,6 +731,9 @@
             <td>True Union - Burgundy, Orchid, Pink & Gold Diamond Bracelet &times; 1 <span style='color: var(--text-muted)'>(£279 ea)</span></td>
             <td>£279</td>
             <td>£279</td>
+            <td style="color: #C28B82;">-£69.75</td>
+            <td style="color: #C28B82;">-£8.37</td>
+            <td style="color: #8DA67A; font-weight: 500;">£200.88</td>
           </tr>
         </tbody>
       </table>
